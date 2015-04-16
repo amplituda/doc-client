@@ -1,0 +1,171 @@
+<html>
+<head>
+  <title>VCL Documentation Client</title>
+  <link rel="stylesheet" href="/vcl.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style media="screen">
+
+    body{
+      margin: 0;
+    }
+
+    header{
+      margin-top: 0;
+      padding: 1em;
+      box-shadow: 0 1px 3px gray;
+      position: relative;
+    }
+
+    .docQuicklinks {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+    }
+
+    .docDemo{
+      margin-top: 15px;
+      margin-bottom: 40px;
+    }
+
+    .docDemoContent{
+      padding: 20px;
+      box-shadow: 0 0 2px rgb(216, 216, 216);
+      border: 1px solid rgb(190, 190, 190);
+      margin: 0;
+    }
+
+    pre.docDemoContent{
+      border: 1px solid black;
+      padding: 1em;
+    }
+
+    .docContent{
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    .docPart{
+      margin-bottom: 20px;
+      border-bottom: 1px solid gray;
+    }
+
+    .docNav{
+      padding-top: 10px;
+      padding-right: 15px;
+      padding-left: 5px;
+    }
+
+    .code{
+      position: relative;
+    }
+
+    .docEditDemo{
+      position: absolute;
+      top: -34px;
+      right: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <div class="main">
+    <header>
+      <doc-topbar></doc-topbar>
+    </header>
+    <div class="vclContentArea" flex horizontal layout>
+      <doc-nav></doc-nav>
+      <div class="docContent" flex id="elements">
+        <doc-content></doc-content>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/lodash/3.5.0/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai.min.css" media="screen" charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/languages/xml.min.js"></script>
+
+  <script src="/tags/doc-topbar.tag" type="riot/tag"></script>
+  <script src="/tags/doc-nav.tag" type="riot/tag"></script>
+  <script src="/tags/doc-content.tag" type="riot/tag"></script>
+  <script src="/tags/doc-demo.tag" type="riot/tag"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.0.14/riot+compiler.min.js"></script>
+  <script charset="utf-8">
+    /* globals riot, superagent, _, document */
+
+    // TODO: check for embedded first
+    superagent
+      .get('/doc.json')
+      .set('Accept', 'application/json')
+      .end(function(err, res){
+        // TODO: handle error
+        if (err) throw err;
+
+        console.log(res.body);
+        init(res.body);
+      });
+
+    function init(doc) {
+      // starts the app
+      if (doc === undefined) throw 'Have no doc to show';
+      _.defaults(doc, {
+        title: 'VCL Documentation'
+      });
+
+      // setting page title
+      document.title = doc.title;
+
+      // process parts
+      if (doc.parts.length === 0) throw 'No parts to render';
+
+      // doc content
+      //riot.mount('doc-content', { parts: doc.parts });
+
+      // navigation
+      var navItems = _.map(doc.parts, function(item) {
+        console.log(item);
+
+        // TODO: let generator set mainCat (?)
+        return {
+          title: item.title || item.name,
+          name: item.name,
+          primaryCategory: item.docgen.categories[0].title
+        };
+      });
+
+      // TODO: the generator should do this
+      var cats = [];
+      _.forEach(doc.parts, function(part) {
+        cats.push.apply(cats, part.docgen.categories);
+      });
+
+      riot.mount('doc-nav', {
+        categories: cats,
+        items: navItems
+      });
+
+      window.appSettings = { content: {}};
+      riot.mount('doc-content', window.appSettings);
+
+      riot.route(function(collection, id) {
+        // TODO: single page app pls
+        //openDoc(name);
+        var selectedPart = _.find(doc.parts, {name: collection})
+        window.appSettings.content = selectedPart;
+        riot.update();
+      });
+
+      // title
+      riot.mount('doc-topbar', {title: doc.name});
+
+    }
+    //riot.mount('*', {title: 'Some demo'});
+  </script>
+</body>
+</html>

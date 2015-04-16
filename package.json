@@ -1,0 +1,39 @@
+{
+  "name": "vcl-doc-client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "package.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "style": "./main.styl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vcl/doc-client.git"
+  },
+  "keywords": [
+    "vcl"
+  ],
+  "author": "n-fuse GmbH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vcl/doc-client/issues"
+  },
+  "homepage": "https://github.com/vcl/doc-client",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-vcl-preprocessor": "git://github.com/vcl/gulp-vcl-preprocessor.git",
+    "vcl-button": "git://github.com/vcl/button.git",
+    "vcl-default-theme": "git://github.com/vcl/default-theme.git",
+    "vcl-default-theme-terms": "git://github.com/vcl/default-theme-terms.git"
+  },
+  "dependencies": {
+    "vcl-font-awesome": "git://github.com/vcl/font-awesome.git",
+    "vcl-input": "git://github.com/vcl/input.git",
+    "vcl-layout": "git://github.com/vcl/layout.git",
+    "vcl-navigation": "git://github.com/vcl/navigation.git",
+    "vcl-tab-nav": "git://github.com/vcl/tab-nav.git",
+    "vcl-typography": "git://github.com/vcl/typography.git",
+    "vcl-utils": "git://github.com/vcl/utils.git"
+  }
+}
