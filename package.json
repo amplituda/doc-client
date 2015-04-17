@@ -26,7 +26,8 @@
     "normalize.css": "^3.0.3",
     "vcl-button": "git://github.com/vcl/button.git",
     "vcl-default-theme": "git://github.com/vcl/default-theme.git",
-    "vcl-default-theme-terms": "git://github.com/vcl/default-theme-terms.git"
+    "vcl-default-theme-terms": "git://github.com/vcl/default-theme-terms.git",
+    "vcl-icogram": "git://github.com/vcl/icogram.git"
   },
   "dependencies": {
     "vcl-font-awesome": "git://github.com/vcl/font-awesome.git",

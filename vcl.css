@@ -4472,3 +4472,38 @@ span.vclButtonStd[disabled] {
 .vclButtonStd.vclSuggestive[disabled] {
   color: #5cb85c;
 }
+
+.vclIcogram {
+  white-space: nowrap;
+  position: relative;
+  display: block;
+}
+
+.vclIcogram .vclIcon {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.vclIcogram .vclIcon:first-child {
+  margin: 0 0.65em 0 0;
+}
+
+.vclIcogram .vclIcon:last-child {
+  margin: 0 0 0 0.65em;
+}
+
+.vclIcogram .vclIcon:only-child {
+  margin: 0;
+}
+
+.vclIcogram .vclText ~ .vclText {
+  margin-left: 0.4em;
+}
+
+.vclIcogram .vclText {
+  vertical-align: top;
+}
+
+.vclIcogram a.vclText {
+  color: inherit;
+}
