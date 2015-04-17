@@ -8,12 +8,7 @@
     autofocus>
     <ul if={ !searching } id="nav-items">
       <div each={ cat in cats }>
-        <li role="sectionhead" class="vclHeading" class={ active: active, vclDisplayNone: hidden }>
-          <span>{ cat.title }</span>
-        </li>
-        <li each={ item in cat.items } role="presentation">
-          <a href={ '#' + item.name } >{ item.title }</a>
-        </li>
+        <doc-subnav items={ cat.items }></doc-subnav>
       </div>
     </ul>
     <ul if={ searching } id="nav-items">

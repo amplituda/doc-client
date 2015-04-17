@@ -29,8 +29,7 @@
   this.readme.innerHTML = opts.content.readme;
 
   this.on('update', function() {
-    console.log('alaaarm');
-    console.log(opts.content);
+    // update readme
     this.readme.innerHTML = opts.content.readme;
 
     // inject demos
