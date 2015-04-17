@@ -66,7 +66,7 @@
       this.searching = true;
 
       var options = {
-        keys: ['title']   // keys to search in
+        keys: ['title', 'description']   // keys to search in
       };
       var f = new Fuse(this.items, options);
       var result = f.search(searchVal); // Fuzzy-search for pattern 'brwn'
