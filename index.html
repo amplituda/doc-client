@@ -55,7 +55,7 @@
       padding-left: 5px;
     }
 
-    .docNavHeading a{ 
+    .docNavHeading a{
       font-weight: bold !important;
     }
 
@@ -120,11 +120,11 @@
       // starts the app
       if (doc === undefined) throw 'Have no doc to show';
       _.defaults(doc, {
-        title: 'VCL Documentation'
+        name: 'VCL Documentation'
       });
 
-      // setting page title
-      document.title = doc.title;
+      // setting page name
+      document.title = doc.name;
 
       // process parts
       if (doc.parts.length === 0) throw 'No parts to render';
@@ -134,13 +134,13 @@
 
       // navigation
       var navItems = _.map(doc.parts, function(item) {
-        console.log(item);
 
         // TODO: let generator set mainCat (?)
         return {
           title: item.title || item.name,
           name: item.name,
           primaryCategory: item.docgen.categories[0].title,
+          itemPriority: item.docgen.categories[0].itemPriority || 0,
           description: item.description
         };
       });
@@ -148,7 +148,8 @@
       // TODO: the generator should do this
       var cats = [];
       _.forEach(doc.parts, function(part) {
-        cats.push.apply(cats, part.docgen.categories);
+        //cats.push.apply(cats, part.docgen.categories);
+        cats.push(part.docgen.categories[0]);
       });
 
       riot.mount('doc-nav', {
@@ -159,13 +160,19 @@
       window.appSettings = { content: {}};
       riot.mount('doc-content', window.appSettings);
 
-      riot.route(function(collection, id) {
-        // TODO: single page app pls
-        //openDoc(name);
-        var selectedPart = _.find(doc.parts, {name: collection})
+      riot.route(showPart);
+
+      function showPart(name) {
+        var selectedPart = _.find(doc.parts, {name: name})
         window.appSettings.content = selectedPart;
         riot.update();
-      });
+      }
+
+      // first visit, parse url and show part
+      // TODO: find out why this timeout is needed
+      setTimeout(function(){
+        riot.route.exec(showPart);
+      }, 1500);
 
       // title
       riot.mount('doc-topbar', {title: doc.name});

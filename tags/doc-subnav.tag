@@ -15,7 +15,10 @@
   </div>
   <script>
     this.open = false;
-    this.items = opts.items;
+    this.items = _.sortBy(opts.items, 'itemPriority');
+
+    console.log('items');
+    console.log(this.items);
 
     this.toggle = function() {
       this.open = !this.open;
