@@ -14,7 +14,6 @@
     <ul if={ searching } id="nav-items">
       <li each={ item in searchResults } role="presentation">
         <a class="vclIcogram" href={ '#' + item.name } >
-          <span class="vclIcon fa fa-angle-right" aria-hidden="true" aria-label="angle-right" role="img"></span>
           <span class="vclText">{ item.title }</span>
         </a>
       </li>
@@ -48,8 +47,6 @@
       var primaryCat = item.primaryCategory;
       staticList[primaryCat].items.push(item);
     });
-
-    console.log(this.categories);
 
     this.searchUpdate = function() {
       var searchVal = self.search.value;

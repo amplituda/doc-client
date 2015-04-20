@@ -4473,6 +4473,16 @@ span.vclButtonStd[disabled] {
   color: #5cb85c;
 }
 
+.vclContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: hsl(0, 0%, 88%);
+  border-color: hsl(0, 0%, 88%);
+  padding: 1em;
+  min-width: 1em;
+  margin-bottom: 1.3em;
+}
+
 .vclIcogram {
   white-space: nowrap;
   position: relative;
@@ -4506,4 +4516,167 @@ span.vclButtonStd[disabled] {
 
 .vclIcogram a.vclText {
   color: inherit;
+}
+
+.vclInputGroup {
+  width: 100%;
+  display: inline-table;
+  border: 0;
+  vertical-align: top;
+  border-collapse: separate;
+  margin-bottom: 1.0em;
+}
+
+.vclInputGroup .vclInput,
+.vclInputGroup select {
+  margin-bottom: 0;
+  border-width: 1px;
+}
+
+.vclInputGroup > span {
+  font-size: 1em;
+  box-sizing: border-box;
+  text-align: center;
+  width: 1%;
+  min-width: 2em;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-width: 1px 1px 1px 0;
+  height: 2.5em;
+  background-color: hsl(0, 0%, 50%);
+  color: hsl(0, 0%, 88%);
+  border-color: transparent;
+}
+
+.vclInputGroup > .vclInputGroupButton button {
+  border-width: 1px 1px 1px 0;
+}
+
+.vclInputGroup > .vclInputGroupButton:first-child button {
+  border-width: 1px 0 1px 1px;
+}
+
+.vclInputGroup > .vclInputGroupButton {
+  border-width: 0 !important;
+  min-width: 0;
+}
+
+.vclInputGroup button {
+  height: 2.5em;
+  box-sizing: border-box;
+}
+
+.vclInputGroup .vclDropdown {
+  height: 2.5em;
+}
+
+.vclInputGroup > .vclInputGroupButton:first-child button:hover {
+  border-width: 1px 0 1px 1px;
+}
+
+.vclInputGroup > .vclInputGroupButton button,
+.vclInputGroup > .vclInputGroupButton button:hover,
+.vclInputGroup > .vclInputGroupButton button:disabled,
+.vclInputGroup > .vclInputGroupButton button:disabled:hover {
+  border-width: 1px 1px 1px 0;
+  background-clip: padding-box;
+}
+
+.vclInputGroup .vclInput,
+.vclInputGroup select,
+.vclInputGroup > span {
+  display: table-cell;
+  vertical-align: middle;
+  border-style: solid;
+  vertical-align: middle;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.vclInputGroup select {
+  width: 100%;
+}
+
+.vclInputGroup > span:first-of-type {
+  border-width: 1px 0 1px 1px;
+}
+
+.vclInputGroup > span,
+.vclInputGroup > .vclInputGroupButton button {
+  border-color: hsl(0, 0%, 50%);
+}
+
+.vclToolbar {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  background-color: hsl(0, 0%, 95%);
+}
+
+.vclToolbar.vclLevel2 {
+  background-color: hsl(0, 0%, 98%);
+}
+
+.vclToolbar.vclTransparent {
+  background-color: transparent;
+}
+
+.vclToolbar> .vclInputGroup,
+.vclToolbar> .vclInputGroupEmb {
+  margin-bottom: 0;
+}
+
+.vclAnimContainer {
+  overflow: hidden;
+}
+
+/* Disable transitions */
+
+.vclNoTransitions {
+  transition: none !important;
+}
+
+/* Opacity based */
+
+.vclFade {
+  opacity: 0;
+  transition: opacity 0.2s ease 0s;
+}
+
+.vclFade.vclShow {
+  opacity: 1;
+}
+
+/* Translation based */
+
+.vclTranslation {
+  outline: none;
+  overflow: auto;
+  opacity: 0;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in;
+}
+
+.vclTranslation.vclShow {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.vclTranslation-center {
+  transform: scale(0.5);
+}
+
+.vclTranslation-top {
+  transform: translateY(-200%);
+}
+
+.vclTranslation-bottom {
+  transform: translateY(200%);
+}
+
+.vclTranslation-left {
+  transform: translateX(-200%);
+}
+
+.vclTranslation-right {
+  transform: translteX(200%);
 }

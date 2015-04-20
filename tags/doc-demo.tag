@@ -73,6 +73,6 @@
     this.on('mount update', function() {
       // highlight the source after update
       hljs.highlightBlock(sourceEl);
-    })
+    });
   </script>
 </doc-demo>
