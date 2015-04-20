@@ -23,11 +23,16 @@
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-vcl-preprocessor": "git://github.com/vcl/gulp-vcl-preprocessor.git",
+    "gulp-webserver": "^0.9.0",
     "normalize.css": "^3.0.3",
     "vcl-button": "git://github.com/vcl/button.git",
+    "vcl-container": "git://github.com/vcl/container.git",
     "vcl-default-theme": "git://github.com/vcl/default-theme.git",
     "vcl-default-theme-terms": "git://github.com/vcl/default-theme-terms.git",
-    "vcl-icogram": "git://github.com/vcl/icogram.git"
+    "vcl-icogram": "git://github.com/vcl/icogram.git",
+    "vcl-input-group": "git://github.com/vcl/input-group.git",
+    "vcl-toolbar": "git://github.com/vcl/toolbar.git",
+    "vcl-transitions": "git://github.com/vcl/transitions.git"
   },
   "dependencies": {
     "vcl-font-awesome": "git://github.com/vcl/font-awesome.git",
