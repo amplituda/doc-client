@@ -2,17 +2,17 @@
   <div class="docDemo">
     <div class="vclTabs">
       <ul role="tablist">
-        <li class={ vclSelected: demoVisible } role="tab">
+        <li class={ vclSelected: this.demoVisible } role="tab">
           <a onclick={ showDemo } href="#"><i class="fa fa-eye"></i> Demo</a>
         </li>
-        <li class={ vclSelected: codeVisible } role="tab">
+        <li class={ vclSelected: this.codeVisible } role="tab">
           <a onclick={ showCode }  href="#"><i class="fa fa-code"></i> Code</a>
         </li>
       </ul>
     </div>
     <div>
-      <div name="ninja" class="docDemoContent shadow {vclDisplayNone: !demoVisible}"></div>
-      <div class="code {vclDisplayNone: !codeVisible}">
+      <div name="ninja" class="docDemoContent shadow {vclDisplayNone: !this.demoVisible}"></div>
+      <div class="code {vclDisplayNone: !this.codeVisible}">
         <form class="docEditDemo" action="http://codepen.io/pen/define" method="POST" target="_blank">
           <input type="hidden" name="data" value={ JSON.stringify(codePen) }>
           <button class="vclButtonStd vclHalfTransp">
@@ -27,23 +27,19 @@
 
   <script>
 
-    this.on('mount update unmount', function(eventName) {
-      console.info(eventName)
-    })
-
     // TODO: check url if code should be visible
-    demoVisible = true;
-    codeVisible = false;
+    this.demoVisible = true;
+    this.codeVisible = false;
 
     // stupid simple toggle
     showCode = function() {
-      demoVisible = false;
-      codeVisible = true;
+      this.demoVisible = false;
+      this.codeVisible = true;
     };
 
     showDemo = function() {
-      demoVisible = true;
-      codeVisible = false;
+      this.demoVisible = true;
+      this.codeVisible = false;
     }
 
     this.code = opts.code;

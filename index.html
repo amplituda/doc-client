@@ -156,6 +156,10 @@
         };
       });
 
+      window.appSettings = {
+        content: {},
+        items: navItems
+      };
       // TODO: the generator should do this
       var cats = [];
       _.forEach(doc.parts, function(part) {
@@ -163,21 +167,28 @@
         cats.push(part.docgen.categories[0]);
       });
 
-      riot.mount('doc-nav', {
+      var nav = riot.mount('doc-nav', {
         categories: cats,
-        items: navItems
-      });
+        items: window.appSettings.items,
+        selected: window.appSettings.content.name
+      })[0];
 
-      window.appSettings = { content: {}};
-      var content = riot.mount('doc-content', window.appSettings);
+      var content = riot.mount('doc-content', window.appSettings)[0];
 
       riot.route(showPart);
 
       function showPart(name) {
+        // last part is no longer selected
+        window.appSettings.content.active = false;
+
+        // new part
         console.log('showing part: ' + name);
         var selectedPart = _.find(doc.parts, {name: name})
         window.appSettings.content = selectedPart;
-        riot.update();
+        content.update();
+
+        // update for the navigation
+        nav.update({ selected: selectedPart.name });
       }
 
       // title

@@ -25,6 +25,9 @@
     this.searching = false;
     this.items = opts.items;
     this.categories = _.sortBy(opts.categories, 'priority');
+    this.selected = opts.selected;
+
+    this.selectedItem = null;
 
     this.searchResults = _.clone(this.items);
 
@@ -46,6 +49,17 @@
     _.each(this.items, function(item){
       var primaryCat = item.primaryCategory;
       staticList[primaryCat].items.push(item);
+    });
+
+    this.on('update', function() {
+      // unset last selected item
+      if (this.selectedItem !== null){
+        this.selectedItem.active = false;
+      }
+      var selectedItem = _.find(this.items, {name: this.selected});
+      if (!selectedItem) return;
+      selectedItem.active = true;
+      this.selectedItem = selectedItem;
     });
 
     this.searchUpdate = function() {

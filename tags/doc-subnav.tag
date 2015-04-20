@@ -6,15 +6,26 @@
     </a>
   </li>
   <div class="vclAnimContainer" if={ open }>
-    <li each={ item in items } role="presentation">
+    <li each={ item in items } class={ vclSelected: item.active } role="presentation">
       <a class="vclIcogram" href={ '#' + item.name } >
         <span class="vclText">{ item.title }</span>
       </a>
     </li>
   </div>
   <script>
+    this.userChoice = false;
     this.open = false;
     this.items = _.sortBy(opts.items, 'itemPriority');
+
+    // open main category if something in there is selected
+    this.on('update', function() {
+      var found = _.some(this.items, function(it){
+        return it.active === true;
+      });
+      if (found && !this.userChoice) this.open = true;
+    });
+
+    console.log(this.items);
 
     this.toggle = function() {
       this.open = !this.open;
