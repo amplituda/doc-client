@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 
 var vcl = require('gulp-vcl-preprocessor');
+var webserver = require('gulp-webserver');
 
 gulp.task('css', function() {
   gulp.src('./package.json')
@@ -12,4 +13,14 @@ gulp.task('css', function() {
       includeDevDependencies: true
     }))
     .pipe(gulp.dest('./'));
+});
+
+gulp.task('server', function() {
+  gulp.src('./')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: true,
+      open: true,
+      port: 1337
+    }));
 });
