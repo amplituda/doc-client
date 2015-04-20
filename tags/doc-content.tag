@@ -23,17 +23,31 @@
 
   <script>
 
+  var self = this;
+
   //this.content = opts.content;
 
   this.readme.innerHTML = opts.content.readme;
+  this.hasContent = false;
 
   this.on('update', function() {
+    if (opts.content === undefined) return this.hasContent = false;
+
+    // clean up old demos
+    _.each(this.demos, function(demo) {
+      demo.unmount();
+    });
+    this.demos = [];
+
     // update readme
     this.readme.innerHTML = opts.content.readme;
+    this.hasContent = true;
 
     // inject demos
     injectDemos(opts.content.demos, opts.content.style);
   });
+
+  this.demos = [];
 
 
   function injectDemos(demos, style) {
@@ -41,10 +55,12 @@
       console.log('injecting %s', id);
       var el = document.getElementById('demo-' + id);
 
-      riot.mount(el, 'doc-demo', {
+      var demo = riot.mount(el, 'doc-demo', {
         code: code,
         css: style
       });
+      window.test = demo;
+      self.demos.push(demo);
     });
   }
   //this.readme = opts.readme;
