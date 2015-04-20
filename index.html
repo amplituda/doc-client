@@ -110,17 +110,22 @@
   <script charset="utf-8">
     /* globals riot, superagent, _, document */
 
-    // TODO: check for embedded first
-    superagent
-      .get('/doc.json')
-      .set('Accept', 'application/json')
-      .end(function(err, res){
-        // TODO: handle error
-        if (err) throw err;
+    document.addEventListener("DOMContentLoaded", function(event) {
+      // TODO: check for embedded first
+      superagent
+        .get('/doc.json')
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          // TODO: handle error
+          if (err) throw err;
 
-        console.log(res.body);
-        init(res.body);
-      });
+          console.log(res.body);
+
+          riot.compile(function() {
+            init(res.body);
+          });
+        });
+    });
 
     function init(doc) {
       // starts the app
@@ -164,7 +169,7 @@
       });
 
       window.appSettings = { content: {}};
-      riot.mount('doc-content', window.appSettings);
+      var content = riot.mount('doc-content', window.appSettings);
 
       riot.route(showPart);
 
@@ -175,15 +180,10 @@
         riot.update();
       }
 
-      // first visit, parse url and show part
-      // TODO: find out why this timeout is needed
-      setTimeout(function(){
-        riot.route.exec(showPart);
-      }, 500);
-
       // title
       riot.mount('doc-topbar', {title: doc.name});
 
+      riot.route.exec(showPart);
     }
     //riot.mount('*', {title: 'Some demo'});
   </script>
