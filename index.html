@@ -192,7 +192,6 @@
         // last part is no longer selected
 
         // new part
-        console.log('showing part: ' + name);
         var selectedPart = _.find(doc.parts, {name: name});
         window.appSettings.content = selectedPart;
         content.update();
@@ -223,6 +222,7 @@
           searchBox.focus();
           event.preventDefault();
           searchBox.value = '';
+          nav.update();
         }
         var char = String.fromCharCode((96 <= key && key <= 105)? key-48 : key);
         if (!/[A-Z]/.test(char)) return;

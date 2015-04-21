@@ -53,6 +53,12 @@
     });
 
     this.on('update', function() {
+      if (self.search.value === '') {
+        // all visible again
+        this.searching = false;
+        this.update();
+        return;
+      }
       // unset last selected item
       if (this.selectedItem !== null){
         this.selectedItem.active = false;
