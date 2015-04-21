@@ -2,7 +2,7 @@
   "name": "vcl-doc-client",
   "version": "0.0.1",
   "description": "",
-  "main": "package.json",
+  "main": "build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -35,6 +35,7 @@
     "vcl-transitions": "git://github.com/vcl/transitions.git"
   },
   "dependencies": {
+    "riot": "^2.0.14",
     "vcl-font-awesome": "git://github.com/vcl/font-awesome.git",
     "vcl-input": "git://github.com/vcl/input.git",
     "vcl-layout": "git://github.com/vcl/layout.git",
