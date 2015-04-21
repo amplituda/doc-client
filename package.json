@@ -29,6 +29,7 @@
     "vcl-container": "git://github.com/vcl/container.git",
     "vcl-default-theme": "git://github.com/vcl/default-theme.git",
     "vcl-default-theme-terms": "git://github.com/vcl/default-theme-terms.git",
+    "vcl-embedded-input-button": "git://github.com/vcl/embedded-input-button.git",
     "vcl-icogram": "git://github.com/vcl/icogram.git",
     "vcl-input-group": "git://github.com/vcl/input-group.git",
     "vcl-toolbar": "git://github.com/vcl/toolbar.git",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "riot": "^2.0.14",
+    "vcl-embedded-input-button": "git://github.com/vcl/embedded-input-button.git",
     "vcl-font-awesome": "git://github.com/vcl/font-awesome.git",
     "vcl-input": "git://github.com/vcl/input.git",
     "vcl-layout": "git://github.com/vcl/layout.git",

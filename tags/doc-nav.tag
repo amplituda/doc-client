@@ -1,12 +1,19 @@
 <doc-nav>
   <nav class="docNav vclNavigation vclVertical">
-    <input
-      id="doc-search"
-      type="search"
-      oninput={ searchUpdate }
-      placeholder="Search..."
-      name="search" value=""
-    autofocus>
+    <div class="vclInputGroupEmb">
+      <input
+        id="doc-search"
+        type="search"
+        oninput={ searchUpdate }
+        placeholder="Search..."
+        name="search" value=""
+      autofocus />
+      <button onclick={ clearSearch } class="vclButtonStd vclTransparent vclSquare vclAppended {vclDisplayNone: !this.searching}">
+         <div class="vclIcogram">
+           <div class="vclIcon fa fa-times-circle" aria-hidden="true" aria-label="Clear" role="img"></div>
+         </div>
+      </button>
+    </div>
     <ul if={ !searching } id="nav-items">
       <div each={ cat in cats }>
         <doc-subnav items={ cat.items }></doc-subnav>
@@ -55,9 +62,7 @@
     this.on('update', function() {
       if (self.search.value === '') {
         // all visible again
-        this.searching = false;
-        this.update();
-        return;
+        return this.clearSearch();;
       }
       // unset last selected item
       if (this.selectedItem !== null){
@@ -69,13 +74,17 @@
       this.selectedItem = selectedItem;
     });
 
+    this.clearSearch = function(){
+      self.search.value = '';
+      this.searching = false;
+      //this.update();
+    }
+
     this.searchUpdate = function() {
       var searchVal = self.search.value;
       if (searchVal === '') {
         // all visible again
-        this.searching = false;
-        this.update();
-        return;
+        return this.clearSearch();
       }
 
       this.searching = true;

@@ -554,6 +554,503 @@ th {
      ------------ */
 }
 
+input,
+select,
+textarea,
+.vclInput {
+  min-height: 2.5em;
+  line-height: 2.5em;
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button,
+.vclInput {
+  font-family: inherit;
+  vertical-align: middle;
+}
+
+textarea {
+  line-height: 1.6em;
+}
+
+/* removes clear-button in ie10+ */
+
+::-ms-clear {
+  display: none;
+}
+
+select,
+textarea,
+input,
+.vclInput {
+  width: 100%;
+  display: inline-block;
+  padding-top: 0;
+  padding-right: 0.2em;
+  padding-bottom: 0;
+  padding-left: 0.2em;
+  font-size: 1.0em;
+  vertical-align: middle;
+  margin-bottom: 1.0em;
+}
+
+div.vclInput {
+  overflow: hidden;
+  word-wrap: normal;
+}
+
+select {
+  width: auto;
+}
+
+select:focus,
+textarea:focus,
+input:focus,
+.vclInput:focus {
+  outline: 0;
+}
+
+/* Show an outline for elements which cannot be highlighted by border colors */
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted #000000;
+  outline: 0.35em auto -webkit-focus-ring-color;
+}
+
+/* Indicate a klick will do something useful for a label */
+
+label {
+  cursor: pointer;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+input {
+  border-radius: 0;
+}
+
+select,
+input[type="file"] {
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  height: auto;
+}
+
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  cursor: not-allowed;
+}
+
+select,
+textarea,
+input,
+.vclInput {
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid hsl(0, 0%, 50%);
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder,
+input:-moz-placeholder,
+textarea:-moz-placeholder,
+::-webkit-input-placeholder {
+  color: hsl(0, 0%, 45%);
+}
+
+select:focus,
+textarea:focus,
+input:focus,
+.vclInput:focus,
+.vclInput.vclFocused {
+  background-color: #FFFFFF;
+  border: 1px solid #00ADEF;
+}
+
+input[disabled],
+.vclInput[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+.vclInput[readonly],
+select[readonly],
+textarea[readonly],
+.vclInput.vclDisabled {
+  color: hsl(0, 0%, 13%);
+  background-color: hsl(0, 0%, 88%);
+  border-color: hsl(0, 0%, 63%);
+}
+
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+
+/* Semantic coloring */
+
+textarea.vclError,
+input.vclError,
+.vclInput.vclError,
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid,
+input:focus:invalid:focus,
+textarea:focus:invalid:focus,
+select:focus:invalid:focus {
+  border-color: #d9534f;
+}
+
+textarea.vclWarning,
+.vclInput.vclWarning,
+input.vclWarning {
+  border-color: #f0ad4e;
+}
+
+textarea.vclSuccess,
+.vclInput.vclSuccess,
+input.vclSuccess {
+  border-color: #5cb85c;
+}
+
+textarea.vclSelected,
+textarea.vclSelected:hover,
+textarea.vclSelected:active,
+textarea.vclSelected:focus,
+.vclInput.vclSelected,
+.vclInput.vclSelected:hover,
+.vclInput.vclSelected:active,
+.vclInput.vclSelected:focus,
+input.vclSelected,
+input.vclSelected:hover,
+input.vclSelected:active,
+input.vclSelected:focus {
+  border-color: #00ADEF;
+  background-color: #FFFFFF;
+}
+
+.vclButtonDim {
+  display: inline;
+  vertical-align: middle;
+  border-width: 0;
+  line-height: 1;
+  height: 2.5em;
+  font-weight: bolder;
+  box-sizing: border-box;
+  padding-right: 0.8em;
+  padding-left: 0.8em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.vclButtonStd,
+.vclButtonStd[disabled] {
+  border-width: 0;
+  border-color: transparent;
+  border-style: solid;
+  padding-right: 0.8em;
+  padding-left: 0.8em;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1;
+  text-decoration: none;
+  font-weight: bolder;
+  vertical-align: middle;
+  display: inline-block;
+  height: 2.5em;
+  box-sizing: border-box;
+  user-select: none;
+  white-space: normal;
+  transition: color .25s linear, background-color .25s ease-in-out, border-color .25s ease-in-out;
+  *zoom: 1;
+}
+
+.vclButtonStd:before,
+.vclButtonStd:after,
+.vclButtonStd[disabled]:before,
+.vclButtonStd[disabled]:after {
+  content: " ";
+  display: table;
+}
+
+.vclButtonStd:after,
+.vclButtonStd[disabled]:after {
+  clear: both;
+}
+
+.vclButtonStd > span,
+.vclButtonStd > .vclIcogram {
+  font-size: 0.95em;
+}
+
+.vclButtonStd.vclOverflowEllipsis > span,
+.vclButtonStd > .vclIcogram > .vclText {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+a.vclButtonStd,
+a.vclButtonStd[disabled] {
+  line-height: 2.5em;
+}
+
+a.vclButtonStd> span,
+a.vclButtonStd[disabled]> span {
+  line-height: inherit;
+}
+
+span.vclButtonStd,
+span.vclButtonStd[disabled] {
+  display: inline-block;
+  line-height: 1;
+}
+
+.vclButtonStd:focus {
+  outline: none;
+}
+
+.vclButtonStd:active {
+  outline: 0;
+}
+
+.vclButtonStd.vclSquare {
+  min-width: 2.5em;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+}
+
+.vclButtonStd.vclDisabled,
+.vclButtonStd[disabled] {
+  pointer-events: none;
+  opacity: .75;
+  cursor: default;
+}
+
+/* Standard variant */
+
+.vclButtonStd {
+  border-color: transparent;
+  background-color: hsl(0, 0%, 50%);
+  color: #FFFFFF;
+}
+
+.vclButtonStd.vclSelected {
+  color: #FFFFFF;
+  background-color: #005F84;
+}
+
+.vclButtonStd:hover,
+.vclButtonStd:focus,
+.vclButtonStd:active,
+.vclButtonStd.vclHover,
+.vclButtonStd.vclPressed,
+.vclButtonStd.vclFocus,
+.vclButtonStd.vclActive {
+  background-color: hsl(0, 0%, 45%);
+  color: #FFFFFF;
+}
+
+.vclButtonStd.vclDisabled,
+.vclButtonStd[disabled] {
+  color: hsl(0, 0%, 88%);
+}
+
+/* Emphasized variant */
+
+.vclButtonStd.vclEmphasized {
+  border-color: hsl(0, 0%, 13%);
+  background-color: #00ADEF;
+  color: hsl(0, 0%, 95%);
+}
+
+.vclButtonStd.vclEmphasized:hover,
+.vclButtonStd.vclEmphasized:focus,
+.vclButtonStd.vclEmphasized:active,
+.vclButtonStd.vclEmphasized.vclHover,
+.vclButtonStd.vclEmphasized.vclPressed,
+.vclButtonStd.vclEmphasized.vclFocus,
+.vclButtonStd.vclEmphasized.vclActive {
+  background-color: #0888BF;
+  color: #FFFFFF;
+}
+
+/* Transparent variant */
+
+.vclButtonStd.vclTransparent {
+  color: hsl(0, 0%, 50%);
+  background: none;
+}
+
+.vclButtonStd.vclTransparent.vclDisabled,
+.vclButtonStd.vclTransparent[disabled] {
+  color: hsl(0, 0%, 63%);
+}
+
+.vclButtonStd.vclTransparent:hover,
+.vclButtonStd.vclTransparent:focus,
+.vclButtonStd.vclTransparent:active,
+.vclButtonStd.vclTransparent.vclHover,
+.vclButtonStd.vclTransparent.vclPressed,
+.vclButtonStd.vclTransparent.vclFocus,
+.vclButtonStd.vclTransparent.vclActive {
+  background: none;
+  color: #000000;
+}
+
+/* Transparent alternative variant */
+
+.vclButtonStd.vclTransparentAlt {
+  background: none;
+  background-color: transparent;
+  color: hsl(0, 0%, 88%);
+}
+
+.vclButtonStd.vclTransparentAlt.vclDisabled,
+.vclButtonStd.vclTransparentAlt[disabled] {
+  color: hsl(0, 0%, 63%);
+}
+
+.vclButtonStd.vclTransparentAlt:hover,
+.vclButtonStd.vclTransparentAlt:focus,
+.vclButtonStd.vclTransparentAlt:active,
+.vclButtonStd.vclTransparentAlt.vclHover,
+.vclButtonStd.vclTransparentAlt.vclPressed,
+.vclButtonStd.vclTransparentAlt.vclFocus,
+.vclButtonStd.vclTransparentAlt.vclActive {
+  background: none;
+  color: #FFFFFF;
+}
+
+/* Half transparent variant */
+
+.vclButtonStd.vclHalfTransp {
+  background: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.vclButtonStd.vclHalfTransp.vclDisabled,
+.vclButtonStd.vclHalfTransp[disabled] {
+  color: hsl(0, 0%, 63%);
+}
+
+.vclButtonStd.vclHalfTransp:hover,
+.vclButtonStd.vclHalfTransp:focus,
+.vclButtonStd.vclHalfTransp:active,
+.vclButtonStd.vclHalfTransp.vclHover,
+.vclButtonStd.vclHalfTransp.vclPressed,
+.vclButtonStd.vclHalfTransp.vclFocus,
+.vclButtonStd.vclHalfTransp.vclActive {
+  background-color: hsl(0, 0%, 92%);
+  color: inherit;
+}
+
+/* Danger variant */
+
+.vclButtonStd.vclDanger {
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+.vclButtonStd.vclDanger:hover,
+.vclButtonStd.vclDanger:focus,
+.vclButtonStd.vclDanger:active,
+.vclButtonStd.vclDanger.vclHover,
+.vclButtonStd.vclDanger.vclPressed,
+.vclButtonStd.vclDanger.vclFocus,
+.vclButtonStd.vclDanger.vclActive {
+  color: #f2dede;
+  background-color: #d9534f;
+}
+
+.vclButtonStd.vclDanger.vclDisabled,
+.vclButtonStd.vclDanger[disabled] {
+  color: #d9534f;
+}
+
+/* Suggestive variant */
+
+.vclButtonStd.vclSuggestive {
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.vclButtonStd.vclSuggestive:hover,
+.vclButtonStd.vclSuggestive:focus,
+.vclButtonStd.vclSuggestive:active,
+.vclButtonStd.vclSuggestive.vclHover,
+.vclButtonStd.vclSuggestive.vclPressed,
+.vclButtonStd.vclSuggestive.vclFocus,
+.vclButtonStd.vclSuggestive.vclActive {
+  color: #dff0d8;
+  background-color: #5cb85c;
+}
+
+.vclButtonStd.vclSuggestive.vclDisabled,
+.vclButtonStd.vclSuggestive[disabled] {
+  color: #5cb85c;
+}
+
+.vclInputGroupEmb {
+  position: relative;
+}
+
+.vclInputGroupEmb > .vclInput.vclPrepItem {
+  padding-left: 2.5em;
+}
+
+.vclInputGroupEmb > .vclInput.vclAppItem {
+  padding-right: 2.5em;
+}
+
+.vclInputGroupEmb > .vclInput {
+  margin-bottom: 0;
+}
+
+.vclInputGroupEmb > .vclPrepended,
+.vclInputGroupEmb > .vclAppended {
+  text-align: center;
+  line-height: 2.5em;
+  display: block;
+  min-width: 2.5em;
+  position: absolute;
+  top: 0;
+  color:  hsl(0, 0%, 45%);
+  background-color: transparent;
+}
+
+.vclInputGroupEmb > .vclPrepended {
+  left: 0;
+}
+
+.vclInputGroupEmb > .vclAppended {
+  right: 0;
+}
+
+.vclInputGroupEmb > button.vclButtonStd[disabled] {
+  display: none;
+}
+
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2924,198 +3421,6 @@ li [class*=" fa-"] {
   text-align: center;
 }
 
-input,
-select,
-textarea,
-.vclInput {
-  min-height: 2.5em;
-  line-height: 2.5em;
-  box-sizing: border-box;
-}
-
-input,
-select,
-textarea,
-button,
-.vclInput {
-  font-family: inherit;
-  vertical-align: middle;
-}
-
-textarea {
-  line-height: 1.6em;
-}
-
-/* removes clear-button in ie10+ */
-
-::-ms-clear {
-  display: none;
-}
-
-select,
-textarea,
-input,
-.vclInput {
-  width: 100%;
-  display: inline-block;
-  padding-top: 0;
-  padding-right: 0.2em;
-  padding-bottom: 0;
-  padding-left: 0.2em;
-  font-size: 1.0em;
-  vertical-align: middle;
-  margin-bottom: 1.0em;
-}
-
-div.vclInput {
-  overflow: hidden;
-  word-wrap: normal;
-}
-
-select {
-  width: auto;
-}
-
-select:focus,
-textarea:focus,
-input:focus,
-.vclInput:focus {
-  outline: 0;
-}
-
-/* Show an outline for elements which cannot be highlighted by border colors */
-
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
-  outline: thin dotted #000000;
-  outline: 0.35em auto -webkit-focus-ring-color;
-}
-
-/* Indicate a klick will do something useful for a label */
-
-label {
-  cursor: pointer;
-}
-
-select[multiple],
-select[size] {
-  height: auto;
-}
-
-input {
-  border-radius: 0;
-}
-
-select,
-input[type="file"] {
-  padding: 0;
-}
-
-textarea {
-  overflow: auto;
-  vertical-align: top;
-  height: auto;
-}
-
-input[disabled],
-select[disabled],
-textarea[disabled],
-input[readonly],
-select[readonly],
-textarea[readonly] {
-  cursor: not-allowed;
-}
-
-select,
-textarea,
-input,
-.vclInput {
-  color: #000000;
-  background-color: #FFFFFF;
-  border: 1px solid hsl(0, 0%, 50%);
-}
-
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder,
-input:-moz-placeholder,
-textarea:-moz-placeholder,
-::-webkit-input-placeholder {
-  color: hsl(0, 0%, 45%);
-}
-
-select:focus,
-textarea:focus,
-input:focus,
-.vclInput:focus,
-.vclInput.vclFocused {
-  background-color: #FFFFFF;
-  border: 1px solid #00ADEF;
-}
-
-input[disabled],
-.vclInput[disabled],
-select[disabled],
-textarea[disabled],
-input[readonly],
-.vclInput[readonly],
-select[readonly],
-textarea[readonly],
-.vclInput.vclDisabled {
-  color: hsl(0, 0%, 13%);
-  background-color: hsl(0, 0%, 88%);
-  border-color: hsl(0, 0%, 63%);
-}
-
-input[type="radio"][disabled],
-input[type="checkbox"][disabled],
-input[type="radio"][readonly],
-input[type="checkbox"][readonly] {
-  background-color: transparent;
-}
-
-/* Semantic coloring */
-
-textarea.vclError,
-input.vclError,
-.vclInput.vclError,
-input:focus:invalid,
-textarea:focus:invalid,
-select:focus:invalid,
-input:focus:invalid:focus,
-textarea:focus:invalid:focus,
-select:focus:invalid:focus {
-  border-color: #d9534f;
-}
-
-textarea.vclWarning,
-.vclInput.vclWarning,
-input.vclWarning {
-  border-color: #f0ad4e;
-}
-
-textarea.vclSuccess,
-.vclInput.vclSuccess,
-input.vclSuccess {
-  border-color: #5cb85c;
-}
-
-textarea.vclSelected,
-textarea.vclSelected:hover,
-textarea.vclSelected:active,
-textarea.vclSelected:focus,
-.vclInput.vclSelected,
-.vclInput.vclSelected:hover,
-.vclInput.vclSelected:active,
-.vclInput.vclSelected:focus,
-input.vclSelected,
-input.vclSelected:hover,
-input.vclSelected:active,
-input.vclSelected:focus {
-  border-color: #00ADEF;
-  background-color: #FFFFFF;
-}
-
 /* Basic percentage spans (not grid related) */
 
 [class ^="vclSpan-"],
@@ -4206,271 +4511,6 @@ hr {
 
 .vclEnableUserSelect {
   user-select: text;
-}
-
-.vclButtonDim {
-  display: inline;
-  vertical-align: middle;
-  border-width: 0;
-  line-height: 1;
-  height: 2.5em;
-  font-weight: bolder;
-  box-sizing: border-box;
-  padding-right: 0.8em;
-  padding-left: 0.8em;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.vclButtonStd,
-.vclButtonStd[disabled] {
-  border-width: 0;
-  border-color: transparent;
-  border-style: solid;
-  padding-right: 0.8em;
-  padding-left: 0.8em;
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: 1;
-  text-decoration: none;
-  font-weight: bolder;
-  vertical-align: middle;
-  display: inline-block;
-  height: 2.5em;
-  box-sizing: border-box;
-  user-select: none;
-  white-space: normal;
-  transition: color .25s linear, background-color .25s ease-in-out, border-color .25s ease-in-out;
-  *zoom: 1;
-}
-
-.vclButtonStd:before,
-.vclButtonStd:after,
-.vclButtonStd[disabled]:before,
-.vclButtonStd[disabled]:after {
-  content: " ";
-  display: table;
-}
-
-.vclButtonStd:after,
-.vclButtonStd[disabled]:after {
-  clear: both;
-}
-
-.vclButtonStd > span,
-.vclButtonStd > .vclIcogram {
-  font-size: 0.95em;
-}
-
-.vclButtonStd.vclOverflowEllipsis > span,
-.vclButtonStd > .vclIcogram > .vclText {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-}
-
-a.vclButtonStd,
-a.vclButtonStd[disabled] {
-  line-height: 2.5em;
-}
-
-a.vclButtonStd> span,
-a.vclButtonStd[disabled]> span {
-  line-height: inherit;
-}
-
-span.vclButtonStd,
-span.vclButtonStd[disabled] {
-  display: inline-block;
-  line-height: 1;
-}
-
-.vclButtonStd:focus {
-  outline: none;
-}
-
-.vclButtonStd:active {
-  outline: 0;
-}
-
-.vclButtonStd.vclSquare {
-  min-width: 2.5em;
-  padding-right: 0;
-  padding-left: 0;
-  text-align: center;
-}
-
-.vclButtonStd.vclDisabled,
-.vclButtonStd[disabled] {
-  pointer-events: none;
-  opacity: .75;
-  cursor: default;
-}
-
-/* Standard variant */
-
-.vclButtonStd {
-  border-color: transparent;
-  background-color: hsl(0, 0%, 50%);
-  color: #FFFFFF;
-}
-
-.vclButtonStd.vclSelected {
-  color: #FFFFFF;
-  background-color: #005F84;
-}
-
-.vclButtonStd:hover,
-.vclButtonStd:focus,
-.vclButtonStd:active,
-.vclButtonStd.vclHover,
-.vclButtonStd.vclPressed,
-.vclButtonStd.vclFocus,
-.vclButtonStd.vclActive {
-  background-color: hsl(0, 0%, 45%);
-  color: #FFFFFF;
-}
-
-.vclButtonStd.vclDisabled,
-.vclButtonStd[disabled] {
-  color: hsl(0, 0%, 88%);
-}
-
-/* Emphasized variant */
-
-.vclButtonStd.vclEmphasized {
-  border-color: hsl(0, 0%, 13%);
-  background-color: #00ADEF;
-  color: hsl(0, 0%, 95%);
-}
-
-.vclButtonStd.vclEmphasized:hover,
-.vclButtonStd.vclEmphasized:focus,
-.vclButtonStd.vclEmphasized:active,
-.vclButtonStd.vclEmphasized.vclHover,
-.vclButtonStd.vclEmphasized.vclPressed,
-.vclButtonStd.vclEmphasized.vclFocus,
-.vclButtonStd.vclEmphasized.vclActive {
-  background-color: #0888BF;
-  color: #FFFFFF;
-}
-
-/* Transparent variant */
-
-.vclButtonStd.vclTransparent {
-  color: hsl(0, 0%, 50%);
-  background: none;
-}
-
-.vclButtonStd.vclTransparent.vclDisabled,
-.vclButtonStd.vclTransparent[disabled] {
-  color: hsl(0, 0%, 63%);
-}
-
-.vclButtonStd.vclTransparent:hover,
-.vclButtonStd.vclTransparent:focus,
-.vclButtonStd.vclTransparent:active,
-.vclButtonStd.vclTransparent.vclHover,
-.vclButtonStd.vclTransparent.vclPressed,
-.vclButtonStd.vclTransparent.vclFocus,
-.vclButtonStd.vclTransparent.vclActive {
-  background: none;
-  color: #000000;
-}
-
-/* Transparent alternative variant */
-
-.vclButtonStd.vclTransparentAlt {
-  background: none;
-  background-color: transparent;
-  color: hsl(0, 0%, 88%);
-}
-
-.vclButtonStd.vclTransparentAlt.vclDisabled,
-.vclButtonStd.vclTransparentAlt[disabled] {
-  color: hsl(0, 0%, 63%);
-}
-
-.vclButtonStd.vclTransparentAlt:hover,
-.vclButtonStd.vclTransparentAlt:focus,
-.vclButtonStd.vclTransparentAlt:active,
-.vclButtonStd.vclTransparentAlt.vclHover,
-.vclButtonStd.vclTransparentAlt.vclPressed,
-.vclButtonStd.vclTransparentAlt.vclFocus,
-.vclButtonStd.vclTransparentAlt.vclActive {
-  background: none;
-  color: #FFFFFF;
-}
-
-/* Half transparent variant */
-
-.vclButtonStd.vclHalfTransp {
-  background: none;
-  background-color: transparent;
-  color: inherit;
-}
-
-.vclButtonStd.vclHalfTransp.vclDisabled,
-.vclButtonStd.vclHalfTransp[disabled] {
-  color: hsl(0, 0%, 63%);
-}
-
-.vclButtonStd.vclHalfTransp:hover,
-.vclButtonStd.vclHalfTransp:focus,
-.vclButtonStd.vclHalfTransp:active,
-.vclButtonStd.vclHalfTransp.vclHover,
-.vclButtonStd.vclHalfTransp.vclPressed,
-.vclButtonStd.vclHalfTransp.vclFocus,
-.vclButtonStd.vclHalfTransp.vclActive {
-  background-color: hsl(0, 0%, 92%);
-  color: inherit;
-}
-
-/* Danger variant */
-
-.vclButtonStd.vclDanger {
-  color: #a94442;
-  background-color: #f2dede;
-}
-
-.vclButtonStd.vclDanger:hover,
-.vclButtonStd.vclDanger:focus,
-.vclButtonStd.vclDanger:active,
-.vclButtonStd.vclDanger.vclHover,
-.vclButtonStd.vclDanger.vclPressed,
-.vclButtonStd.vclDanger.vclFocus,
-.vclButtonStd.vclDanger.vclActive {
-  color: #f2dede;
-  background-color: #d9534f;
-}
-
-.vclButtonStd.vclDanger.vclDisabled,
-.vclButtonStd.vclDanger[disabled] {
-  color: #d9534f;
-}
-
-/* Suggestive variant */
-
-.vclButtonStd.vclSuggestive {
-  color: #3c763d;
-  background-color: #dff0d8;
-}
-
-.vclButtonStd.vclSuggestive:hover,
-.vclButtonStd.vclSuggestive:focus,
-.vclButtonStd.vclSuggestive:active,
-.vclButtonStd.vclSuggestive.vclHover,
-.vclButtonStd.vclSuggestive.vclPressed,
-.vclButtonStd.vclSuggestive.vclFocus,
-.vclButtonStd.vclSuggestive.vclActive {
-  color: #dff0d8;
-  background-color: #5cb85c;
-}
-
-.vclButtonStd.vclSuggestive.vclDisabled,
-.vclButtonStd.vclSuggestive[disabled] {
-  color: #5cb85c;
 }
 
 .vclContainer {
