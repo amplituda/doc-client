@@ -78,8 +78,6 @@
   <!--script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.6.1/ShadowDOM.min.js"></script-->
 </head>
 <body>
-
-
   <div class="main">
     <header class="vclToolbar">
       <doc-topbar></doc-topbar>
@@ -111,7 +109,12 @@
     /* globals riot, superagent, _, document */
 
     document.addEventListener("DOMContentLoaded", function(event) {
-      // TODO: check for embedded first
+      // check for inline doc
+      if (window.doc !== undefined) {
+        return start(window.doc);
+      }
+
+      // not found, look for doc.json
       superagent
         .get('/doc.json')
         .set('Accept', 'application/json')
@@ -120,12 +123,15 @@
           if (err) throw err;
 
           console.log(res.body);
-
-          riot.compile(function() {
-            init(res.body);
-          });
+          start(res.body);
         });
     });
+
+    function start(doc) {
+      riot.compile(function() {
+        init(doc);
+      });
+    }
 
     function init(doc) {
       // starts the app
@@ -182,9 +188,10 @@
 
         // new part
         console.log('showing part: ' + name);
-        var selectedPart = _.find(doc.parts, {name: name})
+        var selectedPart = _.find(doc.parts, {name: name});
         window.appSettings.content = selectedPart;
         content.update();
+        if (!selectedPart) return;
 
         // update for the navigation
         nav.update({ selected: selectedPart.name });
@@ -194,6 +201,23 @@
       riot.mount('doc-topbar', {title: doc.name});
 
       riot.route.exec(showPart);
+
+      document.body.onkeyup = function() {
+        var key = event.keyCode || event.which;
+
+        var input = event.path[0];
+        if (/vclInput/.test(input.className)) return;
+        if (input.tagName.toLowerCase() === 'input') return;
+        if (input.tagName.toLowerCase() === 'textarea') return;
+        if (input.tagName.toLowerCase() === 'select') return;
+        if (input.isContentEditable === true) return;
+        var char = String.fromCharCode((96 <= key && key <= 105)? key-48 : key);
+        if (!/[A-Z]/.test(char)) return;
+
+        document.getElementById("doc-search").focus();
+        event.preventDefault();
+        document.getElementById("doc-search").value += char.toLowerCase();
+      }
     }
     //riot.mount('*', {title: 'Some demo'});
   </script>

@@ -25,8 +25,6 @@
       if (found && !this.userChoice) this.open = true;
     });
 
-    console.log(this.items);
-
     this.toggle = function() {
       this.userChoice = true;
       this.open = !this.open;

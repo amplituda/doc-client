@@ -17,6 +17,10 @@
           The search supports fuzzy matching. This means that you can search
           for <code>bttn</code> and still find <code>Button</code>.
         </li>
+        <li>
+          You can type in a search term at any time without focusing the
+          search-field. (Unless you are typing in another input field)
+        </li>
       </ul>
     </div>
   </div>

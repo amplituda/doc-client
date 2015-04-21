@@ -1,6 +1,7 @@
 <doc-nav>
   <nav class="docNav vclNavigation vclVertical">
     <input
+      id="doc-search"
       type="search"
       oninput={ searchUpdate }
       placeholder="Search..."
