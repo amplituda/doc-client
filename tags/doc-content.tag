@@ -21,6 +21,9 @@
           You can type in a search term at any time without focusing the
           search-field. (Unless you are typing in another input field)
         </li>
+        <li>
+          Pressing <code>Esc</code> at any time will clear the search field.
+        </li>
       </ul>
     </div>
   </div>

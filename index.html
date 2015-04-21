@@ -202,21 +202,29 @@
 
       riot.route.exec(showPart);
 
-      document.body.onkeyup = function() {
+      document.body.onkeydown = function() {
+        var searchBox = document.getElementById("doc-search");
         var key = event.keyCode || event.which;
 
         var input = event.path[0];
+        var tagName = input.tagName.toLowerCase();
         if (/vclInput/.test(input.className)) return;
-        if (input.tagName.toLowerCase() === 'input') return;
-        if (input.tagName.toLowerCase() === 'textarea') return;
-        if (input.tagName.toLowerCase() === 'select') return;
+        if (tagName === 'input') return;
+        if (tagName === 'textarea') return;
+        if (tagName === 'select') return;
         if (input.isContentEditable === true) return;
+        if (key === 27){
+          // ESC, clear search box
+          searchBox.focus();
+          event.preventDefault();
+          searchBox.value = '';
+        }
         var char = String.fromCharCode((96 <= key && key <= 105)? key-48 : key);
         if (!/[A-Z]/.test(char)) return;
 
-        document.getElementById("doc-search").focus();
-        event.preventDefault();
-        document.getElementById("doc-search").value += char.toLowerCase();
+        //event.preventDefault();
+        searchBox.focus();
+        //searchBox.value += char.toLowerCase();
       }
     }
     //riot.mount('*', {title: 'Some demo'});
