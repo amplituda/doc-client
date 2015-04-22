@@ -5,8 +5,10 @@
         id="doc-search"
         type="search"
         oninput={ searchUpdate }
+        onkeyup={ searchKey }
         placeholder="Search..."
         name="search" value=""
+        autocomplete="off"
       autofocus />
       <button onclick={ clearSearch } class="vclButtonStd vclTransparent vclSquare vclAppended {vclDisplayNone: !this.searching}">
          <div class="vclIcogram">
@@ -20,7 +22,7 @@
       </div>
     </ul>
     <ul if={ searching } id="nav-items">
-      <li each={ item in searchResults } role="presentation">
+      <li each={ item in searchResults } class={ vclSelected: item.active } role="presentation">
         <a class="vclIcogram" href={ '#' + item.name } >
           <span class="vclText">{ item.title }</span>
         </a>
@@ -38,6 +40,7 @@
     this.selectedItem = null;
 
     this.searchResults = _.clone(this.items);
+    this.searchCursor = -1;
 
     var staticList = {};
 
@@ -80,7 +83,7 @@
       //this.update();
     }
 
-    this.searchUpdate = function() {
+    this.searchUpdate = function(e) {
       var searchVal = self.search.value;
       if (searchVal === '') {
         // all visible again
@@ -97,6 +100,29 @@
 
       this.searchResults = _.clone(result);
       this.update();
+    }
+
+    this.searchKey = function(e) {
+      var maxResult = this.searchResults.length -1;
+      var control = false;
+      if(e.keyCode === 40){
+        // arrow down
+        this.searchCursor += 1;
+      } else if(e.keyCode === 38) {
+        // arrow up
+        this.searchCursor -= 1;
+      } else return;
+
+      if (this.searchCursor === -1) this.searchCursor = maxResult;
+      else if (this.searchCursor === maxResult + 1) this.searchCursor = 0;
+
+      var newActive = self.searchResults[this.searchCursor];
+
+      riot.route(newActive.name);
+      newActive.active = true;
+
+      e.preventDefault();
+      console.log(e);
     }
   </script>
 </doc-nav>
