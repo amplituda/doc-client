@@ -11,7 +11,7 @@
       </ul>
     </div>
     <div>
-      <div name="ninja" class="docDemoContent shadow {vclDisplayNone: !this.demoVisible}"></div>
+      <div onclick={ demoClick } name="ninja" class="docDemoContent shadow {vclDisplayNone: !this.demoVisible}"></div>
       <div class="code {vclDisplayNone: !this.codeVisible}">
         <form class="docEditDemo" action="http://codepen.io/pen/define" method="POST" target="_blank">
           <input type="hidden" name="data" value={ JSON.stringify(codePen) }>
@@ -32,14 +32,26 @@
     this.codeVisible = false;
 
     // stupid simple toggle
-    showCode = function() {
+    this.showCode = function() {
       this.demoVisible = false;
       this.codeVisible = true;
     };
 
-    showDemo = function() {
+    this.showDemo = function() {
       this.demoVisible = true;
       this.codeVisible = false;
+    }
+
+    this.demoClick = function(event) {
+      // prevent navigation from demos
+      var input = event.path[0];
+      var tagName = input.tagName.toLowerCase();
+      if (/vclInput/.test(input.className)) return true;
+      if (tagName === 'input') return true;
+      if (tagName === 'textarea') return true;
+      if (tagName === 'label') return true;
+      if (tagName === 'select') return true;
+      event.preventDefault();
     }
 
     this.code = opts.code;
