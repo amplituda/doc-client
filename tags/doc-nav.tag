@@ -81,6 +81,7 @@
       self.search.value = '';
       this.searching = false;
       this.searchCursor = -1;
+      this.search.focus();
       //this.update();
     }
 
