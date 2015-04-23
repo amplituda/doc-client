@@ -80,6 +80,7 @@
     this.clearSearch = function(){
       self.search.value = '';
       this.searching = false;
+      this.searchCursor = -1;
       //this.update();
     }
 
@@ -122,7 +123,6 @@
       newActive.active = true;
 
       e.preventDefault();
-      console.log(e);
     }
   </script>
 </doc-nav>
