@@ -115,6 +115,7 @@
         this.searchCursor -= 1;
       } else if(e.keyCode === 13) {
         // enter
+        if (this.searchCursor != -1) return;
         this.searchCursor = 0;
       } else return;
 
