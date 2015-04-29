@@ -5,7 +5,7 @@
         id="doc-search"
         type="search"
         oninput={ searchUpdate }
-        onkeyup={ searchKey }
+        onkeydown={ searchKey }
         placeholder="Search..."
         name="search" value=""
         autocomplete="off"
@@ -106,7 +106,6 @@
 
     this.searchKey = function(e) {
       var maxResult = this.searchResults.length -1;
-      var control = false;
       if(e.keyCode === 40){
         // arrow down
         this.searchCursor += 1;
@@ -117,7 +116,9 @@
         // enter
         if (this.searchCursor != -1) return;
         this.searchCursor = 0;
-      } else return;
+      } else return true;
+
+      e.preventDefault();
 
       if (this.searchCursor === -1) this.searchCursor = maxResult;
       else if (this.searchCursor === maxResult + 1) this.searchCursor = 0;
@@ -127,7 +128,6 @@
       riot.route(newActive.name);
       newActive.active = true;
 
-      e.preventDefault();
     }
   </script>
 </doc-nav>

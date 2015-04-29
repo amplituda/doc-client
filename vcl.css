@@ -3514,178 +3514,178 @@ li [class*=" fa-"] {
 
 /* flexbox driven layout attributes */
 
-html [layout][horizontal],
-html [layout][vertical] {
+[layout][horizontal],
+[layout][vertical] {
   display: flex;
 }
 
-html [layout][horizontal][inline],
-html [layout][vertical][inline] {
+[layout][horizontal][inline],
+[layout][vertical][inline] {
   display: inline-flex;
 }
 
-html [layout][horizontal] {
+[layout][horizontal] {
   flex-direction: row;
 }
 
-html [layout][horizontal][reverse] {
+[layout][horizontal][reverse] {
   flex-direction: row-reverse;
 }
 
-html [layout][vertical] {
+[layout][vertical] {
   flex-direction: column;
 }
 
-html [layout][vertical][reverse] {
+[layout][vertical][reverse] {
   flex-direction: column-reverse;
 }
 
-html [layout][wrap] {
+[layout][wrap] {
   flex-wrap: wrap;
 }
 
-html [layout][wrap-reverse] {
+[layout][wrap-reverse] {
   flex-wrap: wrap-reverse;
 }
 
-html [flex] {
+[flex] {
   flex: 1;
   flex-basis: 0.000000001px;
 }
 
-html [vertical][layout] > [flex][auto-vertical] {
+[vertical][layout] > [flex][auto-vertical] {
   flex-basis: auto;
 }
 
-html [flex][auto] {
+[flex][auto] {
   flex-basis: auto;
 }
 
-html [flex][none] {
+[flex][none] {
   flex: none;
 }
 
-html [flex][one] {
+[flex][one] {
   flex: 1;
 }
 
-html [flex][two] {
+[flex][two] {
   flex: 2;
 }
 
-html [flex][three] {
+[flex][three] {
   flex: 3;
 }
 
-html [flex][four] {
+[flex][four] {
   flex: 4;
 }
 
-html [flex][five] {
+[flex][five] {
   flex: 5;
 }
 
-html [flex][six] {
+[flex][six] {
   flex: 6;
 }
 
-html [flex][seven] {
+[flex][seven] {
   flex: 7;
 }
 
-html [flex][eight] {
+[flex][eight] {
   flex: 8;
 }
 
-html [flex][nine] {
+[flex][nine] {
   flex: 9;
 }
 
-html [flex][ten] {
+[flex][ten] {
   flex: 10;
 }
 
-html [flex][eleven] {
+[flex][eleven] {
   flex: 11;
 }
 
-html [flex][twelve] {
+[flex][twelve] {
   flex: 12;
 }
 
 /* alignment in cross axis */
 
-html [layout][start] {
+[layout][start] {
   align-items: flex-start;
 }
 
-html [layout][center],
-html [layout][center-center] {
+[layout][center],
+[layout][center-center] {
   align-items: center;
 }
 
-html [layout][end] {
+[layout][end] {
   align-items: flex-end;
 }
 
 /* alignment in main axis */
 
-html [layout][start-justified] {
+[layout][start-justified] {
   justify-content: flex-start;
 }
 
-html [layout][center-justified],
-html [layout][center-center] {
+[layout][center-justified],
+[layout][center-center] {
   justify-content: center;
 }
 
-html [layout][end-justified] {
+[layout][end-justified] {
   justify-content: flex-end;
 }
 
-html [layout][around-justified] {
+[layout][around-justified] {
   justify-content: space-around;
 }
 
-html [layout][justified] {
+[layout][justified] {
   justify-content: space-between;
 }
 
 /* self alignment */
 
-html [self-start] {
+[self-start] {
   align-self: flex-start;
 }
 
-html [self-center] {
+[self-center] {
   align-self: center;
 }
 
-html [self-end] {
+[self-end] {
   align-self: flex-end;
 }
 
-html [self-stretch] {
+[self-stretch] {
   align-self: stretch;
 }
 
 /* other Layout */
 
-html [block] {
+[block] {
   display: block;
 }
 
 /* ie support for hidden */
 
-html [hidden] {
+[hidden] {
   display: none !important;
 }
 
-html [relative] {
+[relative] {
   position: relative;
 }
 
-html [fit] {
+[fit] {
   position: absolute;
   top: 0;
   right: 0;
@@ -4581,7 +4581,7 @@ hr {
   min-width: 2em;
   white-space: nowrap;
   vertical-align: middle;
-  border-width: 1px 1px 1px 0;
+  border-width: 0;
   height: 2.5em;
   background-color: hsl(0, 0%, 50%);
   color: hsl(0, 0%, 88%);
@@ -4589,15 +4589,15 @@ hr {
 }
 
 .vclInputGroup > .vclInputGroupButton button {
-  border-width: 1px 1px 1px 0;
+  border-width: 0;
 }
 
 .vclInputGroup > .vclInputGroupButton:first-child button {
-  border-width: 1px 0 1px 1px;
+  border-width: 0;
 }
 
 .vclInputGroup > .vclInputGroupButton {
-  border-width: 0 !important;
+  border-width: 0;
   min-width: 0;
 }
 
@@ -4610,15 +4610,11 @@ hr {
   height: 2.5em;
 }
 
-.vclInputGroup > .vclInputGroupButton:first-child button:hover {
-  border-width: 1px 0 1px 1px;
-}
-
 .vclInputGroup > .vclInputGroupButton button,
 .vclInputGroup > .vclInputGroupButton button:hover,
 .vclInputGroup > .vclInputGroupButton button:disabled,
 .vclInputGroup > .vclInputGroupButton button:disabled:hover {
-  border-width: 1px 1px 1px 0;
+  border-width: 0;
   background-clip: padding-box;
 }
 
@@ -4638,7 +4634,7 @@ hr {
 }
 
 .vclInputGroup > span:first-of-type {
-  border-width: 1px 0 1px 1px;
+  border-width: 0;
 }
 
 .vclInputGroup > span,
