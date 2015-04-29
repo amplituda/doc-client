@@ -65,7 +65,7 @@
     this.on('update', function() {
       if (self.search.value === '') {
         // all visible again
-        return this.clearSearch();;
+        this.clearSearch();;
       }
       // unset last selected item
       if (this.selectedItem !== null){
@@ -113,6 +113,9 @@
       } else if(e.keyCode === 38) {
         // arrow up
         this.searchCursor -= 1;
+      } else if(e.keyCode === 13) {
+        // enter
+        this.searchCursor = 0;
       } else return;
 
       if (this.searchCursor === -1) this.searchCursor = maxResult;
