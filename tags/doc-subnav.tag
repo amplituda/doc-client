@@ -6,7 +6,7 @@
     </a>
   </li>
   <div class="vclAnimContainer" if={ open }>
-    <li each={ item in items } class=docNavItem { vclSelected: item.active } role="presentation">
+    <li each={ item in items } class="docNavItem { vclSelected: item.active }" role="presentation">
       <a class="vclIcogram" href={ '#' + item.name } >
         <span class="vclText">{ item.title }</span>
       </a>

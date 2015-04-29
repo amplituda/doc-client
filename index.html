@@ -229,17 +229,15 @@
           searchBox.focus();
           event.preventDefault();
           searchBox.value = '';
-          nav.update();
+          //nav.update();
         }
         var char = String.fromCharCode((96 <= key && key <= 105)? key-48 : key);
         if (!/[A-Z]/.test(char)) return;
 
-        //event.preventDefault();
         searchBox.focus();
         //searchBox.value += char.toLowerCase();
       }
     }
-    //riot.mount('*', {title: 'Some demo'});
   </script>
 </body>
 </html>
