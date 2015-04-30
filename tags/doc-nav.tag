@@ -93,6 +93,7 @@
       }
 
       this.searching = true;
+      this.searchCursor = -1;
 
       var options = {
         keys: ['title', 'description']   // keys to search in
