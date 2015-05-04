@@ -1,6 +1,9 @@
 <doc-content>
   <div class="vclPanel docPart { vclDisplayNone: !this.hasContent }">
-    <h1 id={ 'docpart-' + opts.content.name }>{ opts.content.title }</h1>
+    <h2 id={ 'docpart-' + opts.content.name } class="vclArticleHeader">
+      { opts.content.title }
+      <small class="vclArticleSubHeader">{ opts.content.name }</small>
+    </h2>
     <div name="readme" class="docText"></div>
   </div>
 
