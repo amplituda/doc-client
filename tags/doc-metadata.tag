@@ -72,6 +72,11 @@
       if (this.pack.repository && this.pack.repository.url) {
         this.pack.repository = this.pack.repository.url;
       }
+
+      if (_.startsWith(this.pack.repository, 'git://github.com')) {
+        // replace with https
+        this.pack.repository = this.pack.repository.replace('git', 'https');
+      }
     });
   </script>
 </doc-metadata>
