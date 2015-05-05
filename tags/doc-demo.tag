@@ -16,8 +16,8 @@
         <form class="docEditDemo" action="http://codepen.io/pen/define" method="POST" target="_blank">
           <input type="hidden" name="data" value={ JSON.stringify(codePen) }>
           <button class="vclButtonStd vclHalfTransp">
-              <div class="vclIcon fa fa-edit" aria-hidden="true" role="img"></div>
-              <span class="vclText">Edit</span>
+            <div class="vclIcon fa fa-edit" aria-hidden="true" role="img"></div>
+            <span class="vclText">Edit</span>
           </button>
         </form>
         <pre class="docDemoContent" name="source">{ code }</pre>

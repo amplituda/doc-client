@@ -554,100 +554,69 @@ th {
      ------------ */
 }
 
-/* Chapter level header */
-
-.vclMasterHeader {
-  text-align: center;
-  line-height: 1;
-  margin: 0;
-  margin-top: 3.3em;
-  margin-bottom: 1em;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.vclMasterHeader h1 {
-  font-size: 3em;
-  font-weight: bold;
-  line-height: 1;
-  margin-bottom: 0.8em;
-}
-
-.vclMasterHeader h2 {
-  font-size: 1.9em;
-  font-weight: bold;
-  line-height: 1;
-  margin-bottom: 0.8em;
-}
-
-.vclMasterHeader p {
-  font-size: 1.8em;
-  font-weight: bold;
-  line-height: 1;
-}
-
-/* Article header */
-
-.vclArticleHeader {
-  border-bottom-color: hsl(0, 0%, 50%);
-  overflow: hidden ;
-  margin-bottom: 0;
-  line-height: 1.22em;
-  display: block;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
-}
-
-.vclArticleHeader .vclArticleSubHeader  {
-  color: hsl(0, 0%, 45%);
-  font-weight: 500;
-  margin-left: 0.4em;
-  margin-bottom: 0.1em;
-  display: inline;
-  font-size: 0.65em;
-}
-
-/* Article */
-
-.vclArticle {
-  border: 0;
+.vclDataList {
   margin-bottom: 1.3em;
 }
 
-/* Automatic numbering of sectionized content */
-
-.vclSectAutoNumbering,
-.vclSectAutoNumberingReset {
-  counter-reset: sectCounterH1;
+.vclDataList header > * {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.vclSectAutoNumbering h1:before {
-  content: counter(sectCounterH1) "\0000a0";
+.vclDataList footer > * {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.vclSectAutoNumbering h1 {
-  counter-increment: sectCounterH1;
-  counter-reset: sectCounterH2;
+.vclDataList> ul> li:last-of-type {
+  border-bottom: 0;
 }
 
-.vclSectAutoNumbering h2:before {
-  content: counter(sectCounterH1) "." counter(sectCounterH2) "\0000a0";
+.vclDataList> ul> li:after {
+  content: "";
+  display: table;
+  visibility: hidden;
+  clear: both;
+  float: none;
 }
 
-.vclSectAutoNumbering h2 {
-  counter-increment: sectCounterH2;
-  counter-reset: sectCounterH3;
+.vclDataList> ul> li.vclSelected {
+  color: #FFFFFF;
+  background-color: #0888BF;
 }
 
-.vclSectAutoNumbering h3:before {
-  content: counter(sectCounterH1) "." counter(sectCounterH2) "." counter(sectCounterH3) "\0000a0";
-  counter-reset: sectCounterH4;
+.vclDataList> ul> li .vclAppend {
+  position: absolute;
+  right: 1em;
 }
 
-.vclSectAutoNumbering h3 {
-  counter-increment: sectCounterH3;
+.vclDataList> ul> li {
+  padding: 1em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  position: relative;
+  border-bottom-color: transparent;
+}
+
+.vclDataList> ul {
+  width: 100%;
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  list-style: none;
+  list-style-type: none;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-top-color: hsl(0, 0%, 63%);
+  border-bottom-color: hsl(0, 0%, 63%);
+}
+
+.vclDataList.vclRowHoverHighlight li:hover {
+  color: #000000;
+  background-color: hsl(0, 0%, 92%);
+  cursor: pointer;
 }
 
 .vclButtonDim {
@@ -3585,7 +3554,7 @@ li [class*=" fa-"] {
   min-width: 2em;
   white-space: nowrap;
   vertical-align: middle;
-  border-width: 1px 1px 1px 0;
+  border-width: 0;
   height: 2.5em;
   background-color: hsl(0, 0%, 50%);
   color: hsl(0, 0%, 88%);
@@ -3593,15 +3562,15 @@ li [class*=" fa-"] {
 }
 
 .vclInputGroup > .vclInputGroupButton button {
-  border-width: 1px 1px 1px 0;
+  border-width: 0;
 }
 
 .vclInputGroup > .vclInputGroupButton:first-child button {
-  border-width: 1px 0 1px 1px;
+  border-width: 0;
 }
 
 .vclInputGroup > .vclInputGroupButton {
-  border-width: 0 !important;
+  border-width: 0;
   min-width: 0;
 }
 
@@ -3614,15 +3583,11 @@ li [class*=" fa-"] {
   height: 2.5em;
 }
 
-.vclInputGroup > .vclInputGroupButton:first-child button:hover {
-  border-width: 1px 0 1px 1px;
-}
-
 .vclInputGroup > .vclInputGroupButton button,
 .vclInputGroup > .vclInputGroupButton button:hover,
 .vclInputGroup > .vclInputGroupButton button:disabled,
 .vclInputGroup > .vclInputGroupButton button:disabled:hover {
-  border-width: 1px 1px 1px 0;
+  border-width: 0;
   background-clip: padding-box;
 }
 
@@ -3642,12 +3607,59 @@ li [class*=" fa-"] {
 }
 
 .vclInputGroup > span:first-of-type {
-  border-width: 1px 0 1px 1px;
+  border-width: 0;
 }
 
 .vclInputGroup > span,
 .vclInputGroup > .vclInputGroupButton button {
   border-color: hsl(0, 0%, 50%);
+}
+
+.vclLabel {
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.5em;
+  padding-bottom: 0.2em;
+  padding-left: 0.5em;
+  font-weight: bold;
+  font-size: 80%;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+  color: #FFFFFF;
+  background-color: hsl(0, 0%, 13%);
+}
+
+.vclLabel:empty {
+  display: none;
+}
+
+.vclLabel.vclPrimary {
+  color: #FFFFFF;
+  background-color: #428bca;
+}
+
+.vclLabel.vclSuccess {
+  color: #FFFFFF;
+  background-color: #5cb85c;
+}
+
+.vclLabel.vclInfo {
+  color: #FFFFFF;
+  background-color: #5bc0de;
+}
+
+.vclLabel.vclWarning {
+  color: #FFFFFF;
+  background-color: #f0ad4e;
+}
+
+.vclLabel.vclDanger,
+.vclLabel.vclError,
+.vclLabel.vclImportant {
+  color: #FFFFFF;
+  background-color: #d9534f;
 }
 
 /* Basic percentage spans (not grid related) */
@@ -3743,178 +3755,178 @@ li [class*=" fa-"] {
 
 /* flexbox driven layout attributes */
 
-html [layout][horizontal],
-html [layout][vertical] {
+[layout][horizontal],
+[layout][vertical] {
   display: flex;
 }
 
-html [layout][horizontal][inline],
-html [layout][vertical][inline] {
+[layout][horizontal][inline],
+[layout][vertical][inline] {
   display: inline-flex;
 }
 
-html [layout][horizontal] {
+[layout][horizontal] {
   flex-direction: row;
 }
 
-html [layout][horizontal][reverse] {
+[layout][horizontal][reverse] {
   flex-direction: row-reverse;
 }
 
-html [layout][vertical] {
+[layout][vertical] {
   flex-direction: column;
 }
 
-html [layout][vertical][reverse] {
+[layout][vertical][reverse] {
   flex-direction: column-reverse;
 }
 
-html [layout][wrap] {
+[layout][wrap] {
   flex-wrap: wrap;
 }
 
-html [layout][wrap-reverse] {
+[layout][wrap-reverse] {
   flex-wrap: wrap-reverse;
 }
 
-html [flex] {
+[flex] {
   flex: 1;
   flex-basis: 0.000000001px;
 }
 
-html [vertical][layout] > [flex][auto-vertical] {
+[vertical][layout] > [flex][auto-vertical] {
   flex-basis: auto;
 }
 
-html [flex][auto] {
+[flex][auto] {
   flex-basis: auto;
 }
 
-html [flex][none] {
+[flex][none] {
   flex: none;
 }
 
-html [flex][one] {
+[flex][one] {
   flex: 1;
 }
 
-html [flex][two] {
+[flex][two] {
   flex: 2;
 }
 
-html [flex][three] {
+[flex][three] {
   flex: 3;
 }
 
-html [flex][four] {
+[flex][four] {
   flex: 4;
 }
 
-html [flex][five] {
+[flex][five] {
   flex: 5;
 }
 
-html [flex][six] {
+[flex][six] {
   flex: 6;
 }
 
-html [flex][seven] {
+[flex][seven] {
   flex: 7;
 }
 
-html [flex][eight] {
+[flex][eight] {
   flex: 8;
 }
 
-html [flex][nine] {
+[flex][nine] {
   flex: 9;
 }
 
-html [flex][ten] {
+[flex][ten] {
   flex: 10;
 }
 
-html [flex][eleven] {
+[flex][eleven] {
   flex: 11;
 }
 
-html [flex][twelve] {
+[flex][twelve] {
   flex: 12;
 }
 
 /* alignment in cross axis */
 
-html [layout][start] {
+[layout][start] {
   align-items: flex-start;
 }
 
-html [layout][center],
-html [layout][center-center] {
+[layout][center],
+[layout][center-center] {
   align-items: center;
 }
 
-html [layout][end] {
+[layout][end] {
   align-items: flex-end;
 }
 
 /* alignment in main axis */
 
-html [layout][start-justified] {
+[layout][start-justified] {
   justify-content: flex-start;
 }
 
-html [layout][center-justified],
-html [layout][center-center] {
+[layout][center-justified],
+[layout][center-center] {
   justify-content: center;
 }
 
-html [layout][end-justified] {
+[layout][end-justified] {
   justify-content: flex-end;
 }
 
-html [layout][around-justified] {
+[layout][around-justified] {
   justify-content: space-around;
 }
 
-html [layout][justified] {
+[layout][justified] {
   justify-content: space-between;
 }
 
 /* self alignment */
 
-html [self-start] {
+[self-start] {
   align-self: flex-start;
 }
 
-html [self-center] {
+[self-center] {
   align-self: center;
 }
 
-html [self-end] {
+[self-end] {
   align-self: flex-end;
 }
 
-html [self-stretch] {
+[self-stretch] {
   align-self: stretch;
 }
 
 /* other Layout */
 
-html [block] {
+[block] {
   display: block;
 }
 
 /* ie support for hidden */
 
-html [hidden] {
+[hidden] {
   display: none !important;
 }
 
-html [relative] {
+[relative] {
   position: relative;
 }
 
-html [fit] {
+[fit] {
   position: absolute;
   top: 0;
   right: 0;

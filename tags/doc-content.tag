@@ -1,10 +1,13 @@
 <doc-content>
-  <div class="vclPanel docPart { vclDisplayNone: !this.hasContent }">
-    <h2 id={ 'docpart-' + opts.content.name } class="vclArticleHeader">
-      { opts.content.title }
-      <small class="vclArticleSubHeader">{ opts.content.name }</small>
-    </h2>
-    <div name="readme" class="docText"></div>
+  <div horizontal layout class="docPart { vclDisplayNone: !this.hasContent }">
+    <div flex>
+      <h2 id={ 'docpart-' + opts.content.name } class="vclArticleHeader">
+        { opts.content.title }
+        <small class="vclArticleSubHeader">{ opts.content.name }</small>
+      </h2>
+      <div name="readme" class="docText"></div>
+    </div>
+    <doc-metadata if={ this.hasContent } class="docMetadata" pack={ opts.content }></doc-metadata>
   </div>
 
   <div class="docWelcome vclPanel { vclDisplayNone: this.hasContent }">
