@@ -217,6 +217,9 @@
         var searchBox = document.getElementById("doc-search");
         var key = event.keyCode || event.which;
 
+        // don't handle shortcuts
+        if (event.altKey || event.ctrlKey) return true;
+
         var input = event.path[0];
         var tagName = input.tagName.toLowerCase();
         if (/vclInput/.test(input.className)) return;
