@@ -1,6 +1,6 @@
 <doc-metadata>
   <div class="docMetadataControls">
-    <button onclick={ toggle } class="vclButtonStd vclHalfTransp" type="button" name="button">
+    <button onclick={ toggle } class="vclButton vclHalfTransparent" type="button" name="button">
       <i if={ this.hidden } class="vclIcon fa fa-chevron-left"></i>
       <i if={ !this.hidden } class="vclIcon fa fa-chevron-right"></i>
       <i class="vclIcon fa fa-info"></i>

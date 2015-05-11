@@ -518,6 +518,7 @@ th {
   /* Default variant */
   /* Emphasized variant */
   /* Transparent variant */
+  /* Emphasized & transparent variant */
   /* Half transparent alternative variant */
   /* Transparent alternative variant */
   /* Danger variant */
@@ -544,6 +545,8 @@ th {
      ----------- */
   /* Time Picker
      ----------- */
+  /* Responsive Image
+     ---------------- */
   /* Image Shapes
      ------------ */
   /* Gallery
@@ -729,8 +732,8 @@ th {
   padding-bottom: 0;
 }
 
-.vclButtonStd,
-.vclButtonStd[disabled] {
+.vclButton,
+.vclButton[disabled] {
   border-width: 0;
   border-color: transparent;
   border-style: solid;
@@ -751,65 +754,65 @@ th {
   *zoom: 1;
 }
 
-.vclButtonStd:before,
-.vclButtonStd:after,
-.vclButtonStd[disabled]:before,
-.vclButtonStd[disabled]:after {
+.vclButton:before,
+.vclButton:after,
+.vclButton[disabled]:before,
+.vclButton[disabled]:after {
   content: " ";
   display: table;
 }
 
-.vclButtonStd:after,
-.vclButtonStd[disabled]:after {
+.vclButton:after,
+.vclButton[disabled]:after {
   clear: both;
 }
 
-.vclButtonStd > span,
-.vclButtonStd > .vclIcogram {
+.vclButton > span,
+.vclButton > .vclIcogram {
   font-size: 0.95em;
 }
 
-.vclButtonStd.vclOverflowEllipsis > span,
-.vclButtonStd > .vclIcogram > .vclText {
+.vclButton.vclOverflowEllipsis > span,
+.vclButton > .vclIcogram > .vclText {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
 }
 
-a.vclButtonStd,
-a.vclButtonStd[disabled] {
+a.vclButton,
+a.vclButton[disabled] {
   line-height: 2.5em;
 }
 
-a.vclButtonStd> span,
-a.vclButtonStd[disabled]> span {
+a.vclButton> span,
+a.vclButton[disabled]> span {
   line-height: inherit;
 }
 
-span.vclButtonStd,
-span.vclButtonStd[disabled] {
+span.vclButton,
+span.vclButton[disabled] {
   display: inline-block;
   line-height: 1;
 }
 
-.vclButtonStd:focus {
+.vclButton:focus {
   outline: none;
 }
 
-.vclButtonStd:active {
+.vclButton:active {
   outline: 0;
 }
 
-.vclButtonStd.vclSquare {
+.vclButton.vclSquare {
   min-width: 2.5em;
   padding-right: 0;
   padding-left: 0;
   text-align: center;
 }
 
-.vclButtonStd.vclDisabled,
-.vclButtonStd[disabled] {
+.vclButton.vclDisabled,
+.vclButton[disabled] {
   pointer-events: none;
   opacity: .75;
   cursor: default;
@@ -817,167 +820,190 @@ span.vclButtonStd[disabled] {
 
 /* Standard variant */
 
-.vclButtonStd {
+.vclButton {
   border-color: transparent;
   background-color: hsl(0, 0%, 50%);
   color: #FFFFFF;
 }
 
-.vclButtonStd.vclSelected {
+.vclButton.vclSelected {
   color: #FFFFFF;
   background-color: #005F84;
 }
 
-.vclButtonStd:hover,
-.vclButtonStd:focus,
-.vclButtonStd:active,
-.vclButtonStd.vclHover,
-.vclButtonStd.vclPressed,
-.vclButtonStd.vclFocus,
-.vclButtonStd.vclActive {
+.vclButton:hover,
+.vclButton:focus,
+.vclButton:active,
+.vclButton.vclHover,
+.vclButton.vclPressed,
+.vclButton.vclFocus,
+.vclButton.vclActive {
   background-color: hsl(0, 0%, 45%);
   color: #FFFFFF;
 }
 
-.vclButtonStd.vclDisabled,
-.vclButtonStd[disabled] {
+.vclButton.vclDisabled,
+.vclButton[disabled] {
   color: hsl(0, 0%, 88%);
 }
 
 /* Emphasized variant */
 
-.vclButtonStd.vclEmphasized {
+.vclButton.vclEmphasized {
   border-color: hsl(0, 0%, 13%);
   background-color: #00ADEF;
-  color: hsl(0, 0%, 95%);
+  color: #FFFFFF;
 }
 
-.vclButtonStd.vclEmphasized:hover,
-.vclButtonStd.vclEmphasized:focus,
-.vclButtonStd.vclEmphasized:active,
-.vclButtonStd.vclEmphasized.vclHover,
-.vclButtonStd.vclEmphasized.vclPressed,
-.vclButtonStd.vclEmphasized.vclFocus,
-.vclButtonStd.vclEmphasized.vclActive {
+.vclButton.vclEmphasized:hover,
+.vclButton.vclEmphasized:focus,
+.vclButton.vclEmphasized:active,
+.vclButton.vclEmphasized.vclHover,
+.vclButton.vclEmphasized.vclPressed,
+.vclButton.vclEmphasized.vclFocus,
+.vclButton.vclEmphasized.vclActive {
   background-color: #0888BF;
   color: #FFFFFF;
 }
 
-/* Transparent variant */
+/* Emphasized & transparent variant */
 
-.vclButtonStd.vclTransparent {
-  color: hsl(0, 0%, 50%);
+.vclButton.vclEmphasizedTransparent {
+  color: #00ADEF;
   background: none;
 }
 
-.vclButtonStd.vclTransparent.vclDisabled,
-.vclButtonStd.vclTransparent[disabled] {
+.vclButton.vclEmphasizedTransparent.vclDisabled,
+.vclButton.vclEmphasizedTransparent[disabled] {
+  color: hsl(0, 0%, 88%);
+}
+
+.vclButton.vclEmphasizedTransparent:hover,
+.vclButton.vclEmphasizedTransparent:focus,
+.vclButton.vclEmphasizedTransparent:active,
+.vclButton.vclEmphasizedTransparent.vclHover,
+.vclButton.vclEmphasizedTransparent.vclPressed,
+.vclButton.vclEmphasizedTransparent.vclFocus,
+.vclButton.vclEmphasizedTransparent.vclActive {
+  background: none;
+  color: #005F84;
+}
+
+/* Transparent variant */
+
+.vclButton.vclTransparent {
+  color: hsl(0, 0%, 45%);
+  background: none;
+}
+
+.vclButton.vclTransparent.vclDisabled,
+.vclButton.vclTransparent[disabled] {
   color: hsl(0, 0%, 63%);
 }
 
-.vclButtonStd.vclTransparent:hover,
-.vclButtonStd.vclTransparent:focus,
-.vclButtonStd.vclTransparent:active,
-.vclButtonStd.vclTransparent.vclHover,
-.vclButtonStd.vclTransparent.vclPressed,
-.vclButtonStd.vclTransparent.vclFocus,
-.vclButtonStd.vclTransparent.vclActive {
+.vclButton.vclTransparent:hover,
+.vclButton.vclTransparent:focus,
+.vclButton.vclTransparent:active,
+.vclButton.vclTransparent.vclHover,
+.vclButton.vclTransparent.vclPressed,
+.vclButton.vclTransparent.vclFocus,
+.vclButton.vclTransparent.vclActive {
   background: none;
   color: #000000;
 }
 
 /* Transparent alternative variant */
 
-.vclButtonStd.vclTransparentAlt {
+.vclButton.vclTransparentAlt {
   background: none;
   background-color: transparent;
   color: hsl(0, 0%, 88%);
 }
 
-.vclButtonStd.vclTransparentAlt.vclDisabled,
-.vclButtonStd.vclTransparentAlt[disabled] {
+.vclButton.vclTransparentAlt.vclDisabled,
+.vclButton.vclTransparentAlt[disabled] {
   color: hsl(0, 0%, 63%);
 }
 
-.vclButtonStd.vclTransparentAlt:hover,
-.vclButtonStd.vclTransparentAlt:focus,
-.vclButtonStd.vclTransparentAlt:active,
-.vclButtonStd.vclTransparentAlt.vclHover,
-.vclButtonStd.vclTransparentAlt.vclPressed,
-.vclButtonStd.vclTransparentAlt.vclFocus,
-.vclButtonStd.vclTransparentAlt.vclActive {
+.vclButton.vclTransparentAlt:hover,
+.vclButton.vclTransparentAlt:focus,
+.vclButton.vclTransparentAlt:active,
+.vclButton.vclTransparentAlt.vclHover,
+.vclButton.vclTransparentAlt.vclPressed,
+.vclButton.vclTransparentAlt.vclFocus,
+.vclButton.vclTransparentAlt.vclActive {
   background: none;
   color: #FFFFFF;
 }
 
 /* Half transparent variant */
 
-.vclButtonStd.vclHalfTransp {
+.vclButton.vclHalfTransparent {
   background: none;
   background-color: transparent;
   color: inherit;
 }
 
-.vclButtonStd.vclHalfTransp.vclDisabled,
-.vclButtonStd.vclHalfTransp[disabled] {
+.vclButton.vclHalfTransparent.vclDisabled,
+.vclButton.vclHalfTransparent[disabled] {
   color: hsl(0, 0%, 63%);
 }
 
-.vclButtonStd.vclHalfTransp:hover,
-.vclButtonStd.vclHalfTransp:focus,
-.vclButtonStd.vclHalfTransp:active,
-.vclButtonStd.vclHalfTransp.vclHover,
-.vclButtonStd.vclHalfTransp.vclPressed,
-.vclButtonStd.vclHalfTransp.vclFocus,
-.vclButtonStd.vclHalfTransp.vclActive {
+.vclButton.vclHalfTransparent:hover,
+.vclButton.vclHalfTransparent:focus,
+.vclButton.vclHalfTransparent:active,
+.vclButton.vclHalfTransparent.vclHover,
+.vclButton.vclHalfTransparent.vclPressed,
+.vclButton.vclHalfTransparent.vclFocus,
+.vclButton.vclHalfTransparent.vclActive {
   background-color: hsl(0, 0%, 92%);
   color: inherit;
 }
 
 /* Danger variant */
 
-.vclButtonStd.vclDanger {
-  color: #a94442;
-  background-color: #f2dede;
-}
-
-.vclButtonStd.vclDanger:hover,
-.vclButtonStd.vclDanger:focus,
-.vclButtonStd.vclDanger:active,
-.vclButtonStd.vclDanger.vclHover,
-.vclButtonStd.vclDanger.vclPressed,
-.vclButtonStd.vclDanger.vclFocus,
-.vclButtonStd.vclDanger.vclActive {
-  color: #f2dede;
+.vclButton.vclDanger {
+  color: #FFFFFF;
   background-color: #d9534f;
 }
 
-.vclButtonStd.vclDanger.vclDisabled,
-.vclButtonStd.vclDanger[disabled] {
-  color: #d9534f;
+.vclButton.vclDanger:hover,
+.vclButton.vclDanger:focus,
+.vclButton.vclDanger:active,
+.vclButton.vclDanger.vclHover,
+.vclButton.vclDanger.vclPressed,
+.vclButton.vclDanger.vclFocus,
+.vclButton.vclDanger.vclActive {
+  color: #FFFFFF;
+  background-color: #a94442;
+}
+
+.vclButton.vclDanger.vclDisabled,
+.vclButton.vclDanger[disabled] {
+  color: hsl(0, 0%, 63%);
 }
 
 /* Suggestive variant */
 
-.vclButtonStd.vclSuggestive {
-  color: #3c763d;
-  background-color: #dff0d8;
-}
-
-.vclButtonStd.vclSuggestive:hover,
-.vclButtonStd.vclSuggestive:focus,
-.vclButtonStd.vclSuggestive:active,
-.vclButtonStd.vclSuggestive.vclHover,
-.vclButtonStd.vclSuggestive.vclPressed,
-.vclButtonStd.vclSuggestive.vclFocus,
-.vclButtonStd.vclSuggestive.vclActive {
-  color: #dff0d8;
+.vclButton.vclSuggestive {
+  color: #FFFFFF;
   background-color: #5cb85c;
 }
 
-.vclButtonStd.vclSuggestive.vclDisabled,
-.vclButtonStd.vclSuggestive[disabled] {
-  color: #5cb85c;
+.vclButton.vclSuggestive:hover,
+.vclButton.vclSuggestive:focus,
+.vclButton.vclSuggestive:active,
+.vclButton.vclSuggestive.vclHover,
+.vclButton.vclSuggestive.vclPressed,
+.vclButton.vclSuggestive.vclFocus,
+.vclButton.vclSuggestive.vclActive {
+  color: #FFFFFF;
+  background-color: #3c763d;
+}
+
+.vclButton.vclSuggestive.vclDisabled,
+.vclButton.vclSuggestive[disabled] {
+  color: hsl(0, 0%, 88%);
 }
 
 .vclContainer {
@@ -1218,7 +1244,7 @@ input.vclSelected:focus {
   right: 0;
 }
 
-.vclInputGroupEmb > button.vclButtonStd[disabled] {
+.vclInputGroupEmb > button.vclButton[disabled] {
   display: none;
 }
 
@@ -4372,18 +4398,18 @@ body [fullbleed] {
   border-bottom: 0;
 }
 
-.vclTabs ul li .vclButtonStd:hover {
+.vclTabs ul li .vclButton:hover {
   background-color: transparent;
   color: #00ADEF;
 }
 
-.vclTabs ul li .vclButtonStd {
+.vclTabs ul li .vclButton {
   background-color: transparent;
   color: #005F84;
 }
 
-.vclTabs ul .vclSelected .vclButtonStd,
-.vclTabs ul .vclSelected .vclButtonStd:hover {
+.vclTabs ul .vclSelected .vclButton,
+.vclTabs ul .vclSelected .vclButton:hover {
   color: #FFFFFF;
 }
 
@@ -4465,8 +4491,8 @@ body [fullbleed] {
 }
 
 .vclToolbar {
+  user-select: none;
   display: block;
-  position: relative;
   box-sizing: border-box;
   background-color: hsl(0, 0%, 95%);
 }

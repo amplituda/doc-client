@@ -15,7 +15,7 @@
       <div class="code {vclDisplayNone: !this.codeVisible}">
         <form class="docEditDemo" action="http://codepen.io/pen/define" method="POST" target="_blank">
           <input type="hidden" name="data" value={ JSON.stringify(codePen) }>
-          <button class="vclButtonStd vclHalfTransp">
+          <button class="vclButton vclHalfTransparent">
             <div class="vclIcon fa fa-edit" aria-hidden="true" role="img"></div>
             <span class="vclText">Edit</span>
           </button>

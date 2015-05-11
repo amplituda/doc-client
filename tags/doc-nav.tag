@@ -10,7 +10,7 @@
         name="search" value=""
         autocomplete="off"
       autofocus />
-      <button onclick={ clearSearch } class="vclButtonStd vclTransparent vclSquare vclAppended {vclDisplayNone: !this.searching}">
+      <button onclick={ clearSearch } class="vclButton vclTransparent vclSquare vclAppended {vclDisplayNone: !this.searching}">
          <div class="vclIcogram">
            <div class="vclIcon fa fa-times-circle" aria-hidden="true" aria-label="Clear" role="img"></div>
          </div>
