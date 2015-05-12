@@ -16,7 +16,7 @@
       Some usefull tips to get you started:
       <ul>
         <li>
-          Any Demo can be editing by switching to the code tab and then
+          Any Demo can be edited by switching to the code tab and then
           clicking the edit button in the top right corner.
         </li>
         <li>
