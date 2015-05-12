@@ -106,6 +106,7 @@
     }
 
     this.searchKey = function(e) {
+      if (!this.searching) return true;
       var maxResult = this.searchResults.length -1;
       if(e.keyCode === 40){
         // arrow down
