@@ -167,7 +167,15 @@
     });
 
     function start(doc) {
-      if (window.prod) return init(doc); // tags should be inlined
+      if (window.prod){
+        if(document.head.createShadowRoot) {
+          return init(doc); // tags should be inlined
+        } else {
+          console.log('no shadow DOM support');
+          riot.mount('doc-notification', { noShadowDom: true, doc: doc });
+          return;
+        }
+      }
       riot.compile(function() {
           if(document.head.createShadowRoot) {
             // I can shadow DOM
@@ -196,8 +204,20 @@
       // doc content
       //riot.mount('doc-content', { parts: doc.parts });
 
+      // filter invalid parts
+      doc.parts = _.filter(doc.parts, function(part) {
+        if (part.docgen.categories === undefined) {
+          return false; // skip mostly collections
+        }
+        return true;
+      });
+
       // navigation
       var navItems = _.map(doc.parts, function(item) {
+
+        if (item.docgen.categories === undefined) {
+          return; // skip mostly collections
+        }
 
         // TODO: let generator set mainCat (?)
         return {

@@ -9,19 +9,27 @@
         use a browser that supports shadow DOM to view this.
         <br /><br />
         <button if={ !this.tried } onclick={ tryAnyway } type="button" class="vclButton">
-          Try Anyway
+          Try Anyway (Polyfill)
         </button>
     </div>
   </div>
   <script>
-  this.tried = false;
+    var self = this;
+    this.tried = false;
     this.tryAnyway = function(){
       this.tried = true;
-      try{
-        window.init(this.opts.doc);
-      } catch (e){
-        console.error(e);
+      var polyfill = document.createElement('script');
+      polyfill.setAttribute('src','https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.6.1/ShadowDOM.min.js');
+
+      // onload does not work in IE, duh
+      polyfill.onload = function() {
+        try{
+          window.init(self.opts.doc);
+        } catch (e){
+          console.error(e);
+        }
       }
+      document.head.appendChild(polyfill);
     }
   </script>
 </doc-notification>
