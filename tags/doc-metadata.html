@@ -60,6 +60,7 @@
     this.on('update', function() {
       this.pack = opts.pack;
       if (!this.pack) return;
+      var repo = this.pack.repository;
 
       if (this.pack.license && this.pack.license.type) {
         this.pack.license = this.pack.license.type;
@@ -73,7 +74,8 @@
         this.pack.repository = this.pack.repository.url;
       }
 
-      if (_.startsWith(this.pack.repository, 'git://github.com')) {
+      if (_.startsWith(repo, 'git://github.com') ||
+          _.startsWith(repo, 'git+https://github.com')) {
         // replace with https
         this.pack.repository = this.pack.repository.replace('git', 'https');
       }

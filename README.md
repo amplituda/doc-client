@@ -11,7 +11,7 @@ Shadow DOM. (This also means that it will only run in Browsers that support shad
 
 You probably want to use [vcl/doc-gen](https://github.com/vcl/doc-gen). But if
 you somehow generate the `documentation.json` yourself you can create a
-stand-alone `index.html` with this module.
+stand-alone HTML file with this module.
 
 **Example**
 
