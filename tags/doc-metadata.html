@@ -74,10 +74,14 @@
         this.pack.repository = this.pack.repository.url;
       }
 
-      if (_.startsWith(repo, 'git://github.com') ||
-          _.startsWith(repo, 'git+https://github.com')) {
+      if (_.startsWith(repo, 'git://github.com')) {
         // replace with https
         this.pack.repository = this.pack.repository.replace('git', 'https');
+      }
+
+      if (_.startsWith(repo, 'git+https://github.com')) {
+        // replace with https
+        this.pack.repository = this.pack.repository.replace('git+https', 'https');
       }
     });
   </script>
