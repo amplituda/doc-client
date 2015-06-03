@@ -957,6 +957,64 @@ span.vclButton[disabled] {
   margin-bottom: 1.3em;
 }
 
+.vclDataList {
+  margin-bottom: 1.3em;
+}
+
+.vclDataList header > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.vclDataList footer > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.vclDataList> ul> li:last-of-type {
+  border-bottom: 0;
+}
+
+.vclDataList> ul> li .vclAppend {
+  position: absolute;
+  right: 1em;
+}
+
+.vclDataList> ul> li {
+  padding: 1em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  position: relative;
+}
+
+.vclDataList> ul> li.vclSelected,
+.vclDataList> ul> li:hover.vclSelected {
+  color: #FFFFFF;
+  background-color: #0888BF;
+}
+
+.vclDataList> ul {
+  width: 100%;
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  list-style: none;
+  list-style-type: none;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-top-color: hsl(0, 0%, 63%);
+  border-bottom-color: hsl(0, 0%, 63%);
+}
+
+.vclDataList.vclRowHoverHighlight li:hover {
+  color: hsl(0, 0%, 20%);
+  background-color: hsl(0, 0%, 92%);
+  cursor: pointer;
+}
+
 input,
 select,
 textarea,
@@ -4134,6 +4192,144 @@ body [fullbleed] {
   background-color: #00ADEF;
 }
 
+.vclNotification {
+  border-width: 0;
+  border-radius: 0.45em;
+  border-style: solid;
+  margin: 1.1em 0;
+}
+
+.vclNotification .vclNotificationHeader {
+  padding: 0.15em 0.8em;
+  border-radius: 0.3em 0.3em 0 0;
+}
+
+.vclNotification .vclNotificationContent.vclNoPadding {
+  padding: 0.8em !important;
+}
+
+.vclNotification .vclNotificationContent > p {
+  margin: 0.5em 0;
+  word-wrap: break-word;
+}
+
+.vclNotification .vclNotificationContent {
+  margin: 0;
+  padding: 0.8em 0.8em 0.8em 4.5em;
+  position: relative;
+}
+
+.vclNotification .vclNotificationFooter > * {
+  font-size: 0.96em;
+}
+
+.vclNotification .vclNotificationFooter {
+  margin-bottom: 0;
+  padding: 0.2em 0.8em;
+}
+
+.vclNotification li {
+  list-style: disk outside none;
+  margin-bottom: 0.4%;
+  padding: 0;
+  vertical-align: top;
+}
+
+.vclNotification .vclButton.vclTransparent:hover {
+  background: none;
+  background-color: none;
+}
+
+.vclNotification .vclButton ul li {
+  list-style: circle outside none;
+}
+
+.vclNotification .vclNotificationHeader > *,
+.vclNotification .vclNotificationHeader > *:hover {
+  line-height: 2em;
+  font-size: 0.96em;
+  font-weight: bold;
+}
+
+.vclNotificationHeader > .vclButton,
+.vclNotificationHeader > .vclButton:hover,
+.vclNotificationHeader > .vclButton:active {
+  height: 2em;
+  line-height: 2em;
+  font-size: 0.96em;
+  font-weight: bold;
+}
+
+.vclNotification .vclMessageIcon {
+  font-size: 3em;
+  display: inline-block;
+  width: 1.1em;
+  text-align: center;
+  margin-top: 0;
+  position: absolute;
+  left: 0.2em;
+}
+
+.vclNotification.vclSuccess .vclNotificationHeader {
+  background-color: #3c763d;
+  color: #FFFFFF;
+}
+
+.vclNotification.vclSuccess .vclMessageIcon {
+  color: #3c763d;
+}
+
+.vclNotification.vclSuccess {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #3c763d;
+}
+
+.vclNotification.vclInfo .vclNotificationHeader {
+  background-color: #31708f;
+  color: #FFFFFF;
+}
+
+.vclNotification.vclInfo .vclMessageIcon {
+  color: #31708f;
+}
+
+.vclNotification.vclInfo {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #31708f;
+}
+
+.vclNotification.vclWarning .vclNotificationHeader {
+  background-color: #8a6d3b;
+  color: #FFFFFF;
+}
+
+.vclNotification.vclWarning .vclMessageIcon {
+  color: #8a6d3b;
+}
+
+.vclNotification.vclWarning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #8a6d3b;
+}
+
+.vclNotification.vclError .vclNotificationHeader {
+  background-color: #a94442;
+  color: #FFFFFF;
+}
+
+.vclNotification.vclError .vclMessageIcon {
+  color: #a94442;
+}
+
+.vclNotification.vclError {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #a94442;
+}
+
 .vclTabbable {
   margin-bottom: 1.3em;
   *zoom: 1;
@@ -4744,64 +4940,6 @@ hr {
   background: #000000;
   color: #FFFFFF;
   text-shadow: none;
-}
-
-.vclDataList {
-  margin-bottom: 1.3em;
-}
-
-.vclDataList header > * {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.vclDataList footer > * {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.vclDataList> ul> li:last-of-type {
-  border-bottom: 0;
-}
-
-.vclDataList> ul> li .vclAppend {
-  position: absolute;
-  right: 1em;
-}
-
-.vclDataList> ul> li {
-  padding: 1em;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: transparent;
-  position: relative;
-}
-
-.vclDataList> ul> li.vclSelected,
-.vclDataList> ul> li:hover.vclSelected {
-  color: #FFFFFF;
-  background-color: #0888BF;
-}
-
-.vclDataList> ul {
-  width: 100%;
-  padding: 0;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  list-style: none;
-  list-style-type: none;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-top-color: hsl(0, 0%, 63%);
-  border-bottom-color: hsl(0, 0%, 63%);
-}
-
-.vclDataList.vclRowHoverHighlight li:hover {
-  color: hsl(0, 0%, 20%);
-  background-color: hsl(0, 0%, 92%);
-  cursor: pointer;
 }
 
 /* Float helpers */

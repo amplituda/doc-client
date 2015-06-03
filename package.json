@@ -28,6 +28,7 @@
     "vcl-adv-text-structure": "vcl/adv-text-structure",
     "vcl-button": "vcl/button.git",
     "vcl-container": "vcl/container.git",
+    "vcl-data-list": "vcl/data-list",
     "vcl-default-theme": "vcl/default-theme.git",
     "vcl-default-theme-terms": "vcl/default-theme-terms.git",
     "vcl-embedded-input-button": "vcl/embedded-input-button.git",
@@ -38,11 +39,11 @@
     "vcl-label": "vcl/label",
     "vcl-layout": "vcl/layout.git",
     "vcl-navigation": "vcl/navigation.git",
+    "vcl-notification": "vcl/notification",
     "vcl-tab-nav": "vcl/tab-nav.git",
     "vcl-toolbar": "vcl/toolbar.git",
     "vcl-transitions": "vcl/transitions.git",
     "vcl-typography": "vcl/typography.git",
-    "vcl-data-list": "vcl/data-list",
     "vcl-utils": "vcl/utils.git"
   },
   "dependencies": {
