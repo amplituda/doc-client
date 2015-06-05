@@ -27,7 +27,7 @@
     "normalize.css": "^3.0.3",
     "vcl-adv-text-structure": "vcl/adv-text-structure",
     "vcl-button": "vcl/button.git",
-    "vcl-container": "vcl/container.git",
+    "vcl-container": "vcl/container",
     "vcl-data-list": "vcl/data-list",
     "vcl-default-theme": "vcl/default-theme.git",
     "vcl-default-theme-terms": "vcl/default-theme-terms.git",
