@@ -1,12 +1,16 @@
 <doc-nav>
   <nav vertical layout flex class="docNav vclNavigation vclVertical">
     <div class="vclInputGroupEmb">
+      <span class="vclPrepended">
+        <div class="vclIcon fa fa-search"></div>
+      </span>
       <input
         id="doc-search"
         type="search"
         oninput={ searchUpdate }
         onkeydown={ searchKey }
-        placeholder="Search..."
+        placeholder="Search Modules"
+        class="vclInput vclNoBorder vclPrepItem vclAppItem searchInput"
         name="search" value=""
         autocomplete="off"
       autofocus />
