@@ -40,7 +40,7 @@
     "vcl-layout": "vcl/layout.git",
     "vcl-navigation": "vcl/navigation.git",
     "vcl-notification": "vcl/notification",
-    "vcl-tab-nav": "vcl/tab-nav.git",
+    "vcl-tab-nav": "vcl/tab-nav",
     "vcl-toolbar": "vcl/toolbar.git",
     "vcl-transitions": "vcl/transitions.git",
     "vcl-typography": "vcl/typography.git",
