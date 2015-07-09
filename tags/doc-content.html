@@ -56,6 +56,12 @@
     this.readme.innerHTML = opts.content.readme;
     this.hasContent = true;
 
+    // add vclTable to tables
+    var tables = table.getElementsByTagName('table');
+    for (var i = 0; i < tables.length; i++) {
+      table.className = 'vclTable';
+    }
+
     // inject demos
     injectDemos(opts.content.demos, opts.content.style);
   });
