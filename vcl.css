@@ -713,6 +713,7 @@ th {
 .vclButton > span,
 .vclButton > .vclIcogram {
   font-size: 0.95em;
+  line-height: 1.2;
 }
 
 .vclButton.vclOverflowEllipsis > span,
@@ -728,8 +729,8 @@ a.vclButton[disabled] {
   line-height: 2.5em;
 }
 
-a.vclButton> span,
-a.vclButton[disabled]> span {
+a.vclButton > span,
+a.vclButton[disabled] > span {
   line-height: inherit;
 }
 
@@ -979,16 +980,16 @@ span.vclButton[disabled] {
   margin-bottom: 0;
 }
 
-.vclDataList> ul> li:last-of-type {
+.vclDataList > ul > li:last-of-type {
   border-bottom: 0;
 }
 
-.vclDataList> ul> li .vclAppend {
+.vclDataList > ul > li .vclAppend {
   position: absolute;
   right: 1em;
 }
 
-.vclDataList> ul> li {
+.vclDataList > ul > li {
   padding: 1em;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -996,13 +997,13 @@ span.vclButton[disabled] {
   position: relative;
 }
 
-.vclDataList> ul> li.vclSelected,
-.vclDataList> ul> li:hover.vclSelected {
+.vclDataList > ul > li.vclSelected,
+.vclDataList > ul > li:hover.vclSelected {
   color: #FFFFFF;
   background-color: #0888BF;
 }
 
-.vclDataList> ul {
+.vclDataList > ul {
   width: 100%;
   padding: 0;
   margin-top: 1em;
@@ -1041,7 +1042,8 @@ button,
   vertical-align: middle;
 }
 
-textarea {
+textarea,
+textarea.vclInput {
   line-height: 1.6em;
 }
 
@@ -5249,7 +5251,8 @@ hr {
   word-wrap: break-word;
 }
 
-.vclNoBreak {
+.vclNoWrap {
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -5263,7 +5266,7 @@ hr {
   visibility: hidden !important;
 }
 
-/* Utility to enable scrolling explicitly for overflowed containers */
+/* Scrollable containers */
 
 .vclScrollable {
   -webkit-transform: translateZ(0);
