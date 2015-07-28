@@ -25,4 +25,4 @@ vclDocClient.getBuild(doc, function(html) {
 
 ```
 
-You can set `doc.customHead` if you want to inject custom css or js.
+You can set `doc.customHTML` if you want to inject custom css or js before the `</body>` tag.

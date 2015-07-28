@@ -32,7 +32,7 @@ exports.getBuild = function(doc, cb) {
       '</script>'
     ];
 
-    if (doc.customHead) prodStuff.push(doc.customHead);
+    if (doc.customHTML) prodStuff.push(doc.customHTML);
 
     var prodText = prodStuff.join('\n');
     var done = rawHtml.replace(/<!-- prod -->(.|\n)*<!-- prod -->/gm, prodText);
