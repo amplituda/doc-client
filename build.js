@@ -31,6 +31,9 @@ exports.getBuild = function(doc, cb) {
       inlineScript,
       '</script>'
     ];
+
+    if (doc.customHead) prodStuff.push(doc.customHead);
+
     var prodText = prodStuff.join('\n');
     var done = rawHtml.replace(/<!-- prod -->(.|\n)*<!-- prod -->/gm, prodText);
 

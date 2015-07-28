@@ -24,3 +24,5 @@ vclDocClient.getBuild(doc, function(html) {
 });
 
 ```
+
+You can set `doc.customHead` if you want to inject custom css or js.
