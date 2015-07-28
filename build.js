@@ -18,6 +18,12 @@ exports.getBuild = function(doc, cb) {
       inlineScript += riot.compile(tag);
     });
 
+    var customHtml = null;
+    if (doc.customHTML){
+      customHtml = doc.customHTML;
+      delete doc.customHTML;
+    }
+
     inlineScript += '\nwindow.prod = true;\n';
 
     if (doc){
@@ -32,7 +38,8 @@ exports.getBuild = function(doc, cb) {
       '</script>'
     ];
 
-    if (doc.customHTML) prodStuff.push(doc.customHTML);
+    // add custom html after that
+    if (customHtml) prodStuff.push(customHtml);
 
     var prodText = prodStuff.join('\n');
     var done = rawHtml.replace(/<!-- prod -->(.|\n)*<!-- prod -->/gm, prodText);
