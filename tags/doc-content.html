@@ -59,14 +59,14 @@
     // add vclTable to tables
     var tables = this.readme.getElementsByTagName('table');
     for (var i = 0; i < tables.length; i++) {
-      tables[i].className = 'vclTable';
+      tables[i].classList.add('vclTable');
     }
 
     var codes = this.readme.getElementsByTagName('code');
     for (var i = 0; i < codes.length; i++) {
       var lines = codes[i].innerHTML.split("\n").length;
       if (lines > 1) {
-        codes[i].className = 'hljs';
+        codes[i].classList.add('hljs');
       }
     }
 
