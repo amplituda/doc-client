@@ -62,9 +62,6 @@
       tables[0].className = 'vclTable';
     }
 
-    // highlight code
-    hljs.initHighlighting();
-
     // inject demos
     injectDemos(opts.content.demos, opts.content.style);
   });
@@ -83,6 +80,11 @@
       });
       window.test = demo;
       self.demos.push(demo);
+    });
+
+    this.on('mount update', function() {
+       // highlight code
+      hljs.initHighlighting();
     });
   }
   //this.readme = opts.readme;
