@@ -5783,5 +5783,5 @@ pre.docDemoContent {
 }
 
 .docDemoContent code.hljs {
-  white-space: nowrap;
+  white-space: inherit;
 }
