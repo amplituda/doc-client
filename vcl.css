@@ -5781,3 +5781,7 @@ pre.docDemoContent {
   top: -35px;
   right: 0;
 }
+
+.docDemoContent code.hljs {
+  white-space: nowrap;
+}
