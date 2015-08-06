@@ -5782,6 +5782,6 @@ pre.docDemoContent {
   right: 0;
 }
 
-.docDemoContent code.hljs {
+code.hljs {
   white-space: inherit;
 }
