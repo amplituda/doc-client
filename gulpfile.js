@@ -6,17 +6,15 @@ var vcl = require('gulp-vcl-preprocessor');
 var webserver = require('gulp-webserver');
 
 gulp.task('css', function() {
-  gulp.src('./package.json')
+  return gulp.src('./main.styl')
     .pipe(vcl({
-      package: true,
-      output: 'vcl.css',
-      includeDevDependencies: true
+      output: 'vcl.css'
     }))
     .pipe(gulp.dest('./'));
 });
 
 gulp.task('server', function() {
-  gulp.src('./')
+  return gulp.src('./')
     .pipe(webserver({
       livereload: true,
       directoryListing: true,
