@@ -65,7 +65,7 @@
     var codes = this.readme.getElementsByTagName('code');
     for (var i = 0; i < codes.length; i++) {
       var lines = codes[i].innerHTML.split("\n").length;
-      if (lines >= 1) {
+      if (lines > 1) {
         codes[i].className = 'hljs';
       }
     }
