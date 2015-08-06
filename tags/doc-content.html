@@ -62,6 +62,9 @@
       tables[0].className = 'vclTable';
     }
 
+    // highlight code
+    hljs.initHighlighting();
+
     // inject demos
     injectDemos(opts.content.demos, opts.content.style);
   });
