@@ -59,12 +59,15 @@
     // add vclTable to tables
     var tables = this.readme.getElementsByTagName('table');
     for (var i = 0; i < tables.length; i++) {
-      tables[0].className = 'vclTable';
+      tables[i].className = 'vclTable';
     }
 
     var codes = this.readme.getElementsByTagName('code');
     for (var i = 0; i < codes.length; i++) {
-      codes[0].className = 'hljs';
+      var lines = code.innerHTML.split("\n").length;
+      if (lines >= 1) {
+        codes[i].className = 'hljs';
+      }
     }
 
     // inject demos
