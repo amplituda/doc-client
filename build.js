@@ -32,7 +32,7 @@ exports.getBuild = function(doc, cb) {
     }
 
     var prodStuff = [
-      '<script src=\'https://cdnjs.cloudflare.com/ajax/libs/riot/2.0.14/riot.min.js\'></script>',
+      '<script src=\'https://cdnjs.cloudflare.com/ajax/libs/riot/2.2.4/riot.min.js\'></script>',
       '<script>',
       inlineScript,
       '</script>'
@@ -46,8 +46,7 @@ exports.getBuild = function(doc, cb) {
 
     // add vcl style
     var style = '<style>' +
-      fs.readFileSync(__dirname + '/vcl.css', 'utf8') +
-      '\n</style>';
+      fs.readFileSync(__dirname + '/vcl.css', 'utf8') + '\n</style>';
     done = done.replace(/<!-- prodstyle -->(.|\n)*<!-- prodstyle -->/gm, style);
 
     //fs.writeFileSync('./index-prod.html', done);

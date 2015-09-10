@@ -442,10 +442,8 @@ th {
 /**/
 
 :root {
-  /* Shared Variables
-     ---------------- */
-  /* Internal Variables
-     ------------------- */
+  /* Theme internally shared Variables
+     --------------------------------- */
   /* App
      --- */
   /* App Content Area
@@ -496,6 +494,10 @@ th {
      ------- */
   /* Layer
      ----- */
+  /* Scrollbar
+     --------- */
+  /* Ribbon
+     ------- */
   /* Loading Layer
      ------------- */
   /* Container
@@ -617,7 +619,7 @@ th {
 /* Article header */
 
 .vclArticleHeader {
-  border-bottom-color: hsl(0, 0%, 50%);
+  border-bottom-color: hsl(0, 0%, 75%);
   overflow: hidden ;
   margin-bottom: 0;
   line-height: 1.22em;
@@ -678,6 +680,78 @@ th {
   counter-increment: sectCounterH3;
 }
 
+.vclLogo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url('https://cdn.rawgit.com/vcl/gfx/master/vcl_logo_square-bw.svg');
+}
+
+dl,
+menu,
+ol,
+ul,
+.vclList {
+  margin-top: 0;
+  margin-bottom: 1.3em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 0 2.2em;
+}
+
+menu,
+ol,
+ul {
+  padding: 0 0 0 2em;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+.vclList {
+  padding: 0 0 0 1em;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+.vclList > .vclListItem > .vclIcon {
+  min-width: 1.5em;
+  text-align: center;
+  padding-right: 0em;
+  padding-left: 0em;
+}
+
+.vclList > .vclListItem {
+  display: list-item;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+.vclListSeparator {
+  margin: 0.6em 0;
+  overflow: hidden;
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  border-bottom: 1px solid hsl(0, 0%, 63%);
+}
+
+.vclListGroupHeader {
+  font-weight: bold;
+  list-style-type: none;
+  margin-left: -1.1em;
+  margin-top: 0.3em;
+}
+
 .vclButtonDim {
   display: inline;
   vertical-align: middle;
@@ -692,11 +766,16 @@ th {
   padding-bottom: 0;
 }
 
+.vclButtonDim.vclSquare {
+  min-width: 2.5em;
+}
+
 .vclButton,
 .vclButton[disabled] {
   border-width: 0;
   border-color: transparent;
   border-style: solid;
+  border-radius: 0;
   padding-right: 0.8em;
   padding-left: 0.8em;
   padding-top: 0;
@@ -733,12 +812,14 @@ th {
   line-height: 1;
 }
 
-.vclButton.vclOverflowEllipsis > span,
 .vclButton > .vclIcogram > .vclText {
+  display: inline-block;
+}
+
+.vclButton.vclOverflowEllipsis > .vclIcogram > .vclText {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  display: inline-block;
 }
 
 a.vclButton,
@@ -967,6 +1048,19 @@ span.vclButton[disabled] {
   color: hsl(0, 0%, 88%);
 }
 
+/* Outline modifier */
+
+.vclOutline {
+  border-color: hsl(0, 0%, 50%);
+  border-width: 2px;
+}
+
+/* Circular modifier */
+
+.vclCircular {
+  border-radius: 50%;
+}
+
 .vclContainer {
   width: 100%;
   box-sizing: border-box;
@@ -974,7 +1068,7 @@ span.vclButton[disabled] {
   border-width: 1px;
   border-color: hsl(0, 0%, 75%);
   border-style: solid;
-  padding: 1em;
+  padding: 0.6rem;
   min-width: 1em;
   margin-bottom: 1.3em;
 }
@@ -984,58 +1078,73 @@ span.vclButton[disabled] {
 }
 
 .vclDataList {
+  background-color: transparent;
   margin-bottom: 1.3em;
 }
 
-.vclDataList header > * {
+.vclDataList vclDataListHeader > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.vclDataList footer > * {
+.vclDataList vclDataListHeader {
+  padding-bottom: 0.4em;
+  padding-top: 0.4em;
+  background-color: transparent;
+}
+
+.vclDataList .vclDataListFooter > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.vclDataList > ul > li:last-of-type {
-  border-bottom: 0;
+.vclDataList .vclDataListFooter {
+  padding-bottom: 0.4em;
+  padding-top: 0.4em;
+  background-color: transparent;
 }
 
-.vclDataList > ul > li .vclAppend {
-  position: absolute;
-  right: 1em;
-}
-
-.vclDataList > ul > li {
-  padding: 1em;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: transparent;
+.vclDataList > .vclDataListBody > .vclDataListItem {
+  min-height: 3em;
   position: relative;
 }
 
-.vclDataList > ul > li.vclSelected,
-.vclDataList > ul > li:hover.vclSelected {
+.vclDataList > .vclDataListBody > .vclDataListItem.vclSelected,
+.vclDataList > .vclDataListBody > .vclDataListItem:hover.vclSelected {
   color: #FFFFFF;
   background-color: #0888BF;
 }
 
-.vclDataList > ul {
+.vclDataList > .vclDataListBody {
   width: 100%;
   padding: 0;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
   list-style: none;
   list-style-type: none;
   border-top-width: 1px;
   border-top-style: solid;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-top-color: hsl(0, 0%, 63%);
-  border-bottom-color: hsl(0, 0%, 63%);
+  border-top-color: hsl(0, 0%, 75%);
+  border-bottom-color: hsl(0, 0%, 75%);
 }
 
-.vclDataList.vclRowHoverHighlight li:hover {
+.vclDataList.vclDivider .vclDataListItem:last-of-type {
+  border-bottom: 0;
+}
+
+.vclDataList.vclDivider .vclDataListItem {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: hsl(0, 0%, 88%);
+}
+
+.vclDataList.vclNoBorder .vclDataListBody {
+  border: 0;
+}
+
+.vclDataList.vclRowHoverHighlight .vclDataListItem:hover {
   color: hsl(0, 0%, 20%);
   background-color: hsl(0, 0%, 92%);
   cursor: pointer;
@@ -3747,15 +3856,40 @@ li [class*=" fa-"] {
   text-align: center;
 }
 
+.vclIcon {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  fill: currentcolor;
+  position: relative;
+  line-height: inherit;
+}
+
+.vclIcon.vclIconSize1 {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.vclIcon.vclIconSize2 {
+  width: 2.37em;
+  height: 2.37em;
+}
+
+.vclIcon.vclIconSize3 {
+  width: 3.17em;
+  height: 3.17em;
+}
+
 .vclIcogram {
   white-space: nowrap;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .vclIcogram .vclIcon {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 .vclIcogram .vclIcon:first-child {
@@ -3775,7 +3909,7 @@ li [class*=" fa-"] {
 }
 
 .vclIcogram .vclText {
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 .vclIcogram a.vclText {
@@ -4085,7 +4219,7 @@ input.vclSelected:focus {
 
 .vclLabel.vclPrimary {
   color: #FFFFFF;
-  background-color: #428bca;
+  background-color: hsl(0, 0%, 30%);
 }
 
 .vclLabel.vclSuccess {
@@ -4137,6 +4271,10 @@ input.vclSelected:focus {
 
 .vclSpan-30p {
   width: 30%;
+}
+
+.vclSpan-33p {
+  width: 33.333%;
 }
 
 .vclSpan-35p {
@@ -4211,163 +4349,204 @@ input.vclSelected:focus {
 
 /* flexbox driven layout attributes */
 
+.vclLayoutHorizontal,
+.vclLayoutVertical,
 [layout][horizontal],
 [layout][vertical] {
   display: flex;
 }
 
+.vclLayoutHorizontal.vclLayoutInline,
+.vclLayoutVertical.vclLayoutInline,
 [layout][horizontal][inline],
 [layout][vertical][inline] {
   display: inline-flex;
 }
 
+.vclLayoutHorizontal,
 [layout][horizontal] {
   flex-direction: row;
 }
 
+.vclLayoutHorizontal.vclLayoutReverse,
 [layout][horizontal][reverse] {
   flex-direction: row-reverse;
 }
 
+.vclLayoutVertical,
 [layout][vertical] {
   flex-direction: column;
 }
 
+.vclLayoutVertical.vclLayoutReverse,
 [layout][vertical][reverse] {
   flex-direction: column-reverse;
 }
 
+.vclLayoutWrap,
 [layout][wrap] {
   flex-wrap: wrap;
 }
 
+.vclLayoutWrapReverse,
 [layout][wrap-reverse] {
   flex-wrap: wrap-reverse;
 }
 
+.vclLayoutFlex,
 [flex] {
   flex: 1;
   flex-basis: 0.000000001px;
 }
 
+.vclLayoutVertical > vclLayoutFlex.vclLayoutAutoVertical,
 [vertical][layout] > [flex][auto-vertical] {
   flex-basis: auto;
 }
 
+.vclLayoutFlex.vclLayoutAuto,
 [flex][auto] {
   flex-basis: auto;
 }
 
+.vclLayoutFlex.vclLayoutNone,
 [flex][none] {
   flex: none;
 }
 
+.vclLayoutFlex.vclLayout1,
 [flex][one] {
   flex: 1;
 }
 
+.vclLayoutFlex.vclLayout2,
 [flex][two] {
   flex: 2;
 }
 
+.vclLayoutFlex.vclLayout3,
 [flex][three] {
   flex: 3;
 }
 
+.vclLayoutFlex.vclLayout4,
 [flex][four] {
   flex: 4;
 }
 
+.vclLayoutFlex.vclLayout5,
 [flex][five] {
   flex: 5;
 }
 
+.vclLayoutFlex.vclLayout6,
 [flex][six] {
   flex: 6;
 }
 
+.vclLayoutFlex.vclLayout7,
 [flex][seven] {
   flex: 7;
 }
 
+.vclLayoutFlex.vclLayout8,
 [flex][eight] {
   flex: 8;
 }
 
+.vclLayoutFlex.vclLayout9,
 [flex][nine] {
   flex: 9;
 }
 
+.vclLayoutFlex.vclLayout10,
 [flex][ten] {
   flex: 10;
 }
 
+.vclLayoutFlex.vclLayout11,
 [flex][eleven] {
   flex: 11;
 }
 
+.vclLayoutFlex.vclLayout12,
 [flex][twelve] {
   flex: 12;
 }
 
 /* alignment in cross axis */
 
+.vclLayoutStart,
 [layout][start] {
   align-items: flex-start;
 }
 
+.vclLayoutCenter,
+.vclLayoutCenterCenter,
 [layout][center],
 [layout][center-center] {
   align-items: center;
 }
 
+.vclLayoutEnd,
 [layout][end] {
   align-items: flex-end;
 }
 
 /* alignment in main axis */
 
+.vclLayoutStartJustified,
 [layout][start-justified] {
   justify-content: flex-start;
 }
 
+.vclLayoutCenterJustified,
+.vclLayoutCenterCenter,
 [layout][center-justified],
 [layout][center-center] {
   justify-content: center;
 }
 
+.vclLayoutEndJustified,
 [layout][end-justified] {
   justify-content: flex-end;
 }
 
+.vclLayoutAroundJustified,
 [layout][around-justified] {
   justify-content: space-around;
 }
 
+.vclLayoutJustified,
 [layout][justified] {
   justify-content: space-between;
 }
 
 /* self alignment */
 
+.vclLayoutSelfStart,
 [self-start] {
   align-self: flex-start;
 }
 
+.vclLayoutSelfCenter,
 [self-center] {
   align-self: center;
 }
 
+.vclLayoutSelfEnd,
 [self-end] {
   align-self: flex-end;
 }
 
+.vclLayoutSelfStretch,
 [self-stretch] {
   align-self: stretch;
 }
 
 /* other Layout */
 
+.vclLayoutBlock,
 [block] {
   display: block;
 }
@@ -4427,6 +4606,182 @@ input.vclSelected:focus {
   left: 0;
 }
 
+.vclGutterMargin,
+.vclGutterMarginTB {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.vclGutterMargin,
+.vclGutterMarginLR {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.vclGridRow {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  *zoom: 1;
+}
+
+.vclGridRow:before,
+.vclGridRow:after {
+  content: " ";
+  display: table;
+}
+
+.vclGridRow:after {
+  clear: both;
+}
+
+.vclGridRow .vclGridRow {
+  margin: 0 -0.5rem;
+  width: auto;
+}
+
+[class ^="vclGridSpan-"],
+[class *=" vclGridSpan-"] {
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+  float: left;
+  display: block;
+}
+
+/* Grid spans classes for grid unit based divisions */
+
+.vclGridSpan-1 {
+  width: 6.66666%;
+}
+
+.vclGridSpan-2 {
+  width: 13.33333%;
+}
+
+.vclGridSpan-3 {
+  width: 19.99999%;
+}
+
+.vclGridSpan-4 {
+  width: 26.66666%;
+}
+
+.vclGridSpan-5 {
+  width: 33.33333%;
+}
+
+.vclGridSpan-6 {
+  width: 39.99999%;
+}
+
+.vclGridSpan-7 {
+  width: 46.66666%;
+}
+
+.vclGridSpan-8 {
+  width: 53.33333%;
+}
+
+.vclGridSpan-9 {
+  width: 59.99999%;
+}
+
+.vclGridSpan-10 {
+  width: 66.66666%;
+}
+
+.vclGridSpan-11 {
+  width: 73.33333%;
+}
+
+.vclGridSpan-12 {
+  width: 79.99999%;
+}
+
+.vclGridSpan-13 {
+  width: 86.66666%;
+}
+
+.vclGridSpan-14 {
+  width: 93.33333%;
+}
+
+.vclGridSpan-15 {
+  width: 100%;
+}
+
+/* Modifier to center a grid column */
+
+.vclGridSpanCentered {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
+/* The golden cut as grid units */
+
+.vclGridSpan-gcb {
+  width: 38.2%;
+}
+
+.vclGridSpan-gca {
+  width: 61.8%;
+}
+
+/* Grid spans classes for percentage based divisions */
+
+.vclGridSpan-5p {
+  width: 5%;
+}
+
+.vclGridSpan-10p {
+  width: 10%;
+}
+
+.vclGridSpan-15p {
+  width: 15%;
+}
+
+.vclGridSpan-20p {
+  width: 20%;
+}
+
+.vclGridSpan-25p {
+  width: 25%;
+}
+
+.vclGridSpan-33p {
+  width: 33.3333%;
+}
+
+.vclGridSpan-45p {
+  width: 45%;
+}
+
+.vclGridSpan-50p {
+  width: 50%;
+}
+
+.vclGridSpan-70p {
+  width: 70%;
+}
+
+.vclGridSpan-75p {
+  width: 75%;
+}
+
+.vclGridSpan-80p {
+  width: 80%;
+}
+
+.vclGridSpan-85p {
+  width: 85%;
+}
+
+.vclGridSpan-100p {
+  width: 100%;
+}
+
 /* Commons */
 
 .vclNavigation {
@@ -4438,7 +4793,8 @@ input.vclSelected:focus {
   display: none;
 }
 
-.vclNavigation a {
+.vclNavigation a,
+.vclNavigation a:hover {
   text-decoration: none;
 }
 
@@ -4712,137 +5068,194 @@ input.vclSelected:focus {
   padding: 0.8em;
 }
 
-.vclTabContent p:first-of-type {
-  margin-top: 0;
-}
-
-.vclTabContent p:last-of-type {
-  margin-bottom: 0;
-}
-
-.vclTabs ul {
+.vclTabs {
   box-sizing: border-box;
   list-style: none;
   list-style-type: none;
-  width: 100%;
   padding: 0;
   margin: 0;
   *zoom: 1;
 }
 
-.vclTabs ul:before,
-.vclTabs ul:after {
+.vclTabs:before,
+.vclTabs:after {
   content: " ";
   display: table;
 }
 
-.vclTabs ul:after {
+.vclTabs:after {
   clear: both;
 }
 
-.vclTabs > ul li,
-.vclTabs > ul li:hover {
-  float: left;
-  border: 0;
-  margin-right: 0.2em;
-  background: none;
-  position: relative;
-  margin-right: 0.35em;
-  min-width: 6em;
+.vclTabs.vclTabNavJustified .vclTab .vclTab {
+  width: 100%;
 }
 
-.vclTabs > ul li:last-child {
+.vclTabs.vclTabNavJustified .vclTab {
+  flex: 1;
+}
+
+.vclTabs.vclTabNavJustified {
+  display: flex;
+  flex-direction: row;
+}
+
+.vclTabs.vclNoBorder {
+  border: 0 !important;
+}
+
+.vclTabs .vclTab > .vclTabLabel {
+  border: 0;
+  margin-right: 0.5em;
+  text-decoration: none;
+}
+
+.vclTabs .vclTab > .vclTabLabel:hover {
+  text-decoration: none;
+}
+
+.vclTabs .vclTab > .vclTabLabel:last-child {
   margin-right: 0;
 }
 
-.vclTabs > ul li.vclSelected,
-.vclTabs > ul li.vclSelected:hover {
+.vclTabs .vclTab {
   border: 0;
 }
 
-.vclTabs > ul li > a,
-.vclTabs > ul li > a:hover,
-.vclTabs > ul li > div {
-  height: 2.5em;
-  line-height: 2.5em;
-  display: block;
-  padding: 0 0.5em 0 0.5em;
-  border-radius: 0.35em 0.35em 0 0;
-  font-weight: normal;
+.vclTabs .vclTab {
+  float: left;
+  border: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  margin-right: 0.5em;
+  min-width: 6em;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  height: 2.9em;
+  line-height: 2.9;
+  padding: 0 0.75em 0 0.75em;
+  border-radius: 0 0 0 0;
   min-width: 4em;
   text-align: center;
   box-sizing: border-box;
 }
 
-.vclTabs > ul li > div {
-  padding-left: 0;
-  padding-right: 0;
-  min-width: 0;
+.vclTabs .vclTab:last-child {
+  margin-right: 0;
 }
 
-.vclTabs > ul li.vclSelected > a,
-.vclTabs > ul li.vclSelected > a:hover {
+.vclTabs .vclTab.vclSelected,
+.vclTabs .vclTab.vclSelected:hover,
+.vclTabs .vclTab.vclDisabled,
+.vclTabs .vclTab.vclDisabled:hover {
   cursor: default;
-  border-bottom: 0;
 }
 
-/* Uni style variant */
+/* Coloring of normal variant */
 
-.vclTabs.vclTabStyleUni > ul li,
-.vclTabs.vclTabStyleUni > ul li:hover {
-  background: none;
+.vclTabs .vclTab > a,
+.vclTabs .vclTab > a:hover,
+.vclTabs .vclTab > a:active,
+.vclTabs .vclTab > a:visited {
+  color: hsl(0, 0%, 50%);
+  outline: none;
+}
+
+.vclTabs .vclTab:hover,
+.vclTabs .vclTab:focus {
+  outline: none;
+  background-color: hsl(0, 0%, 95%);
+}
+
+.vclTabs .vclTab .vclButton:hover {
+  color: hsl(0, 0%, 20%);
+}
+
+.vclTabs .vclTab .vclButton {
+  color: hsl(0, 0%, 63%);
+}
+
+.vclTabs .vclTab.vclSelected .vclButton:hover {
+  color: hsl(0, 0%, 20%);
+}
+
+.vclTabs .vclTab.vclSelected .vclButton {
+  color: hsl(0, 0%, 63%);
+}
+
+.vclTabs .vclTab.vclSelected {
+  color: inherit;
+}
+
+.vclTabs .vclTab.vclSelected,
+.vclTabs .vclTab.vclSelected:hover {
+  color: inherit;
+  background-color: transparent;
+  border-bottom: 3px solid #00ADEF;
+}
+
+.vclTabs .vclTab.vclDisabled,
+.vclTabs .vclTab.vclDisabled:hover {
+  background-color: hsl(0, 0%, 88%);
+}
+
+.vclTabs .vclTab {
+  padding-top: 0.25em;
+  color: hsl(0, 0%, 50%);
+  background-color: transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* Uni variant */
+
+.vclTabs.vclTabStyleUni .vclTab,
+.vclTabs.vclTabStyleUni .vclTab:hover {
   border: 0;
   margin-bottom: -1px;
 }
 
-.vclTabs.vclTabStyleUni > ul li a,
-.vclTabs.vclTabStyleUni > ul li:hover a {
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.vclTabs.vclTabStyleUni > ul li.vclSelected {
-  background: none;
+.vclTabs.vclTabStyleUni .vclTab.vclSelected {
   border: 0;
 }
 
 /* Tabs left */
 
-.vclTabbable.vclTabsLeft li,
-.vclTabbable.vclTabsLeft li:hover {
+.vclTabbable.vclTabsLeft .vclTab,
+.vclTabbable.vclTabsLeft .vclTab:hover {
   float: none;
-  margin: 0 0 0.35em 0;
-  border-radius: 0.35em 0 0 0.35em;
+  margin: 0 0 0 0;
+  border-radius: 0 0 0 0;
+  border-bottom: 0;
+  border-right: 3px solid transparent;
 }
 
-.vclTabbable.vclTabsLeft a,
-.vclTabbable.vclTabsLeft a:hover {
-  border-radius: 0.35em 0 0 0.35em;
-  text-align: left;
+.vclTabbable.vclTabsLeft .vclTab.vclSelected,
+.vclTabbable.vclTabsLeft .vclTab.vclSelected:hover {
+  border-right: 3px solid #00ADEF;
 }
 
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul {
+.vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni {
   border: 0;
 }
 
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul li {
+.vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni .vclTab {
   border: 0;
   margin-bottom: 0;
   margin-right: -1px;
-  background: none;
 }
 
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul li a {
+.vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni .vclTab {
   margin-right: 1px;
-  border-radius: 0.35em 0 0 0.35em;
+  border-radius: 0 0 0 0;
 }
 
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul li.vclSelected {
+.vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni .vclTab.vclSelected,
+.vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni .vclTab.vclSelected {
   border-right: 0;
-}
-
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul li.vclSelected a {
-  margin: 0;
 }
 
 .vclTabbable.vclTabsLeft .vclTabs {
@@ -4855,43 +5268,44 @@ input.vclSelected:focus {
   border-bottom: 0;
 }
 
+.vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni {
+  border-right: 1px solid hsl(0, 0%, 75%);
+}
+
 /* Tabs right */
 
-.vclTabbable.vclTabsRight li,
-.vclTabbable.vclTabsRight li:hover {
+.vclTabbable.vclTabsRight .vclTab,
+.vclTabbable.vclTabsRight .vclTab:hover {
   float: none;
-  margin: 0 0 0.35em 0;
-  border-radius: 0 0.35em 0.35em 0;
+  margin: 0 0 0 0;
+  border-radius: 0 0 0 0;
+  border-bottom: 0;
+  border-left: 3px solid transparent;
 }
 
-.vclTabbable.vclTabsRight a,
-.vclTabbable.vclTabsRight a:hover {
-  border-radius: 0 0.35em 0.35em 0;
-  text-align: left;
+.vclTabbable.vclTabsRight .vclTab.vclSelected,
+.vclTabbable.vclTabsRight .vclTab.vclSelected:hover {
+  border-left: 3px solid #00ADEF;
 }
 
-.vclTabbable.vclTabsRight .vclTabStyleUni ul {
+.vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni {
   border: 0;
 }
 
-.vclTabbable.vclTabsRight .vclTabStyleUni ul li {
+.vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni .vclTab {
   border: 0;
   margin-bottom: 0;
   margin-left: -1px;
-  background: none;
 }
 
-.vclTabbable.vclTabsRight .vclTabStyleUni ul li a {
+.vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni .vclTab {
   margin-left: 1px;
-  border-radius: 0 0.35em 0.35em 0;
+  border-radius: 0 0 0 0;
 }
 
-.vclTabbable.vclTabsRight .vclTabStyleUni ul li.vclSelected {
+.vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni .vclTab.vclSelected,
+.vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni .vclTab.vclSelected {
   border-right: 0;
-}
-
-.vclTabbable.vclTabsRight .vclTabStyleUni ul li.vclSelected a {
-  margin: 0;
 }
 
 .vclTabbable.vclTabsRight .vclTabs {
@@ -4904,96 +5318,66 @@ input.vclSelected:focus {
   border-bottom: 0;
 }
 
-.vclTabs ul li .vclButton:hover {
-  background-color: transparent;
-  color: #00ADEF;
+.vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni {
+  border-left: 1px solid hsl(0, 0%, 75%);
 }
 
-.vclTabs ul li .vclButton {
-  background-color: transparent;
-  color: #005F84;
+/* Coloring of uni variant */
+
+.vclTabs.vclTabStyleUni .vclTab:hover,
+.vclTabs.vclTabStyleUni .vclTab:focus {
+  background-color: hsl(0, 0%, 95%);
 }
 
-.vclTabs ul .vclSelected .vclButton,
-.vclTabs ul .vclSelected .vclButton:hover {
-  color: #FFFFFF;
-}
-
-.vclTabs.vclTabStyleUni ul li.vclSelected a {
-  color: inherit;
+.vclTabs.vclTabStyleUni .vclTab.vclSelected {
+  background-clip: border-box;
+  color: hsl(0, 0%, 20%);
   border: 1px solid hsl(0, 0%, 75%);
-  border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid transparent;
+  border-color: hsl(0, 0%, 75%) hsl(0, 0%, 75%) transparent;
   background-color: #FFFFFF;
 }
 
-.vclTabs.vclTabStyleUni ul {
-  border-bottom: 1px solid hsl(0, 0%, 75%);
+.vclTabs.vclTabStyleUni .vclTab.vclDisabled,
+.vclTabs.vclTabStyleUni .vclTab.vclDisabled:hover {
+  background-color: hsl(0, 0%, 88%);
 }
 
-.vclTabs ul li.vclSelected > a,
-.vclTabs ul li.vclSelected > a:hover {
-  color: #FFFFFF;
-  background-color: #00ADEF;
-  border: 1px solid #00ADEF;
+.vclTabs.vclTabStyleUni .vclTab {
+  padding-top: 0;
+  background-color: transparent;
+}
+
+.vclTabs.vclTabStyleUni.vclNoBorder .vclTab.vclSelected,
+.vclTabs.vclTabStyleUni.vclNoBorder .vclTab:hover.vclSelected {
+  border: 0;
+}
+
+.vclTabs.vclTabStyleUni.vclNoBorder .vclTab,
+.vclTabs.vclTabStyleUni.vclNoBorder .vclTab:hover {
+  margin: 0;
+}
+
+.vclTabs.vclTabStyleUni.vclNoBorder {
+  border-bottom: 0;
+}
+
+.vclTabs.vclTabStyleUni {
+  border-bottom: 1px solid hsl(0, 0%, 75%);
 }
 
 .vclTabbable .vclTabContent {
   border-bottom: 1px solid hsl(0, 0%, 75%);
 }
 
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul li a {
-  background-color: transparent;
-}
-
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul li.vclSelected a {
+&.vclTabsLeft .vclTabs.vclTabStyleUni .vclTab.vclSelected {
   border: 1px solid hsl(0, 0%, 75%);
   border-right: 1px solid transparent;
 }
 
-.vclTabbable.vclTabsRight .vclTabStyleUni ul li a {
-  background-color: #FFFFFF;
-}
-
-.vclTabbable.vclTabsRight .vclTabStyleUni ul li.vclSelected a {
+&.vclTabsRight .vclTabs.vclTabStyleUni .vclTab.vclSelected {
   border: 1px solid hsl(0, 0%, 75%);
-  border-left: 1px solid #FFFFFF;
-}
-
-.vclTabs.vclTabStyleUni ul li a,
-.vclTabs.vclTabStyleUni ul li:hover a {
-  background-clip: padding-box;
-  background-color: #FFFFFF;
-  border-color: transparent;
-  border-width: 1px;
-}
-
-.vclTabs.vclTabStyleUni ul li.vclSelected a {
-  background-clip: border-box;
-  background-color: #FFFFFF;
-  border-color: hsl(0, 0%, 75%) hsl(0, 0%, 75%) transparent;
-  border-image: none;
-  border-style: solid;
-  border-width: 1px;
-  color: #00ADEF;
-}
-
-/* Tabs left */
-
-.vclTabbable.vclTabsLeft .vclTabStyleUni ul {
-  border-right: 1px solid hsl(0, 0%, 75%);
-}
-
-/* Tabs right */
-
-.vclTabbable.vclTabsRight .vclTabStyleUni ul {
-  border-left: 1px solid hsl(0, 0%, 75%);
-}
-
-.vclTabs ul li > a,
-.vclTabs ul li > a:hover,
-.vclTabs ul li > div {
-  background-color: transparent;
-  border: 1px solid transparent;
+  border-left: 1px solid transparent;
 }
 
 table {
@@ -5447,13 +5831,13 @@ p {
 
 a,
 a:visited,
-a:active {
+a:active,
+a:hover {
   text-decoration: none;
   color: #00ADEF;
 }
 
 a:hover {
-  text-decoration: none;
   color: #005F84;
 }
 
@@ -5462,19 +5846,28 @@ a.vclDisabled {
 }
 
 a.vclContentLink > .vclIcogram .vclIcon:first-child {
-  margin: 0 0.15em 0 0;
+  margin: 0 0.25em 0 0;
+}
+
+a.vclContentLink > .vclIcogram .vclText {
+  text-decoration: none;
 }
 
 a.vclContentLink > .vclIcogram .vclIcon:last-child {
-  margin: 0 0 0 0.15em;
+  margin: 0 0 0 0.25em;
+  text-decoration: none;
 }
 
-a.vclContentLink > .vclIcogram {
-  display: inline-block;
+a.vclContentLink {
+  text-decoration: none;
 }
 
 .vclDisabled,
 a.vclDisabled {
+  color: hsl(0, 0%, 50%);
+}
+
+.vclSecondaryTextColor {
   color: hsl(0, 0%, 50%);
 }
 
@@ -5629,6 +6022,10 @@ hr {
 
 /* Visibility */
 
+.vclOverflowHidden {
+  overflow: hidden;
+}
+
 .vclDisplayNone {
   display: none !important;
 }
@@ -5705,6 +6102,10 @@ header {
   height: 100%;
 }
 
+.docMetadataControls {
+  margin-bottom: 1em;
+}
+
 .docQuicklinks {
   position: absolute;
   right: 25px;
@@ -5724,7 +6125,7 @@ header {
   padding: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
-  border-top: 0 none;
+  border-top: 0;
   margin: 0;
   overflow: auto;
   position: relative;
@@ -5743,7 +6144,6 @@ pre.docDemoContent {
 
 .docPart {
   margin-bottom: 20px;
-  border-bottom: 1px solid gray;
 }
 
 .docNav {
@@ -5755,21 +6155,17 @@ pre.docDemoContent {
   min-width: 15em;
 }
 
-#doc-search {
-  box-sizing: border-box;
-}
-
 .docMetadata {
   padding-top: 10px;
-  margin-left: 2em;
+  margin-left: 1.5em;
 }
 
 .docNavHeading a {
   font-weight: bold !important;
 }
 
-.docNavItem > a {
-  padding-left: 2.7em !important;
+.docNavItem > .vclIcogram {
+  padding-left: 4.5em !important;
 }
 
 .code {

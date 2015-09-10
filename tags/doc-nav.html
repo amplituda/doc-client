@@ -5,15 +5,15 @@
         <div class="vclIcon fa fa-search"></div>
       </span>
       <input
-        id="doc-search"
         type="search"
+        name="search"
         oninput={ searchUpdate }
         onkeydown={ searchKey }
         placeholder="Search Modules"
         class="vclInput vclNoBorder vclPrepItem vclAppItem searchInput"
-        name="search" value=""
+        value=""
         autocomplete="off"
-      autofocus />
+        autofocus />
       <button onclick={ clearSearch } class="vclButton vclTransparent vclSquare vclAppended {vclDisplayNone: !this.searching}">
          <div class="vclIcogram">
            <div class="vclIcon fa fa-times-circle" aria-hidden="true" aria-label="Clear" role="img"></div>
@@ -49,28 +49,30 @@
     var staticList = {};
 
     _.each(this.categories, function(cat) {
-      var catName = cat.title;
-      if (!staticList[catName]){
-        staticList[catName] = {};
-        staticList[catName].items = [];
-        staticList[catName].title = cat.title;
-        staticList[catName].priority = cat.priority;
+      if (cat) {
+        var catName = cat.title;
+        if (!staticList[catName]){
+          staticList[catName] = {};
+          staticList[catName].items = [];
+          staticList[catName].title = cat.title;
+          staticList[catName].priority = cat.priority;
+        }
+        //staticList[catName].push(cat);
       }
-      //staticList[catName].push(cat);
     });
 
     this.cats = _.values(staticList);
 
     _.each(this.items, function(item){
       var primaryCat = item.primaryCategory;
-      staticList[primaryCat].items.push(item);
+      if (staticList[primaryCat])
+        staticList[primaryCat].items.push(item);
     });
 
     this.on('update', function() {
-      if (self.search.value === '') {
-        // all visible again
-        this.clearSearch();;
-      }
+      // all visible again
+      this.clearSearch();
+
       // unset last selected item
       if (this.selectedItem !== null){
         this.selectedItem.active = false;
@@ -81,8 +83,8 @@
       this.selectedItem = selectedItem;
     });
 
-    this.clearSearch = function(){
-      self.search.value = '';
+    this.clearSearch = function() {
+      this.search.value = '';
       this.searching = false;
       this.searchCursor = -1;
       this.search.focus();
@@ -90,7 +92,7 @@
     }
 
     this.searchUpdate = function(e) {
-      var searchVal = self.search.value;
+      var searchVal = self.search && self.search.value;
       if (searchVal === '') {
         // all visible again
         return this.clearSearch();
@@ -133,7 +135,6 @@
 
       riot.route(newActive.name);
       newActive.active = true;
-
     }
   </script>
 </doc-nav>

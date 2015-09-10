@@ -6,38 +6,38 @@
       <i class="vclIcon fa fa-info"></i>
     </button>
   </div>
-  <div class="vclDataList vclRowHoverHighlight {vclDisplayNone: this.hidden}">
-    <header class="vclClearFix">
-      <h2 class="vclFloatLeft">Package Information</h2>
+  <aside class="vclDataList {vclDisplayNone: this.hidden}">
+    <header class="vclDataListHeader vclNoPadding">
+      <h3 class="vclNoMargin">Package Information</h3>
     </header>
-    <ul role="listbox">
-      <li>
+    <ul class="vclDataListBody" role="listbox">
+      <li class="vclDataListItem" horizontal center layout>
         <span class="vclGridSpan-gcb" role="gridcell"><b>Name</b></span>
         <span class="vclGridSpan-gca" role="gridcell">{ this.pack.name }</span>
       </li>
-      <li if={ this.pack.repository }>
+      <li class="vclDataListItem" horizontal center layout if={ this.pack.repository }>
         <span class="vclGridSpan-gcb" role="gridcell"><b>Repository</b></span>
         <span class="vclGridSpan-gca" role="gridcell">
-          <a href={ this.pack.repository }>{ this.pack.repository }</a>
+          <a href={ this.pack.repository } target="_blank">{ this.pack.repository }</a>
         </span>
       </li>
-      <li if={ this.pack.author }>
+      <li class="vclDataListItem" horizontal center layout if={ this.pack.author }>
         <span class="vclGridSpan-gcb" role="gridcell"><b>Author</b></span>
         <span class="vclGridSpan-gca" role="gridcell">{ this.pack.author }</span>
       </li>
-      <li if={ this.pack.version }>
+      <li class="vclDataListItem" horizontal center layout if={ this.pack.version }>
         <span class="vclGridSpan-gcb" role="gridcell"><b>Version</b></span>
         <span class="vclGridSpan-gca" role="gridcell">{ this.pack.version }</span>
       </li>
-      <li if={ this.pack.license }>
+      <li class="vclDataListItem" horizontal center layout if={ this.pack.license }>
         <span class="vclGridSpan-gcb" role="gridcell"><b>License</b></span>
         <span class="vclGridSpan-gca" role="gridcell">{ this.pack.license }</span>
       </li>
-      <li if={ false }>
+      <li class="vclDataListItem" horizontal center layout if={ false }>
         <span class="vclGridSpan-gcb" role="gridcell"><b>Aprox. size</b></span>
         <span class="vclGridSpan-gca" role="gridcell">2kb</span>
       </li>
-      <li if={ this.pack.docgen }>
+      <li class="vclDataListItem" horizontal center layout if={ this.pack.docgen }>
         <span class="vclGridSpan-gcb" role="gridcell"><b>VCL Categories</b></span>
         <span class="vclGridSpan-gca" role="gridcell">
           <span class="vclLabel" each={ cat in this.pack.docgen.categories }>{ cat.title }</span>
@@ -48,7 +48,8 @@
         <span class="vclGridSpan-gca" role="gridcell">{ this.pack.description }</span>
       </li>
     </ul>
-  </div>
+  </aside>
+
   <script>
     this.hidden = true;
     this.pack = opts.pack || {};

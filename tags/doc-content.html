@@ -11,26 +11,11 @@
   </div>
 
   <div class="docWelcome { vclDisplayNone: this.hasContent }">
-    <h3>Welcome to this generated Documentation</h3>
+    <h3>Welcome to the doc client</h3>
     <div>
-      Some usefull hints to get you started:
-      <ul>
-        <li>
-          Any Demo can be edited by switching to the code tab and then
-          clicking the edit button in the top right corner.
-        </li>
-        <li>
-          The search supports fuzzy matching. This means that you can search
-          for <code>bttn</code> and still find <code>Button</code>.
-        </li>
-        <li>
-          You can type in a search term at any time without focusing the
-          search-field. (Unless you are typing in another input field)
-        </li>
-        <li>
-          Pressing <code>Esc</code> at any time will clear the search field.
-        </li>
-      </ul>
+      If you see this, you have no package which provides
+      <code>doc-index</code>. The readme of this package would
+      be shown here otherwise.
     </div>
   </div>
 
@@ -48,7 +33,7 @@
 
     // clean up old demos
     _.each(this.demos, function(demo) {
-      demo.unmount();
+      demo[0].unmount();
     });
     this.demos = [];
 
@@ -76,7 +61,6 @@
 
   this.demos = [];
 
-
   function injectDemos(demos, style) {
     _.each(demos, function(code, id) {
       console.log('injecting %s', id);
@@ -91,7 +75,6 @@
     });
   }
 
-  //this.readme = opts.readme;
   </script>
 
 </doc-content>

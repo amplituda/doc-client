@@ -1,14 +1,14 @@
 <doc-demo>
   <div class="docDemo">
-    <div class="vclTabs vclTabStyleUni">
-      <ul role="tablist">
-        <li class={ vclSelected: this.demoVisible } role="tab">
-          <a onclick={ showDemo } href="#"><i class="fa fa-eye"></i> Demo</a>
-        </li>
-        <li class={ vclSelected: this.codeVisible } role="tab">
-          <a onclick={ showCode }  href="#"><i class="fa fa-code"></i> Code</a>
-        </li>
-      </ul>
+    <div class="vclTabs vclTabStyleUni" role="tablist">
+      <div class="vclTab { vclSelected: this.demoVisible }" role="tab">
+        <span class="vclTabLabel vclIcon fa fa-eye"></span>
+        <span class="vclTabLabel" onclick={ showDemo }>Demo</span>
+      </div>
+      <div class="vclTab { vclSelected: this.codeVisible }" role="tab">
+        <span class="vclTabLabel vclIcon fa fa-code"></span>
+        <span class="vclTabLabel" onclick={ showCode }>Code</span>
+      </div>
     </div>
     <div>
       <div onclick={ demoClick } name="ninja" class="vclContainer docDemoContent vclTransparent shadow {vclDisplayNone: !this.demoVisible}"></div>
