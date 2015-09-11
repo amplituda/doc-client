@@ -5219,6 +5219,7 @@ input.vclSelected:focus {
 .vclTabs.vclTabStyleUni .vclTab,
 .vclTabs.vclTabStyleUni .vclTab:hover {
   border: 0;
+  border-bottom: 1px solid hsl(0, 0%, 75%);
   margin-bottom: -1px;
 }
 
@@ -5359,6 +5360,7 @@ input.vclSelected:focus {
 
 .vclTabs.vclTabStyleUni.vclNoBorder .vclTab,
 .vclTabs.vclTabStyleUni.vclNoBorder .vclTab:hover {
+  border: 0;
   margin: 0;
 }
 
@@ -5367,7 +5369,9 @@ input.vclSelected:focus {
 }
 
 .vclTabs.vclTabStyleUni {
+  border-left: 1px solid hsl(0, 0%, 75%);
   border-bottom: 1px solid hsl(0, 0%, 75%);
+  border-right: 1px solid hsl(0, 0%, 75%);
 }
 
 .vclTabbable .vclTabContent {
@@ -5438,7 +5442,7 @@ table {
 
 .vclTable thead tr {
   text-align: left;
-  border-width: 0 0 1px;
+  border-width: 0;
   border-style: solid;
   border-color: hsl(0, 0%, 63%);
   background-color: hsl(0, 0%, 63%);
@@ -6165,10 +6169,6 @@ header {
 
 .docNavItem > .vclIcogram {
   padding-left: 4.5em !important;
-}
-
-.code {
-  position: relative;
 }
 
 .docEditDemoButton {
