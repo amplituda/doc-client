@@ -29,9 +29,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.min.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css" media="screen" charset="utf-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai.min.css" media="screen" charset="utf-8">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css" media="screen" charset="utf-8">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 
   <!-- prod -->
   <script src="/tags/doc-topbar.html" type="riot/tag"></script>
@@ -124,7 +123,7 @@
           description: item.description
         };
 
-        if (item.docgen.categories) {
+        if (item.docgen.categories && item.docgen.categories.length > 0) {
           res.primaryCategory = item.docgen.categories[0].title;
           res.itemPriority = item.docgen.categories[0].itemPriority || 0;
         }

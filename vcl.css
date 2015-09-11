@@ -718,9 +718,13 @@ ol ul {
 }
 
 .vclList {
-  padding: 0 0 0 1em;
-  list-style-type: none;
+  padding: 0 0 0 2em;
   list-style-position: outside;
+}
+
+.vclList.vclListCustomBullets {
+  list-style-type: none;
+  padding: 0 0 0 1em;
 }
 
 .vclList > .vclListItem > .vclIcon {
@@ -6122,19 +6126,14 @@ header {
 }
 
 .docDemoContent {
-  padding: 20px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-top: 0;
   margin: 0;
   overflow: auto;
   position: relative;
   transform: translateZ(0);
-}
-
-pre.docDemoContent {
-  border: 1px solid black;
-  padding: 1em;
 }
 
 .docContent {
@@ -6172,10 +6171,8 @@ pre.docDemoContent {
   position: relative;
 }
 
-.docEditDemo {
-  position: absolute;
-  top: -35px;
-  right: 0;
+.docEditDemoButton {
+  float: right;
 }
 
 code.hljs {

@@ -1,6 +1,6 @@
 <doc-metadata>
   <div class="docMetadataControls">
-    <button onclick={ toggle } class="vclButton vclHalfTransparent" type="button" name="button">
+    <button onclick={ toggle } class="vclButton vclHalfTransparent" type="button" name="button" title="Package information">
       <i if={ this.hidden } class="vclIcon fa fa-chevron-left"></i>
       <i if={ !this.hidden } class="vclIcon fa fa-chevron-right"></i>
       <i class="vclIcon fa fa-info"></i>
@@ -8,7 +8,7 @@
   </div>
   <aside class="vclDataList {vclDisplayNone: this.hidden}">
     <header class="vclDataListHeader vclNoPadding">
-      <h3 class="vclNoMargin">Package Information</h3>
+      <h3>Package Information</h3>
     </header>
     <ul class="vclDataListBody" role="listbox">
       <li class="vclDataListItem" horizontal center layout>
@@ -38,7 +38,7 @@
         <span class="vclGridSpan-gca" role="gridcell">2kb</span>
       </li>
       <li class="vclDataListItem" horizontal center layout if={ this.pack.docgen }>
-        <span class="vclGridSpan-gcb" role="gridcell"><b>VCL Categories</b></span>
+        <span class="vclGridSpan-gcb" role="gridcell"><b>Categories</b></span>
         <span class="vclGridSpan-gca" role="gridcell">
           <span class="vclLabel" each={ cat in this.pack.docgen.categories }>{ cat.title }</span>
         </span>

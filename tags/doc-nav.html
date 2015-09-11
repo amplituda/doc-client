@@ -56,8 +56,8 @@
           staticList[catName].items = [];
           staticList[catName].title = cat.title;
           staticList[catName].priority = cat.priority;
+          //staticList[catName].push(cat);
         }
-        //staticList[catName].push(cat);
       }
     });
 
@@ -70,9 +70,6 @@
     });
 
     this.on('update', function() {
-      // all visible again
-      this.clearSearch();
-
       // unset last selected item
       if (this.selectedItem !== null){
         this.selectedItem.active = false;
@@ -88,15 +85,10 @@
       this.searching = false;
       this.searchCursor = -1;
       this.search.focus();
-      //this.update();
     }
 
     this.searchUpdate = function(e) {
       var searchVal = self.search && self.search.value;
-      if (searchVal === '') {
-        // all visible again
-        return this.clearSearch();
-      }
 
       this.searching = true;
       this.searchCursor = -1;
@@ -114,17 +106,21 @@
     this.searchKey = function(e) {
       if (!this.searching) return true;
       var maxResult = this.searchResults.length -1;
-      if(e.keyCode === 40){
+      if (e.keyCode === 40){
         // arrow down
         this.searchCursor += 1;
-      } else if(e.keyCode === 38) {
+      } else if (e.keyCode === 38) {
         // arrow up
         this.searchCursor -= 1;
-      } else if(e.keyCode === 13) {
+      } else if (e.keyCode === 13) {
         // enter
         if (this.searchCursor != -1) return;
         this.searchCursor = 0;
-      } else return true;
+      } else if (e.keyCode === 27) {
+        this.clearSearch();
+      } else {
+        return true;
+      }
 
       e.preventDefault();
 

@@ -1,26 +1,31 @@
 <doc-demo>
   <div class="docDemo">
-    <div class="vclTabs vclTabStyleUni" role="tablist">
-      <div class="vclTab { vclSelected: this.demoVisible }" role="tab">
-        <span class="vclTabLabel vclIcon fa fa-eye"></span>
-        <span class="vclTabLabel" onclick={ showDemo }>Demo</span>
-      </div>
-      <div class="vclTab { vclSelected: this.codeVisible }" role="tab">
-        <span class="vclTabLabel vclIcon fa fa-code"></span>
-        <span class="vclTabLabel" onclick={ showCode }>Code</span>
-      </div>
-    </div>
-    <div>
-      <div onclick={ demoClick } name="ninja" class="vclContainer docDemoContent vclTransparent shadow {vclDisplayNone: !this.demoVisible}"></div>
-      <div class="code {vclDisplayNone: !this.codeVisible}">
-        <form class="docEditDemo" action="https://codepen.io/pen/define" method="POST" target="_blank">
+    <div class="vclTabbable">
+      <div class="vclTabs vclTabStyleUni" role="tablist">
+        <div class="vclTab { vclSelected: this.demoVisible }" role="tab">
+          <span class="vclTabLabel vclIcon fa fa-eye"></span>
+          <span class="vclTabLabel" onclick={ showDemo }>Demo</span>
+        </div>
+        <div class="vclTab { vclSelected: this.codeVisible }" role="tab">
+          <span class="vclTabLabel vclIcon fa fa-code"></span>
+          <span class="vclTabLabel" onclick={ showCode }>Code</span>
+        </div>
+
+        <form class="docEditDemoButton {vclDisplayNone: !this.codeVisible}" action="https://codepen.io/pen/define" method="POST" target="_blank">
           <input type="hidden" name="data" value={ JSON.stringify(codePen) }>
           <button class="vclButton vclHalfTransparent">
-            <div class="vclIcon fa fa-codepen" aria-hidden="true" role="img"></div>
-            <span class="vclText">Edit on CodePen</span>
+            <div class="vclIcogram">
+              <div class="vclIcon fa fa-codepen" aria-hidden="true" role="img"></div>
+              <span class="vclText">Edit on CodePen</span>
+            </div>
           </button>
         </form>
-        <pre class="docDemoContent" name="source">{ code }</pre>
+      </div>
+      <div class="vclTabContent">
+        <div onclick={ demoClick } name="ninja" role="tabpanel" class="vclTabPanel docDemoContent vclTransparent shadow {vclDisplayNone: !this.demoVisible}"></div>
+        <div role="tabpanel" class="vclTabPanel code {vclDisplayNone: !this.codeVisible}">
+          <pre name="source">{ code }</pre>
+        </div>
       </div>
     </div>
   </div>

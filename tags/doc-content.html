@@ -23,13 +23,15 @@
 
   var self = this;
 
-  //this.content = opts.content;
-
   this.readme.innerHTML = opts.content.readme;
   this.hasContent = false;
 
   this.on('update', function() {
-    if (opts.content === undefined) return this.hasContent = false;
+console.log('content update', opts);
+    if (opts.content === undefined) {
+      this.hasContent = false;
+      return this.hasContent;
+    }
 
     // clean up old demos
     _.each(this.demos, function(demo) {
