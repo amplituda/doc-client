@@ -680,6 +680,72 @@ th {
   counter-increment: sectCounterH3;
 }
 
+/* Set the viewport width to the device width */
+
+@-ms-viewport {
+  width: device-width;
+}
+
+@-moz-viewport {
+  width: device-width;
+}
+
+@-o-viewport {
+  width: device-width;
+}
+
+@-webkit-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+.vclViewport {
+  min-height: 100vh;
+  background-color: hsl(0, 0%, 95%);
+}
+
+.vclApp {
+  background-color: transparent;
+  max-width: 95%;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  *zoom: 1;
+}
+
+.vclApp:before,
+.vclApp:after {
+  content: " ";
+  display: table;
+}
+
+.vclApp:after {
+  clear: both;
+}
+
+.vclLayoutWidth {
+  max-width: 95%;
+}
+
+.vclContentArea {
+  background-color: #FFFFFF;
+}
+
+.vclContentArea.vclTransparent {
+  background-color: transparent;
+}
+
+.vclContentBgColor {
+  background-color: #FFFFFF;
+}
+
+.vclContentBgColor.vclSecondary {
+  background-color: hsl(0, 0%, 95%);
+}
+
 .vclLogo {
   background-repeat: no-repeat;
   background-size: cover;
@@ -5053,6 +5119,21 @@ input.vclSelected:focus {
   border-color: #a94442;
 }
 
+*::-webkit-scrollbar {
+  width: 6px;
+  color: inherit;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 63%);
+}
+
 .vclTabbable {
   margin-bottom: 1.3em;
   *zoom: 1;
@@ -5066,6 +5147,25 @@ input.vclSelected:focus {
 
 .vclTabbable:after {
   clear: both;
+}
+
+.vclTabbable.vclNoBorder .vclTabContent {
+  border-bottom: 0;
+}
+
+.vclTabbable.vclNoBorder .vclTabs .vclTab.vclSelected,
+.vclTabbable.vclNoBorder .vclTabs .vclTab:hover.vclSelected {
+  border: 0;
+}
+
+.vclTabbable.vclNoBorder .vclTabs .vclTab,
+.vclTabbable.vclNoBorder .vclTabs .vclTab:hover {
+  border: 0;
+  margin: 0;
+}
+
+.vclTabbable.vclNoBorder .vclTabs {
+  border-bottom: 0;
 }
 
 .vclTabContent {
@@ -5102,10 +5202,6 @@ input.vclSelected:focus {
 .vclTabs.vclTabNavJustified {
   display: flex;
   flex-direction: row;
-}
-
-.vclTabs.vclNoBorder {
-  border: 0 !important;
 }
 
 .vclTabs .vclTab > .vclTabLabel {
@@ -5271,6 +5367,7 @@ input.vclSelected:focus {
   float: left;
   display: block;
   border-bottom: 0;
+  border: 0;
 }
 
 .vclTabbable.vclTabsLeft .vclTabs.vclTabStyleUni {
@@ -5321,6 +5418,7 @@ input.vclSelected:focus {
   float: right;
   display: block;
   border-bottom: 0;
+  border: 0;
 }
 
 .vclTabbable.vclTabsRight .vclTabs.vclTabStyleUni {
@@ -5353,28 +5451,13 @@ input.vclSelected:focus {
   background-color: transparent;
 }
 
-.vclTabs.vclTabStyleUni.vclNoBorder .vclTab.vclSelected,
-.vclTabs.vclTabStyleUni.vclNoBorder .vclTab:hover.vclSelected {
-  border: 0;
-}
-
-.vclTabs.vclTabStyleUni.vclNoBorder .vclTab,
-.vclTabs.vclTabStyleUni.vclNoBorder .vclTab:hover {
-  border: 0;
-  margin: 0;
-}
-
-.vclTabs.vclTabStyleUni.vclNoBorder {
-  border-bottom: 0;
-}
-
 .vclTabs.vclTabStyleUni {
-  border-left: 1px solid hsl(0, 0%, 75%);
   border-bottom: 1px solid hsl(0, 0%, 75%);
-  border-right: 1px solid hsl(0, 0%, 75%);
 }
 
 .vclTabbable .vclTabContent {
+  border-left: 1px solid hsl(0, 0%, 75%);
+  border-right: 1px solid hsl(0, 0%, 75%);
   border-bottom: 1px solid hsl(0, 0%, 75%);
 }
 
@@ -5386,6 +5469,10 @@ input.vclSelected:focus {
 &.vclTabsRight .vclTabs.vclTabStyleUni .vclTab.vclSelected {
   border: 1px solid hsl(0, 0%, 75%);
   border-left: 1px solid transparent;
+}
+
+&.vclTabsRight .vclTabContent {
+  border: 0;
 }
 
 table {
@@ -5631,61 +5718,6 @@ table.vclTable input,
 
 .vclToolbar h2.vclToolbarTitle {
   font-size: 1.05em;
-}
-
-.vclAnimContainer {
-  overflow: hidden;
-}
-
-/* Disable transitions */
-
-.vclNoTransitions {
-  transition: none !important;
-}
-
-/* Opacity based */
-
-.vclFade {
-  opacity: 0;
-  transition: opacity 0.2s ease 0s;
-}
-
-.vclFade.vclShow {
-  opacity: 1;
-}
-
-/* Translation based */
-
-.vclTranslation {
-  outline: none;
-  overflow: auto;
-  opacity: 0;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in;
-}
-
-.vclTranslation.vclShow {
-  opacity: 1;
-  transform: translateZ(0);
-}
-
-.vclTranslation-center {
-  transform: scale(0.5);
-}
-
-.vclTranslation-top {
-  transform: translateY(-200%);
-}
-
-.vclTranslation-bottom {
-  transform: translateY(200%);
-}
-
-.vclTranslation-left {
-  transform: translateX(-200%);
-}
-
-.vclTranslation-right {
-  transform: translteX(200%);
 }
 
 html {

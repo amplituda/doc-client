@@ -37,6 +37,8 @@
     "gulp-webserver": "^0.9.0",
     "normalize.css": "^3.0.3",
     "vcl-adv-text-structure": "vcl/adv-text-structure",
+    "vcl-app-area": "vcl/app-area",
+    "vcl-app-content-area": "vcl/app-content-area",
     "vcl-logo": "vcl/logo",
     "vcl-list": "vcl/list",
     "vcl-button": "vcl/button",
@@ -60,7 +62,6 @@
     "vcl-tab-nav": "vcl/tab-nav",
     "vcl-table": "vcl/table",
     "vcl-toolbar": "vcl/toolbar",
-    "vcl-transitions": "vcl/transitions",
     "vcl-typography": "vcl/typography",
     "vcl-utils": "vcl/utils"
   },
