@@ -128,9 +128,10 @@
       else if (this.searchCursor === maxResult + 1) this.searchCursor = 0;
 
       var newActive = self.searchResults[this.searchCursor];
-
-      riot.route(newActive.name);
-      newActive.active = true;
+      if (newActive) {
+        riot.route(newActive.name);
+        newActive.active = true;
+      }
     }
   </script>
 </doc-nav>
