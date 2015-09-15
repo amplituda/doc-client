@@ -74,10 +74,10 @@
       }
       riot.compile(function() {
           if(document.head.createShadowRoot) {
-            // I can shadow DOM
+            // I support shadow DOM
             init(doc);
           } else {
-            // I can't
+            // I don't
             console.log('no shadow DOM support');
             riot.mount('doc-notification', { noShadowDom: true, doc: doc });
           }
@@ -97,9 +97,6 @@
       // process parts
       if (doc.parts.length === 0) throw 'No parts to render';
 
-      // doc content
-      //riot.mount('doc-content', { parts: doc.parts });
-
       // filter invalid parts
       doc.parts = _.filter(doc.parts, function(part) {
         if (part.docgen.categories === undefined) {
@@ -110,7 +107,6 @@
 
       // navigation
       var navItems = _.map(doc.parts, function(item) {
-
         if (item.docgen.categories === undefined) {
           return; // skip mostly collections
         }
@@ -152,13 +148,22 @@
       riot.route(showPart);
 
       function showPart(name) {
-        // last part is no longer selected
+        var selectedPart;
+        // if there is no name, try to find a package that provides 'doc-index'
+        if (_.isEmpty(name)) {
+          var indexPackage = _.find(doc.packages, function(item) {
+            if (!item.vcl || !item.vcl.provides) return;
+            return _.contains(item.vcl.provides, 'doc-index');
+          });
+          name = indexPackage.name;
+        }
+        // identify desired part by name
+        selectedPart = _.find(doc.parts, { name: name });
 
-        // new part
-        var selectedPart = _.find(doc.parts, {name: name});
+        if (!selectedPart) return;
+
         window.appSettings.content = selectedPart;
         content.update();
-        if (!selectedPart) return;
 
         // update for the navigation
         nav.update({ selected: selectedPart.name });

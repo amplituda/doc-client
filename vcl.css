@@ -747,10 +747,7 @@ th {
 }
 
 .vclLogo {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-image: url('https://cdn.rawgit.com/vcl/gfx/master/vcl_logo_square-bw.svg');
+  display: block;
 }
 
 dl,
@@ -4857,87 +4854,84 @@ input.vclSelected:focus {
 .vclNavigation {
   margin-bottom: 1.3em;
   background-color: transparent;
+  display: block;
+  position: relative;
+  *zoom: 1;
+}
+
+.vclNavigation:before,
+.vclNavigation:after {
+  content: " ";
+  display: table;
+}
+
+.vclNavigation:after {
+  clear: both;
 }
 
 .vclNavigation .vclClose .vclNavigation {
   display: none;
 }
 
-.vclNavigation a,
-.vclNavigation a:hover {
+.vclNavigation .vclNavigationItemLabel {
+  color: inherit;
+  outline: 0;
   text-decoration: none;
 }
 
-.vclNavigation .vclNavigationHeading > span {
+.vclNavigation .vclNavigationHeading > span,
+.vclNavigation .vclNavigationHeading:hover > span {
   display: inline-block;
   font-weight: bold;
   font-size: 0.86em;
 }
 
-.vclNavigation .vclNavigationHeading {
+.vclNavigation .vclNavigationHeading,
+.vclNavigation .vclNavigationHeading:hover {
   color: hsl(0, 0%, 15%);
   background-color: transparent;
   padding: 0.85em 1em;
 }
 
-.vclNavigation ul li > a .vclText,
-.vclNavigation ul li > .vclIcogram .vclText {
-  letter-spacing: 1px;
-}
-
-.vclNavigation ul li > a,
-.vclNavigation ul li > .vclIcogram {
-  cursor: pointer;
-  font-size: 0.98em;
-  font-weight: normal;
-  margin-right: 0.2em;
-  padding: 0.85em 1em;
-}
-
-.vclNavigation ul li {
-  float: left;
-}
-
 .vclNavigation ul {
   padding: 0;
   margin: 0;
-  display: block;
   list-style: none;
   list-style-type: none;
-  position: relative;
-  *zoom: 1;
 }
 
-.vclNavigation ul:before,
-.vclNavigation ul:after {
-  content: " ";
-  display: table;
+.vclNavigation .vclNavigationItem .vclNavigationItemLabel .vclText {
+  letter-spacing: 1px;
 }
 
-.vclNavigation ul:after {
-  clear: both;
+.vclNavigation .vclNavigationItem .vclNavigationItemLabel {
+  cursor: pointer;
+  font-size: 0.98em;
+  font-weight: normal;
+  padding: 0.85em 1em;
 }
 
-.vclNavigation.vclVertical li > a,
-.vclNavigation.vclVertical li > .vclIcogram {
+.vclNavigation .vclNavigationItem {
+  outline: 0;
+  float: left;
+}
+
+.vclNavigation.vclVertical .vclNavigationItem .vclNavigationItemLabel {
   display: block;
   padding-left: 1.25em;
   padding-right: 1.25em;
 }
 
-.vclNavigation.vclVertical .vclNavigation li > a,
-.vclNavigation.vclVertical .vclNavigation li > .vclIcogram {
+.vclNavigation.vclVertical .vclNavigation .vclNavigationItem .vclNavigationItemLabel {
   font-size: 0.98em;
   padding-left: 1.5em;
 }
 
-.vclNavigation.vclVertical .vclNavigation li .vclNavigation li > a,
-.vclNavigation.vclVertical .vclNavigation li .vclNavigation li > .vclIcogram {
+.vclNavigation.vclVertical .vclNavigation .vclNavigationItem .vclNavigation .vclNavigationItem .vclNavigationItemLabel {
   padding-left: 2.5em;
 }
 
-.vclNavigation.vclVertical .vclNavigation li .vclNavigation .vclNavigation li > a,
-.vclNavigation.vclVertical .vclNavigation li .vclNavigation .vclNavigation li > .vclIcogram {
+.vclNavigation.vclVertical .vclNavigation .vclNavigationItem .vclNavigation .vclNavigation .vclNavigationItem .vclNavigationItemLabel {
   padding-left: 3.5em;
 }
 
@@ -4952,33 +4946,30 @@ input.vclSelected:focus {
   padding-left: 0.5em;
 }
 
-.vclNavigation.vclVertical ul li > a,
-.vclNavigation.vclVertical ul li > .vclIcogram {
+.vclNavigation.vclVertical .vclNavigationItem .vclNavigationItemLabel {
   margin-right: 0;
 }
 
-.vclNavigation.vclVertical ul li {
+.vclNavigation.vclVertical .vclNavigationItem {
   float: none;
 }
 
 /* 1st level coloring */
 
-.vclNavigation ul li > a,
-.vclNavigation ul li > .vclIcogram {
-  color: hsl(0, 0%, 15%);
-  background-color: transparent;
-}
-
-.vclNavigation ul li > a:hover,
-.vclNavigation ul li > .vclIcogram:hover {
+.vclNavigation .vclNavigationItem .vclNavigationItemLabel:hover,
+.vclNavigation .vclNavigationItem .vclNavigationItemLabel:focus {
   color: #000000;
   background-color: hsl(0, 0%, 92%);
 }
 
-.vclNavigation ul li.vclSelected > a,
-.vclNavigation ul li.vclSelected > .vclIcogram {
+.vclNavigation .vclNavigationItem.vclSelected > .vclNavigationItemLabel {
   color: #FFFFFF;
   background-color: #00ADEF;
+}
+
+.vclNavigation .vclNavigationItem {
+  color: hsl(0, 0%, 15%);
+  background-color: transparent;
 }
 
 .vclNotification {
@@ -5697,12 +5688,15 @@ table.vclTable input,
   background-color: transparent;
 }
 
-.vclToolbar> .vclInputGroup,
-.vclToolbar> .vclInputGroupEmb,
-.vclToolbar> .vclNavigation,
-.vclToolbar> .vclLooseButtonGroup,
-.vclToolbar> .vclLogo {
+.vclToolbar .vclInputGroup,
+.vclToolbar .vclInputGroupEmb,
+.vclToolbar .vclNavigation,
+.vclToolbar .vclLooseButtonGroup {
   margin-bottom: 0;
+}
+
+.vclToolbar .vclLogo {
+  margin-left: 0.5em;
 }
 
 .vclToolbar .vclToolbarTitle {
