@@ -6136,8 +6136,14 @@ header {
   height: 100%;
 }
 
-.docMetadataControls {
+.docMetadata {
   margin-bottom: 1em;
+}
+
+.docMetadata .vclGridSpan-gca,
+.docMetadata .vclGridSpan-gcb {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .docQuicklinks {
