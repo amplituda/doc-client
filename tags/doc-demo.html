@@ -6,9 +6,9 @@
           <span class="vclTabLabel vclIcon fa fa-eye"></span>
           <span class="vclTabLabel" onclick={ showDemo }>Demo</span>
         </div>
-        <div class="vclTab { vclSelected: this.codeVisible }" role="tab">
+        <div class="vclTab { vclSelected: this.codeVisible }" onclick={ showCode } role="tab">
           <span class="vclTabLabel vclIcon fa fa-code"></span>
-          <span class="vclTabLabel" onclick={ showCode }>Code</span>
+          <span class="vclTabLabel">Code</span>
         </div>
 
         <form class="docEditDemoButton {vclDisplayNone: !this.codeVisible}" action="https://codepen.io/pen/define" method="POST" target="_blank">
