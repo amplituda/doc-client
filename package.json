@@ -66,6 +66,6 @@
     "vcl-utils": "vcl/utils"
   },
   "dependencies": {
-    "riot": "^2.2.4"
+    "riot": "2.2.4"
   }
 }
