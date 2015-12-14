@@ -19,7 +19,7 @@
     this.tryAnyway = function(){
       this.tried = true;
       var polyfill = document.createElement('script');
-      polyfill.setAttribute('src','https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.6.1/ShadowDOM.min.js');
+      polyfill.setAttribute('src','https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.19/ShadowDOM.min.js');
 
       // onload does not work in IE, duh
       polyfill.onload = function() {

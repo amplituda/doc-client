@@ -41,15 +41,14 @@ exports.getBuild = function(doc, cb) {
     // add custom html after that
     if (customHtml) prodStuff.push(customHtml);
 
-    var prodText = prodStuff.join('\n');
-    var done = rawHtml.replace(/<!-- prod -->(.|\n)*<!-- prod -->/gm, prodText);
-
     // add vcl style
     var style = '<style>' +
       fs.readFileSync(__dirname + '/vcl.css', 'utf8') + '\n</style>';
-    done = done.replace(/<!-- prodstyle -->(.|\n)*<!-- prodstyle -->/gm, style);
+    rawHtml = rawHtml.replace(/<!-- prodstyle -->(.|\n)*<!-- prodstyle -->/gm, style);
 
-    //fs.writeFileSync('./index-prod.html', done);
+    var prodText = prodStuff.join('\n');
+    var done = rawHtml.replace(/<!-- prod -->(.|\n)*<!-- prod -->/gm, prodText);
+
     if (cb) cb(done);
   });
 };
