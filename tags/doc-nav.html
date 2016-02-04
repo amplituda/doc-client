@@ -26,7 +26,7 @@
       </div>
     </ul>
     <ul flex class="vclScrollable vclYOnHover" if={ searching } id="nav-items">
-      <li each={ item in searchResults } class=vclNavigationItem { vclSelected: item.active } role="presentation">
+      <li each={ item in searchResults } class="vclNavigationItem { vclSelected: item.active }" role="presentation">
         <a class="vclNavigationItemLabel vclIcogram" href={ '#' + item.name } >
           <span class="vclText">{ item.title }</span>
         </a>
