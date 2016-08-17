@@ -1,5 +1,5 @@
 <doc-nav>
-  <nav vertical layout flex class="docNav vclNavigation vclVertical">
+  <nav class="docNav vclNavigation vclVertical vclLayoutVertical vclLayoutFlex">
     <div class="vclInputGroupEmb">
       <span class="vclPrepended">
         <div class="vclIcon fa fa-search"></div>
@@ -20,12 +20,12 @@
          </div>
       </button>
     </div>
-    <ul flex class="vclScrollable vclYOnHover" if={ !searching } id="nav-items">
+    <ul class="vclScrollable vclYOnHover vclLayoutFlex" if={ !searching } id="nav-items">
       <div each={ cat in cats }>
         <doc-subnav items={ cat.items }></doc-subnav>
       </div>
     </ul>
-    <ul flex class="vclScrollable vclYOnHover" if={ searching } id="nav-items">
+    <ul class="vclScrollable vclYOnHover vclLayoutFlex" if={ searching } id="nav-items">
       <li each={ item in searchResults } class="vclNavigationItem { vclSelected: item.active }" role="presentation">
         <a class="vclNavigationItemLabel vclIcogram" href={ '#' + item.name } >
           <span class="vclText">{ item.title }</span>

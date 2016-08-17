@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/lodash/3.10.1/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.min.js"></script>
 
@@ -153,7 +153,7 @@
         if (_.isEmpty(name)) {
           var indexPackage = _.find(doc.packages, function(item) {
             if (!item.vcl || !item.vcl.provides) return;
-            return _.contains(item.vcl.provides, 'doc-index');
+            return _.includes(item.vcl.provides, 'doc-index');
           });
           name = indexPackage.name;
         }
@@ -172,7 +172,7 @@
       // title
       riot.mount('doc-topbar', {title: doc.name});
 
-      riot.route.exec(showPart);
+      riot.route.start(true);
 
       document.body.onkeydown = function() {
         var searchBox = document.getElementsByName('search')[0];
