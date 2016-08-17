@@ -1,33 +1,207 @@
-<doc-subnav>
-  <li onclick={ toggle } role="presentation" class="vclNavigationItem docNavHeading" class={ active: active, vclDisplayNone: hidden }>
-    <a class="vclNavigationItemLabel vclIcogram" href="#">
-      <span class="vclIcon fa {'fa-angle-right': !open, 'fa-angle-down': open}" aria-hidden="true" aria-label="angle-right" role="img"></span>
-      <span>{ cat.title }</span>
-    </a>
-  </li>
-  <div class="vclAnimContainer" if={ open }>
-    <li each={ item in items } class="vclNavigationItem docNavItem { vclSelected: item.active }" role="presentation">
-      <a class="vclNavigationItemLabel vclIcogram" href={ '#' + item.name } >
-        <span class="vclText">{ item.title }</span>
-      </a>
-    </li>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- prodstyle -->
+  <link rel="stylesheet" href="/vcl.css" media="screen" charset="utf-8">
+  <!-- prodstyle -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <style media="screen"></style>
+  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/ShadowDOM.min.js"></script-->
+</head>
+<body>
+  <div vertical layout class="docMain">
+    <header class="vclToolbar">
+      <doc-topbar horizontal center justified layout></doc-topbar>
+    </header>
+    <div class="vclContentArea vclLayoutHorizontal vclLayoutFlex">
+      <doc-nav vertical layout></doc-nav>
+      <div class="docContent vclScrollable vclLayoutFlex" id="elements">
+        <doc-notification></doc-notification>
+        <doc-content></doc-content>
+      </div>
+    </div>
   </div>
-  <script>
-    this.userChoice = false;
-    this.open = false;
-    this.items = _.sortBy(opts.items, 'itemPriority');
 
-    // open main category if something in there is selected
-    this.on('update', function() {
-      var found = _.some(this.items, function(it){
-        return it.active === true;
-      });
-      if (found && !this.userChoice) this.open = true;
+  <script src="https://cdn.jsdelivr.net/lodash/3.10.1/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css" media="screen" charset="utf-8">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+
+  <!-- prod -->
+  <script src="/tags/doc-topbar.html" type="riot/tag"></script>
+  <script src="/tags/doc-nav.html" type="riot/tag"></script>
+  <script src="/tags/doc-subnav.html" type="riot/tag"></script>
+  <script src="/tags/doc-content.html" type="riot/tag"></script>
+  <script src="/tags/doc-notification.html" type="riot/tag"></script>
+  <script src="/tags/doc-metadata.html" type="riot/tag"></script>
+  <script src="/tags/doc-demo.html" type="riot/tag"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.5.0/riot+compiler.min.js"></script>
+  <!-- prod -->
+  <script charset="utf-8">
+    /* globals riot, superagent, _, document */
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      // check for inline doc
+      if (window.doc !== undefined) {
+        return start(window.doc);
+      }
+
+      // not found, look for doc.json
+      superagent
+        .get('/doc.json')
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          // TODO: handle error
+          if (err) throw err;
+
+          console.log(res.body);
+          start(res.body);
+        });
     });
 
-    this.toggle = function() {
-      this.userChoice = true;
-      this.open = !this.open;
+    function start(doc) {
+      if (window.prod){
+        if(document.head.createShadowRoot) {
+          return init(doc); // tags should be inlined
+        } else {
+          console.log('no shadow DOM support');
+          riot.mount('doc-notification', { noShadowDom: true, doc: doc });
+          return;
+        }
+      }
+      riot.compile(function() {
+          if(document.head.createShadowRoot) {
+            // I support shadow DOM
+            init(doc);
+          } else {
+            // I don't
+            console.log('no shadow DOM support');
+            riot.mount('doc-notification', { noShadowDom: true, doc: doc });
+          }
+      });
+    }
+
+    function init(doc) {
+      // starts the app
+      if (doc === undefined) throw 'Have no doc to show';
+      _.defaults(doc, {
+        name: 'VCL Documentation'
+      });
+
+      // setting page name
+      document.title = doc.name;
+
+      // process parts
+      if (doc.parts.length === 0) throw 'No parts to render';
+
+      // filter invalid parts
+      doc.parts = _.filter(doc.parts, function(part) {
+        if (part.docgen.categories === undefined) {
+          return false; // skip mostly collections
+        }
+        return true;
+      });
+
+      // navigation
+      var navItems = _.map(doc.parts, function(item) {
+        if (item.docgen.categories === undefined) {
+          return; // skip mostly collections
+        }
+
+        var res = {
+          title: item.title || item.name,
+          name: item.name,
+          description: item.description
+        };
+
+        if (item.docgen.categories && item.docgen.categories.length > 0) {
+          res.primaryCategory = item.docgen.categories[0].title;
+          res.itemPriority = item.docgen.categories[0].itemPriority || 0;
+        }
+
+        // TODO: let generator set mainCat (?)
+        return res;
+      });
+
+      window.appSettings = {
+        content: {},
+        items: navItems
+      };
+      // TODO: the generator should do this
+      var cats = [];
+      _.forEach(doc.parts, function(part) {
+        //cats.push.apply(cats, part.docgen.categories);
+        cats.push(part.docgen.categories[0]);
+      });
+
+      var nav = riot.mount('doc-nav', {
+        categories: cats,
+        items: window.appSettings.items,
+        selected: window.appSettings.content.name
+      })[0];
+
+      var content = riot.mount('doc-content', window.appSettings)[0];
+
+      riot.route(showPart);
+
+      function showPart(name) {
+        var selectedPart;
+        // if there is no name, try to find a package that provides 'doc-index'
+        if (_.isEmpty(name)) {
+          var indexPackage = _.find(doc.packages, function(item) {
+            if (!item.vcl || !item.vcl.provides) return;
+            return _.contains(item.vcl.provides, 'doc-index');
+          });
+          name = indexPackage.name;
+        }
+        // identify desired part by name
+        selectedPart = _.find(doc.parts, { name: name });
+
+        if (!selectedPart) return;
+
+        window.appSettings.content = selectedPart;
+        content.update();
+
+        // update for the navigation
+        nav.update({ selected: selectedPart.name });
+      }
+
+      // title
+      riot.mount('doc-topbar', {title: doc.name});
+
+      riot.route.start(true);
+
+      document.body.onkeydown = function() {
+        var searchBox = document.getElementsByName('search')[0];
+        var key = event.keyCode || event.which;
+
+        // don't handle shortcuts
+        if (event.altKey || event.ctrlKey) return true;
+
+        var input = event.path[0];
+        var tagName = input.tagName.toLowerCase();
+        if (/vclInput/.test(input.className)) return;
+        if (tagName === 'input') return;
+        if (tagName === 'textarea') return;
+        if (tagName === 'select') return;
+        if (input.isContentEditable === true) return;
+        if (key === 27){
+          // ESC, clear search box
+          searchBox.focus();
+          event.preventDefault();
+          searchBox.value = '';
+          //nav.update();
+        }
+        var char = String.fromCharCode((96 <= key && key <= 105)? key-48 : key);
+        if (!/[A-Z]/.test(char)) return;
+
+        searchBox.focus();
+        //searchBox.value += char.toLowerCase();
+      }
     }
   </script>
-</doc-subnav>
+</body>
+</html>
