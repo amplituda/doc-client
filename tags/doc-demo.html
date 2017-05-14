@@ -82,6 +82,8 @@
     var clone = document.importNode(templateEl.content, true);
     shadowWrap.appendChild(clone);
 
+
+    this.source.innerText = code;
     var sourceEl = this.source;
     this.on('mount update', function() {
       // highlight the source after update
