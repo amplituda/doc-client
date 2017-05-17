@@ -36,7 +36,7 @@
     "gulp": "^3.9.0",
     "gulp-vcl-preprocessor": "^0.2.0",
     "gulp-webserver": "^0.9.1",
-    "normalize.css": "^5.0.0",
+    "normalize.css": "^7.0.0",
     "vcl-font-awesome": "^0.1.0",
     "vcl-adv-text-structure": "^0.1.0",
     "vcl-app-area": "^0.1.0",
