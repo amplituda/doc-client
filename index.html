@@ -5,7 +5,7 @@
   <!-- prodstyle -->
   <link rel="stylesheet" href="/vcl.css" media="screen" charset="utf-8">
   <!-- prodstyle -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style media="screen"></style>
   <!--script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/ShadowDOM.min.js"></script-->
 </head>
@@ -23,12 +23,11 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.min.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css" media="screen" charset="utf-8">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.5.2/superagent.min.js" integrity="sha256-+Q9O9GgDgx2GQxSNMzEIYgzPhcJWwURnlq46eymtmEE=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js" integrity="sha256-+OTZgPZHh8OMfBEvLnqWAsMMqhs4zEA//OK17m4K2to=" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
 
   <!-- prod -->
   <script src="/tags/doc-topbar.html" type="riot/tag"></script>
@@ -38,7 +37,9 @@
   <script src="/tags/doc-notification.html" type="riot/tag"></script>
   <script src="/tags/doc-metadata.html" type="riot/tag"></script>
   <script src="/tags/doc-demo.html" type="riot/tag"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.4/riot+compiler.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.5.1/riot+compiler.min.js"></script>
+
+
   <!-- prod -->
   <script charset="utf-8">
     /* globals riot, superagent, _, document */
@@ -145,7 +146,7 @@
 
       var content = riot.mount('doc-content', window.appSettings)[0];
 
-      riot.route(showPart);
+      route(showPart);
 
       function showPart(name) {
         var selectedPart;
@@ -163,7 +164,7 @@
         if (!selectedPart) return;
 
         window.appSettings.content = selectedPart;
-        content.update();
+        content.update( {opts : {content: selectedPart}}  );
 
         // update for the navigation
         nav.update({ selected: selectedPart.name });
@@ -172,7 +173,7 @@
       // title
       riot.mount('doc-topbar', {title: doc.name});
 
-      riot.route.start(true);
+      route.start(true);
 
       document.body.onkeydown = function() {
         var searchBox = document.getElementsByName('search')[0];
@@ -199,7 +200,6 @@
         if (!/[A-Z]/.test(char)) return;
 
         searchBox.focus();
-        //searchBox.value += char.toLowerCase();
       }
     }
   </script>

@@ -1,9 +1,9 @@
 <doc-subnav>
   <li onclick={ toggle } role="presentation" class="vclNavigationItem docNavHeading" class={ active: active, vclDisplayNone: hidden }>
-    <a class="vclNavigationItemLabel vclIcogram" href="#">
+    <span style="font-weight: bold;"  class="vclNavigationItemLabel vclIcogram" href="#">
       <span class="vclIcon fa {'fa-angle-right': !open, 'fa-angle-down': open}" aria-hidden="true" aria-label="angle-right" role="img"></span>
       <span>{ cat.title }</span>
-    </a>
+    </span>
   </li>
   <div class="vclAnimContainer" if={ open }>
     <li each={ item in items } class="vclNavigationItem docNavItem { vclSelected: item.active }" role="presentation">
@@ -13,6 +13,7 @@
     </li>
   </div>
   <script>
+    this.cat = opts.cat;
     this.userChoice = false;
     this.open = false;
     this.items = _.sortBy(opts.items, 'itemPriority');

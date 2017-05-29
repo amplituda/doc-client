@@ -5,7 +5,7 @@
         { opts.content.title }
         <small class="vclArticleSubHeader">{ opts.content.name }</small>
       </h2>
-      <div name="readme" class="docText"></div>
+      <div ref="readme" name="readme" class="docText"></div>
     </div>
     <doc-metadata if={ this.hasContent } class="docMetadata" pack={ opts.content }></doc-metadata>
   </div>
@@ -23,7 +23,10 @@
 
   var self = this;
 
-  this.readme.innerHTML = opts.content.readme;
+  this.on('mount', function() {
+    this.refs.readme.innerHTML = opts.content.readme;
+  });
+
   this.hasContent = false;
 
   this.on('update', function() {
@@ -39,11 +42,11 @@
     this.demos = [];
 
     // update readme
-    this.readme.innerHTML = opts.content.readme;
+    this.refs.readme.innerHTML = this.opts.content.readme;
     this.hasContent = true;
 
     // add vclList to lists
-    var lists = this.readme.getElementsByTagName('ul');
+    var lists = this.refs.readme.getElementsByTagName('ul');
     for (var i = 0; i < lists.length; i++) {
       lists[i].classList.add('vclList');
       var listItems = lists[i].getElementsByTagName('li');
@@ -53,12 +56,12 @@
     }
 
     // add vclTable to tables
-    var tables = this.readme.getElementsByTagName('table');
+    var tables = this.refs.readme.getElementsByTagName('table');
     for (var i = 0; i < tables.length; i++) {
       tables[i].classList.add('vclTable');
     }
 
-    var codes = this.readme.getElementsByTagName('code');
+    var codes = this.refs.readme.getElementsByTagName('code');
     for (var i = 0; i < codes.length; i++) {
       var lines = codes[i].innerHTML.split("\n").length;
       if (lines > 1) {
@@ -67,14 +70,14 @@
     }
 
     // inject demos
-    injectDemos(opts.content.demos, opts.content.style);
+    injectDemos(this.opts.content.demos, this.opts.content.style);
   });
 
   this.demos = [];
 
   function injectDemos(demos, style) {
     _.each(demos, function(code, id) {
-      console.log('injecting %s', id);
+     // console.log('injecting %s', id);
       var el = document.getElementById('demo-' + id);
 
       var demo = riot.mount(el, 'doc-demo', {

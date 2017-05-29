@@ -7,6 +7,7 @@
       <input
         type="search"
         name="search"
+        ref="search"
         oninput={ searchUpdate }
         onkeydown={ searchKey }
         placeholder="Search Modules"
@@ -22,7 +23,7 @@
     </div>
     <ul class="vclScrollable vclYOnHover vclLayoutFlex" if={ !searching } id="nav-items">
       <div each={ cat in cats }>
-        <doc-subnav items={ cat.items }></doc-subnav>
+        <doc-subnav cat={cat} items={ cat.items }></doc-subnav>
       </div>
     </ul>
     <ul class="vclScrollable vclYOnHover vclLayoutFlex" if={ searching } id="nav-items">
@@ -81,14 +82,14 @@
     });
 
     this.clearSearch = function() {
-      this.search.value = '';
+      this.refs.search.value = '';
       this.searching = false;
       this.searchCursor = -1;
-      this.search.focus();
+      this.refs.search.focus();
     }
 
     this.searchUpdate = function(e) {
-      var searchVal = self.search && self.search.value;
+      var searchVal = self.refs.search && self.refs.search.value;
 
       this.searching = true;
       this.searchCursor = -1;
@@ -129,7 +130,7 @@
 
       var newActive = self.searchResults[this.searchCursor];
       if (newActive) {
-        riot.route(newActive.name);
+        route(newActive.name);
         newActive.active = true;
       }
     }

@@ -32,7 +32,8 @@ exports.getBuild = function(doc, cb) {
     }
 
     var prodStuff = [
-      '<script src=\'https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.4/riot.min.js\'></script>',
+      '<script src=\'https://cdnjs.cloudflare.com/ajax/libs/riot/3.5.1/riot.min.js\'></script>',
+      '<script src=\'https://cdn.jsdelivr.net/riot-route/3.1.1/route+tag.js\'></script>',
       '<script>',
       inlineScript,
       '</script>'

@@ -22,9 +22,9 @@
         </form>
       </div>
       <div class="vclTabContent">
-        <div onclick={ demoClick } name="ninja" role="tabpanel" class="vclTabPanel docDemoContent vclTransparent shadow {vclDisplayNone: !this.demoVisible}"></div>
+        <div onclick={ demoClick } ref="ninja" name="ninja" role="tabpanel" class="vclTabPanel docDemoContent vclTransparent shadow {vclDisplayNone: !this.demoVisible}"></div>
         <div role="tabpanel" class="vclTabPanel code {vclDisplayNone: !this.codeVisible}">
-          <pre name="source">{ code }</pre>
+          <pre ref="source" name="source">{ code }</pre>
         </div>
       </div>
     </div>
@@ -70,21 +70,26 @@
     };
 
     // This is the magic:
-    var wrap = document.createElement('div');
-    this.ninja.appendChild(wrap);
 
-    var templateEl = document.createElement('template');
-    var cssEl = document.createElement('style');
-    cssEl.innerHTML = css;
-    templateEl.innerHTML = cssEl.outerHTML + code;
+     this.on('mount', function() {
 
-    var shadowWrap = wrap.createShadowRoot();
-    var clone = document.importNode(templateEl.content, true);
-    shadowWrap.appendChild(clone);
+      var wrap = document.createElement('div');
+      this.refs.ninja.appendChild(wrap);
+
+      var templateEl = document.createElement('template');
+      var cssEl = document.createElement('style');
+      cssEl.innerHTML = css;
+      templateEl.innerHTML = cssEl.outerHTML + code;
+
+      var shadowWrap = wrap.createShadowRoot();
+      var clone = document.importNode(templateEl.content, true);
+      shadowWrap.appendChild(clone);
+
+      this.refs.source.innerText = code;
+      var sourceEl = this.source;
+    });
 
 
-    this.source.innerText = code;
-    var sourceEl = this.source;
     this.on('mount update', function() {
       // highlight the source after update
       hljs.highlightBlock(sourceEl);
