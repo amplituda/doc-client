@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-var vcl = require('gulp-vcl-preprocessor');
+var vcl = require('@vcl/gulp-vcl-preprocessor');
 var webserver = require('gulp-webserver');
 
 gulp.task('css', function() {

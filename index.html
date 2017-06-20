@@ -112,9 +112,11 @@
           return; // skip mostly collections
         }
 
+        let withoutPrefixName = /@vcl\/(.+)/.exec(item.name);
+
         var res = {
           title: item.title || item.name,
-          name: item.name,
+          name: withoutPrefixName[1],
           description: item.description
         };
 
@@ -158,6 +160,11 @@
           });
           name = indexPackage.name;
         }
+
+        if (!name.includes('@vcl/')) {
+           name = '@vcl/' + name;
+        }
+
         // identify desired part by name
         selectedPart = _.find(doc.parts, { name: name });
 

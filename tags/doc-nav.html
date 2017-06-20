@@ -75,7 +75,9 @@
       if (this.selectedItem !== null){
         this.selectedItem.active = false;
       }
-      var selectedItem = _.find(this.items, {name: this.selected});
+      let withoutPrefixSelectedName = /@vcl\/(.+)/.exec(this.selected);
+
+      var selectedItem = _.find(this.items, {name: withoutPrefixSelectedName[1]});
       if (!selectedItem) return;
       selectedItem.active = true;
       this.selectedItem = selectedItem;

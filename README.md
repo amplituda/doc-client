@@ -21,7 +21,7 @@ Or generate the `documentation.json` yourself.
 
 ```JavaScript
 // var doc = {...};
-var vclDocClient = require('vcl-doc-client');
+var vclDocClient = require('@vcl/doc-client');
 
 vclDocClient.getBuild(doc, function(html) {
   console.log(html);
